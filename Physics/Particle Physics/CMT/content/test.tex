@@ -1,0 +1,11 @@
+\chapter{Current Time}
+\section{Current Time}
+\begin{luacode*}
+  function my_current_time()
+  tex.sprint(os.date("%H:%M:%S"))
+  end
+\end{luacode*}
+\newcommand*{\myCurrentTime}{%
+  \directlua{ my_current_time() }%
+}
+It is {\myCurrentTime} now.

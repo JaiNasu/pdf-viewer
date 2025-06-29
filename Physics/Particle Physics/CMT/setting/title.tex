@@ -1,0 +1,46 @@
+%title
+\titlehead{\subjct: \titl}
+\subject{\subjct}
+\title{\titl}
+\subtitle{}
+\author{Name: \myname \\ ID: \studentid}
+\date{}
+% 
+% \addtokomafont{author}{\vspace*{2em}}
+% \addtokomafont{date}{\vspace*{-1em}}
+
+\makeatletter
+\newcommand{\makeTitle}[1]{
+  \begin{titlepage}
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [inner sep=0pt] at (current page.center) {#1}; % Background image
+      \node [anchor=center, inner sep=1.25cm, rectangle, fill=ocre!30!white, fill opacity=0.6, text opacity=1, minimum height=0.24\paperheight, minimum width=\paperwidth, text width=0.8\paperwidth] at (current page.center) {
+      \centering
+      \sffamily
+      \LARGE
+      \subjct \par
+      \vspace{0.2cm}
+      \Huge
+      \textbf{\titl} \par
+      \vspace{0.2cm}
+      \Large
+      \begin{center}
+        \begin{tabular}{rc}
+          Name: & \myname \\
+          ID: & \studentid
+        \end{tabular}
+      \end{center}
+      }; % Title highlight box with title(s) and author(s)
+    \end{tikzpicture}
+\end{titlepage}
+\newpage
+}
+\makeatother
+
+% \AddToHookNext{shipout/background}{
+%   \begin{tikzpicture}[remember picture,overlay]
+%   \node at (current page.center) {
+%     \includegraphics[width=\paperwidth]{images/background.pdf}
+%   };
+%   \end{tikzpicture}
+% }

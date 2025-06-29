@@ -1,0 +1,37 @@
+%preamble
+\directlua{
+  pdf.setminorversion(7)
+  pdf.setcompresslevel(1)
+}
+% PDF/X-4 compliant document
+\begin{filecontents*}{\jobname.xmpdata}
+  \Title{A Survey of Preliminary of Particle Physics: A Comprehensive Overview of Analytical Mechanics and Quantum Mechanics} 
+\end{filecontents*}
+  
+
+\documentclass[12pt, titlepage=false]{scrreprt}
+
+\newcommand{\myname}{Hiroto KANDA} 
+\newcommand{\studentid}{1Y21AF01}
+\newcommand{\titl}{Review for Particle Physics}
+\newcommand{\subjct}{Particle Physics}
+
+\input{setting/package}
+\input{setting/preamble}
+\input{setting/macros}
+\input{setting/letterfonts}
+\input{setting/heading}
+\input{setting/title}
+
+%footer/header 
+
+\begin{document}
+\makeTitle{\includegraphics[height=\paperheight]{background/background.pdf}}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\setcounter{page}{1}
+
+\input{content/am.tex}
+\input{content/qm.tex}
+
+\end{document}

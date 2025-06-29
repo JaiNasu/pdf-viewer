@@ -1,0 +1,62 @@
+\section{Lagrange Formalism}
+\subsection{Quick Recap: Newtonian Mechanics}
+In Newtonian mechanics, the motion of a particle is described through a few important quantities:
+for a particle of (inertial) mass $m$, position $\vec{r}$, we have
+\begin{align}
+  \text{velocity}: \vec{v}     & = \odv{\vec{r}}{t}                       \\
+  \text{acceleration}: \vec{a} & = \odv{\vec{v}}{t} = \odv[2]{\vec{r}}{t} \\
+  \text{momentum}: \vec{p}     & = m\vec{v} = m\odv{\vec{r}}{t}
+\end{align}
+and the relations between these quantities, in the presence of external forces $\vec{F}_{\text{ext}}^{(i)}$ acting on the particle, are given by \textit{Newton's second law}:
+\begin{align}
+  \odv{\vec{p}}{t} = m \odv[2]{\vec{r}}{t} = \sum_i \vec{F}_{\text{ext}}^{(i)}
+\end{align}
+The work done by such forces is given by
+\begin{align}
+  W_{\text{total}} & = \sum_i \int_l \odif{\vec{x}} \cdot \vec{F}_{\text{ext}}^{(i)}, \quad \text{where } l \text{ is the path of the particle.}
+\end{align}
+This is the energy change of the particle through the motion:
+\begin{align}
+  W_{\text{total}}
+   & = \sum_i \int_l \odif{\vec{x}} \cdot \vec{F}_{\text{ext}}^{(i)} \\
+   & = \int_{t_i}^{t_f} \odif{t} \, \vec{v} \cdot m \odv{\vec{v}}{t} \\
+   & = \int_{t_i}^{t_f} \odif{t} \, \frac{m}{2} \odv{}{t} \vec{v}^2  \\
+   & = \frac{m}{2} \vec{v}_f^2 - \frac{m}{2} \vec{v}_i^2
+\end{align}
+meaning that $m \vec{v}^2 / 2$ is the energy due to the motion of the particle: the \textbf{kinetic energy} $T$:
+\begin{align}
+  T & = \frac{m}{2} \vec{v}^2
+\end{align}
+Now, often, the external force acting on the particle is due to a potential $V$:
+\begin{align}
+  \vec{F}_{\text{ext}} & = -\nabla V
+\end{align}
+For example, for a 1D spring, the potential is given by
+\eg{1D spring/ Harmonic potential}{
+  \vspace*{-2em}
+  \begin{align}
+    V & = \frac{1}{2} k x^2 \implies F_{\text{ext}} = -k x
+  \end{align}
+}
+or the electrostatic potential:
+\eg{Electrostatic potential}{
+  \vspace*{-2em}
+  \begin{align}
+    V & = \frac{1}{4 \pi \varepsilon_0} \frac{q_1 q_2}{r} \implies F_{\text{ext}} = -\nabla V = -\frac{q_1 q_2}{4 \pi \varepsilon_0 r^2} \hat{r}
+  \end{align}
+}
+
+\subsection{Lagrangian and Euler-Lagrange Equation}
+Let us define quantities called the \textbf{Lagrangian} $L$ and \textbf{action} $S$:
+\begin{align}
+  L & := T - V, \qquad  S := \int_{t_i}^{t_f} \odif{t} \, L
+\end{align}
+For one particle, the Lagrangian in general contains the position $q_i(t)$ and velocity $\dot{q_i}(t)$ and time $t$:
+\begin{align}
+  L & = L(q_i, \dot{q_i}, t)
+\end{align}
+The action is then given by
+\begin{align}
+  S & = \int_{t_i}^{t_f} \odif{t} \, L(q_i(t), \dot{q_i}(t), t)
+\end{align}
+

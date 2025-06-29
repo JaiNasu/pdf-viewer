@@ -1,0 +1,126 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGE IMPORTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[l2tabu, orthodox]{nag}
+\usepackage[a-2u]{pdfx}
+% Fonts
+\usepackage{luatexja-fontspec}
+\usepackage[
+  % starfontserif % comment for sans glyphs 
+]{starfont}
+\usepackage{lmodern}
+\setmonofont
+[
+  Extension = {.ttf},
+  UprightFont = {*-retina},
+  BoldFont = {*-bold},
+  Contextuals = Alternate,
+  Ligatures = TeX,
+]{FiraCodeNerdFontMono}
+\setsansfont{Latin Modern Sans}
+\newfontfamily\symbolfont{DejaVuSansM Nerd Font}[Scale=MatchUppercase]
+\newfontfamily\headsfont{texgyretermesx}
+\setmainjfont{YuMincho-Regular}[% 游明朝
+  FontFace={l}{n}{YuMincho-Light}, % 細字
+  BoldFont=YuMincho-Demibold       % 太字
+]
+\setsansjfont{YuGothic-Medium}[% 游ゴシック
+  BoldFont=YuGothic-Bold % 太字
+]
+
+
+% Page Layout & Structure
+\usepackage[
+  tmargin=1.1in,
+  bmargin=1.4in,
+  lmargin=0.8in,
+  rmargin=0.8in,
+  foot=36pt,
+  head=32pt,
+  footskip=24pt,
+  headsep=4pt,
+]{geometry}
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage{multicol}
+\usepackage{layout}
+\usepackage{epigraph}
+\usepackage{setspace}
+\usepackage[strict]{changepage}
+\usepackage{afterpage}
+
+
+% Mathematics & Science 🧮
+\usepackage{amsmath, mathtools}
+\usepackage{amsthm, amssymb, amsfonts}
+\usepackage{physics2}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\usepackage{bm}
+\usepackage[italic]{derivative}
+\usepackage{breqn}
+\usepackage{empheq}
+
+% Graphics & Colors 🎨
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz, tikz-3dplot, pgfplots}
+\usepackage{tikz-cd}
+\usepackage{tikzsymbols}
+\usepackage{pict2e}
+\usepackage{chemfig}
+\usepackage{transparent}
+
+% Tables & Lists
+\usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{enumitem}
+
+% Boxes, Blocks & Highlighting
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{fancybox}
+\usepackage{varwidth}
+
+% References & Hyperlinks 🔗
+\usepackage[backend=biber,style=ieee, urldate=long]{biblatex}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{xurl}
+\usepackage{nameref}
+\usepackage{theoremref}
+
+% Code & Algorithms
+\usepackage{listingsutf8}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+
+% Miscellaneous & Utility
+\usepackage{comment}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{etoolbox}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{scrhack}
+\usepackage[all, warning]{onlyamsmath}
+\usepackage{arcs}
+\usepackage{charter}
+\usepackage{fix-cm}
+\usepackage{emoji}
+
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usephysicsmodule{ab}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+\usetikzlibrary{intersections, calc, arrows.meta, angles, quotes}
+\pgfplotsset{compat=1.18}
+\usephysicsmodule{ab}
+\tcbuselibrary{breakable, skins}
+
+% Patch for lstlisting to avoid break issues with parentheses
+\makeatletter
+\patchcmd{\lsthk@SelectCharTable}{\lst@ifbreaklines\lst@Def{`)}{\lst@breakProcessOther)}\fi}{}{}{}
+\makeatother
