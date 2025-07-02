@@ -18,14 +18,14 @@ The work done by such forces is given by
 This is the energy change of the particle through the motion:
 \begin{align}
   W_{\text{total}}
-   & = \sum_i \int_l \odif{\vec{x}} \cdot \vec{F}_{\text{ext}}^{(i)} \\
-   & = \int_{t_i}^{t_f} \odif{t} \, \vec{v} \cdot m \odv{\vec{v}}{t} \\
-   & = \int_{t_i}^{t_f} \odif{t} \, \frac{m}{2} \odv{}{t} \vec{v}^2  \\
-   & = \frac{m}{2} \vec{v}_f^2 - \frac{m}{2} \vec{v}_i^2
+   & = \sum_i \int_l \odif{\vec{x}} \cdot \vec{F}_{\text{ext}}^{(i)}     \\
+   & = \int_{t_i}^{t_f} \odif{t} \, \vec{v} \cdot m \odv{\vec{v}}{t}     \\
+   & = \int_{t_i}^{t_f} \odif{t} \, \frac{m}{2} \odv{}{t} \vec{v}^{\, 2} \\
+   & = \frac{m}{2} \vec{v}_f^{\, 2} - \frac{m}{2} \vec{v}_i^{\, 2}
 \end{align}
-meaning that $m \vec{v}^2 / 2$ is the energy due to the motion of the particle: the \textbf{kinetic energy} $T$:
+meaning that $m \vec{v}^{\, 2} / 2$ is the energy due to the motion of the particle: the \textbf{kinetic energy} $T$:
 \begin{align}
-  T & = \frac{m}{2} \vec{v}^2
+  T & = \frac{m}{2} \vec{v}^{\, 2}
 \end{align}
 Now, often, the external force acting on the particle is due to a potential $V$:
 \begin{align}
@@ -45,9 +45,49 @@ or the electrostatic potential:
     V & = \frac{1}{4 \pi \varepsilon_0} \frac{q_1 q_2}{r} \implies F_{\text{ext}} = -\nabla V = -\frac{q_1 q_2}{4 \pi \varepsilon_0 r^2} \hat{r}
   \end{align}
 }
+Now, for a particle whose the external forces are given by a potential:
+\begin{align}
+  m \odv[2]{\vec{r}}{t} & = - \nabla V \iff - m \odv[2]{\vec{r}}{t} - \nabla V = 0
+\end{align}
+This looks as if the forces $-\nabla V$ and $m \ddot{\vec{r}}$ are in equilibrium.
+So, if we move a particle by an infinitisimal distance $\fdif{\vec{r}}$, the total work done by these forces must be zero:
+\begin{align}
+  \pab{- m \odv[2]{\vec{r}}{t} - \nabla V} \cdot \fdif{\vec{r}} & = 0
+\end{align}
+at any time $t$. We want to apply this for entire path of the motion of the particle, from $t_i$ to $t_f$.
+Then, the integral of this equation over the time interval $[t_i, t_f]$ gives
+\begin{align}
+  \fdif{I} & = \int_{t_i}^{t_f} \odif{t} \, \pab{- m \odv[2]{\vec{r}}{t} - \nabla V} \cdot \fdif{\vec{r}} = 0 \label{eq:eom-variation}
+\end{align}
+now, we can apply integration by parts:
+\begin{align}
+  \odv{}{t} \bab{\dot{\vec{r}} \cdot \fdif{\vec{r}}}
+   & = \ddot{\vec{r}} \cdot \fdif{\vec{r}} + \dot{\vec{r}} \cdot \odv{\fdif{\vec{r}}}{t}                           \\
+   & = \ddot{\vec{r}} \cdot \fdif{\vec{r}} + \dot{\vec{r}} \cdot \fdif{\dot{\vec{r}}}                              \\
+  \iff \quad - m \ddot{\vec{r}}
+   & = - \odv{}{t} \pab{\dot{\vec{r}} \cdot \fdif{\vec{r}}} + \dot{\vec{r}} \cdot \fdif{\dot{\vec{r}}}             \\
+   & = - \odv{}{t} \pab{m \dot{\vec{r}} \cdot \fdif{\vec{r}}} + \delta \pab{\frac{m}{2} \pab{\odv{\vec{r}}{t}}^2},
+\end{align}
+where we used the commutitivity of $\odv{(\cdot)}{t}$ and $\fdif{(\cdot)}$.
+Then the integral becomes
+\begin{align}
+  \fdif{I}            & = \int_{t_i}^{t_f} \odif{t} \, \pab{
+    \delta \bab{\frac{m}{2} \pab{\odv{\vec{r}}{t}}^2}
+    - \fdif{V}
+  }                                                                                                   \\
+                      & = \int_{t_i}^{t_f} \odif{t} \, \pab{
+    \fdif{T} - \fdif{V}
+  } = 0                                                                                               \\
+  \iff \quad \fdif{I} & = \delta \int_{t_i}^{t_f} \odif{t} \, (T - V) = 0 \label{eq:newton-variation}
+\end{align}
+\cite{maeno-leastAction}
 
-\subsection{Lagrangian and Euler-Lagrange Equation}
-Let us define quantities called the \textbf{Lagrangian} $L$ and \textbf{action} $S$:
+
+\subsection{Lagrangian and Variational Principle}
+In Lagrangian mechanics, we will use a different approach to describe the motion of a particle than the Newtonian mechanics.
+Instead of using the usual Euclidean space, we will use a \textit{configuration space} $\mathcal{C}$, which is the space of all possible positions of the particle.
+This space is spanned by the so-caled \textbf{generalized coordinates} $q_i$, and their time derivatives (or generalized velocity) $\dot{q_i} := \odv{q_i}{t}$.
+Now, let us define quantities called the \textbf{Lagrangian} $L$ and \textbf{action} $S$:
 \begin{align}
   L & := T - V, \qquad  S := \int_{t_i}^{t_f} \odif{t} \, L
 \end{align}
@@ -55,8 +95,70 @@ For one particle, the Lagrangian in general contains the position $q_i(t)$ and v
 \begin{align}
   L & = L(q_i, \dot{q_i}, t)
 \end{align}
-The action is then given by
+The quantity called action is then given by
 \begin{align}
-  S & = \int_{t_i}^{t_f} \odif{t} \, L(q_i(t), \dot{q_i}(t), t)
+  S & = \int_{t_i}^{t_f} \odif{t} \, L(q_i(t), \dot{q_i}(t), t) = \int_{t_i}^{t_f} \odif{t} \, (T - V)
+\end{align}
+and the \textbf{variation} of the action $\fdif{S}$ is given by
+\begin{align}
+  \fdif{S} & = \delta \int_{t_i}^{t_f} \odif{t} \, (T - V)
+\end{align}
+which is an identical expression to \eqref{eq:newton-variation}.
+So, we postulate that the motion of the particle is such that the action is stationary:
+\mprop{Variational Principle}{
+  The motion of a particle is such that the action $S$ is stationary, i.e., $\fdif{S} = 0$.
+  \begin{align}
+    \fdif{S} & = \delta \int_{t_i}^{t_f} \odif{t} \, L(q_i(t), \dot{q_i}(t), t)= 0
+  \end{align}
+}
+
+As to show why this maybe useful, let us compare between Eq. \eqref{eq:eom-variation}:
+\begin{align}
+  \fdif{I} = \fdif{S}[L] & = \int_{t_i}^{t_f} \odif{t} \, \pab{- m \odv[2]{\vec{r}}{t} - \nabla V} \cdot \fdif{\vec{r}} = 0
+\end{align}
+and Eq. \eqref{eq:func_deriv_euler_lagrange}:
+\begin{align}
+  \fdif{I} = \fdif{S}[f] & = \int_B^A \odif{x} \, \pab{\pdv{F}{f} - \odv{}{x} \pdv{F}{\odv{f}{x}}} \fdif{f} = 0
+\end{align}
+which immidiately gives that the EoM is the Euler-Lagrange equation, if we set $F = L(q_i, \dot{q_i}, t)$:
+\begin{align}
+  \pdv{L}{q_i} - \odv{}{t} \pab{\pdv{L}{\dot{q_i}}} & = 0 \iff m \odv[2]{\vec{r}}{t} = - \nabla V
 \end{align}
 
+The generalization to multiple particles is straightforward:
+\begin{align}
+  L & = \sum_{n} \frac{m_n}{2} \dot{\vec{r}}_n^2 - V(\vec{r}_1, \vec{r}_2, \ldots, \vec{r}_N)
+\end{align}
+The Euler-Lagrange equation is given by
+\begin{align}
+  \pdv{L}{\vec{r}_i^{\, (N)}} - \odv{}{t} \pab{\pdv{L}{\dot{\vec{r}}_i^{\, (N)}}} & = 0
+\end{align}
+
+\subsection{Harmonic Oscillator}
+Let us consider a particle of mass $m$ in a 1D harmonic potential:
+\begin{align}
+  V & = \frac{1}{2} k x^2 \implies F_{\text{ext}} = - \nabla V = -k x
+\end{align}
+then the Lagrangian is given by
+\begin{align}
+  L & = T - V = \frac{m}{2} \dot{x}^2 - \frac{1}{2} k x^2
+\end{align}
+The Euler-Lagrange equation yields
+\begin{alignat}{2}
+   &          & \pdv{L}{x} - \odv{}{t} \pab{\pdv{L}{\dot{x}}} = 0 \implies \pdv{L}{x} & = -k x, \quad \pdv{L}{\dot{x}} = m \dot{x} \\
+   & \implies & \quad -k x - \odv{}{t} (m \dot{x})                                    & = 0                                        \\
+   & \implies & \quad m \odv[2]{x}{t}                                                 & = -k x
+\end{alignat}
+which is the equation of motion of a harmonic oscillator in Newtonian mechanics.
+Here, notice that
+\begin{align}
+  \pdv{L}{x} & = -k x = - \nabla V = F_{\text{ext}}
+\end{align}
+and
+\begin{align}
+  \pdv{L}{\dot{x}} & = m \dot{x} = p
+\end{align}
+these derivatives of the Lagrangian are the \textbf{generalized force} and \textbf{conjugate momentum}, respectively.
+\begin{align}
+  \pdv{L}{q} & = F_{\text{g}}, \quad \pdv{L}{\dot{q}} = p_{\text{g}}
+\end{align}

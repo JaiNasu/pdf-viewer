@@ -2,6 +2,7 @@
 \directlua{
   pdf.setminorversion(7)
   pdf.setcompresslevel(1)
+  
 }
 % PDF/X-4 compliant document
 \begin{filecontents*}{\jobname.xmpdata}
@@ -23,6 +24,7 @@
 \input{setting/heading}
 \input{setting/title}
 
+\addbibresource{ref.bib}
 %footer/header 
 
 \begin{document}
@@ -31,7 +33,23 @@
 \tableofcontents
 \setcounter{page}{1}
 
-\input{content/am.tex}
-\input{content/qm.tex}
+% Analytical Mechanics
+\chapter{Analytical Mechanics}
+\input{content/AM/func_der}
+\input{content/AM/lagrange_formalism}
+\input{content/AM/hamilton_formalism}
+
+% Quantum Mechanics
+\chapter{Quantum Mechanics}
+\input{content/QM/schrodinger.tex}
+
+% Analytical Mechanics on Continuum
+\chapter{Physics of Fields}
+\input{content/field/fluid.tex}
+\input{content/field/string.tex}
+
+
+
+\printbibliography
 
 \end{document}
