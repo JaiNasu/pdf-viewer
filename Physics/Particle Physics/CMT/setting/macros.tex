@@ -32,7 +32,8 @@
 \newcommand{\zeroket}{\ket{\bm{0}}}
 \newcommand{\idty}{\hat{\mathbf{I}}}
 \newcommand{\threevec}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
-\newcommand{\commt}[2]{\left[ \hat{#1} ,\, \hat{#2} \right]}
+\newcommand{\pobra}[2]{\left\lbrace #1 ,\, #2 \right\rbrace}
+\newcommand{\commt}[2]{\left\lbrack #1 ,\, #2 \right\rbrack}
 \newcommand{\lagr}{\mathcal{L}}
 \newcommand{\hami}{\mathcal{H}}
 \newcommand{\iffdef}{\underset{\mathrm{def}}{\iff}}
@@ -60,6 +61,8 @@
 
 \newcommand{\independent}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\renewcommand{\emph}[1]{\textcolor{blue}{\sffamily\bfseries#1}}
 
 %From M275 "Topology" at SJSU
 \newcommand{\id}{\mathrm{id}}

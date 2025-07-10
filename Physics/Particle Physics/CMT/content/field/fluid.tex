@@ -96,7 +96,7 @@ Since the box 1 is a part of the fluid, the time derivative of $\vec{\xi}$ is th
 \begin{align}
   \pdv{\vec{\xi}(\vec{r}_i, t)}{t} & = \vec{u}(\vec{\xi}, t)
 \end{align}
-\nt{Note}{
+\nt{
   In this derivative, we fix the starting position $\vec{r}_i$, we only care about the time evolution from the position $\vec{r}_i$.
   This is different from the total derivative, which takes into account a change in the starting position $\vec{r}_i$.
 }
@@ -105,7 +105,7 @@ thus, by taking $\Delta t \to 0 (\implies \Delta x \to 0)$, we can rewrite the e
   \mdv{X(\vec{\xi}, t_i)}{t} & := \pdv{X(\vec{\xi}, t_i)}{t} + \vec{u}(\vec{\xi}, t_i) \cdot  \nabla X(\vec{\xi}, t_i)
 \end{align}
 where $\mdv{}{t}$ indicates that we are tracking the box 1 and its measurement of $X$.
-This is caled the \textbf{Lagrange derivative}.
+This is caled the \emph{Lagrange derivative}.
 
 Now, define a new quantity called the "position function" $\vec{x}(\vec{r}, t)$:
 \begin{align}
@@ -164,7 +164,7 @@ Similarly to the point mass case, we should define the momentum density $\vec{\p
 \end{align}
 then the Hamiltonian density should be defined by the Legendre transformation:
 \begin{align}
-  \hami(\vec{\pi}, \vec{x}) & = \vec{\pi} \cdot \mdv{\vec{x}}{t} - \lagr \pab{\vec{x}, \mdv{\vec{x}}{t})}                              \\
+  \hami(\vec{\pi}, \vec{x}) & = \vec{\pi} \cdot \mdv{\vec{x}}{t} - \lagr \pab{\vec{x}, \mdv{\vec{x}}{t}}                               \\
                             & = \frac{1}{2} \pab{\mdv{\vec{x}}{t}}^2 + \tilde{V}(\vec{x}) - \frac{1}{\rho} \nabla \cdot \sigma \vec{x}
 \end{align}
 

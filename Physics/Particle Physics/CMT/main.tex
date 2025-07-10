@@ -23,6 +23,7 @@
 \input{setting/letterfonts}
 \input{setting/heading}
 \input{setting/title}
+\input{setting/tableofcontents}
 
 \addbibresource{ref.bib}
 %footer/header 
@@ -33,11 +34,14 @@
 \tableofcontents
 \setcounter{page}{1}
 
+% \include{content/example}
+
 % Analytical Mechanics
 \chapter{Analytical Mechanics}
 \input{content/AM/func_der}
 \input{content/AM/lagrange_formalism}
 \input{content/AM/hamilton_formalism}
+\input{content/AM/summary}
 
 % Quantum Mechanics
 \chapter{Quantum Mechanics}
@@ -45,11 +49,12 @@
 
 % Analytical Mechanics on Continuum
 \chapter{Physics of Fields}
-\input{content/field/fluid.tex}
+% \input{content/field/fluid.tex}
 \input{content/field/string.tex}
 
 
 
+\renewcommand{\emph}[1]{\textit{#1}}
 \printbibliography
 
 \end{document}
