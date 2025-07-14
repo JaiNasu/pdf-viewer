@@ -75,20 +75,20 @@ Then, we have:
   \intertext{we can change the order of the derivative:}
                       & =\fdv{I}{\odv{f}{x}} \odv{\fdif{f}}{x}
   \intertext{from the differentiation of a product, we have}
-                      & = \odv{}{x} \pab{\fdv{I}{\odv{f}{x}} \fdif{f}} - \odv{}{x} \fdv{I}{\odv{f}{x}} \fdif{f}
+                      & = \odv{}{x} \pab{\fdv{I}{\pab{\odv{f}{x}}} \fdif{f}} - \odv{}{x} \fdv{I}{\pab{\odv{f}{x}}} \fdif{f}
 \end{align}
 Now, subsituting this to the two function case, we get:
 \begin{align}
   \fdif{I} & =
   \int_B^A \odif{x} \, \bab{\pab{\fdv{I}{f}
-      - \odv{}{x} \fdv{I}{\odv{f}{x}}} \fdif{f}
-    + \odv{}{x} \pab{\fdv{I}{\odv{f}{x}} \fdif{f}}}
+      - \odv{}{x} \fdv{I}{\pab{\odv{f}{x}}}} \fdif{f}
+    + \odv{}{x} \pab{\fdv{I}{\pab{\odv{f}{x}}} \fdif{f}}}
 \end{align}
 the total derivative term is zero, since $\fdif{f}(A) = \fdif{f}(B) = 0$.
 Thus, we have
 \begin{align}
   \fdif{I} & = \int_B^A \odif{x} \, \pab{\fdv{I}{f}
-    - \odv{}{x} \fdv{I}{\odv{f}{x}}} \fdif{f}
+    - \odv{}{x} \fdv{I}{\pab{\odv{f}{x}}}} \fdif{f}
 \end{align}
 and since $I = \int_B^A \odif{x} \, F[f(x), g(x)]$, we can say that
 \begin{align}
@@ -108,7 +108,7 @@ This is called the \emph{Euler-Lagrange equation}.
 \thm{Euler-Lagrange Equation}{
   For a functional $I\bab{F(f, \odv{f}{x})}$ to be stationary, ($\fdif{I} = 0$), the \emph{Euler-Lagrange equation} must be satisfied:
   \begin{align}
-    \pdv{F}{f} - \odv{}{x} \pdv{F}{\pab{\odv{f}{x}}} & = 0
+    \delta I \bab{F(f, \odv{f}{x})} \iff \pdv{F}{f} - \odv{}{x} \pab{\pdv{F}{\pab{\odv{f}{x}}}} & = 0
   \end{align}
 }
 

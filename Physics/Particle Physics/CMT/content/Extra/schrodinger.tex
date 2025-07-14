@@ -1,0 +1,68 @@
+\section{Schrödinger Equation}
+\subsection{Historical Background}
+In 1905, Albert Einstein found the photoelectric effect, suggesting that light has a particle like property, such as discrete energy
+\cite{1905-photoelectric}.
+Following this work, Arthur Compton in 1923 discovered the Compton effect, which is the scattering of X-rays by electrons, further supporting the particle nature of light and confirming the discrete momentum of photons
+\cite{1923-compton}.
+Specifically, energy and momentum are each related to the frequency and wavelength of light, respectively, as follows:
+\mprop{Planck-Einstein relation}{
+  For a photon with frequency $\nu$ and wave length $\lambda$, the energy $E$ and momentum $p$ are given by
+  \begin{align}
+    E = h \nu, \quad p = \frac{h}{\lambda} = \frac{h \nu}{c} = \frac{E}{c}, \label{eq:photon-energy-momentum}
+  \end{align}
+}
+In 1925, Louis de Brogile posulated that other particles (or any matter) also have a wave-like property, and the energy-frequency/ momentum-wavelength relation is given by the Planck-Einstein relation Eq. \eqref{eq:photon-energy-momentum} \cite{1925-deBroglie}.
+
+Then in 1913, Niels Bohr proposed a model of the hydrogen atom, which describes the electron as a particle orbiting the nucleus in discrete energy levels \cite{1913-bohr}.
+The implication of this model is that electrons have a fixed, discrete(quantized) angular momentum $\vec{L} := \vec{r} \times \vec{p}$.
+For a particle orbiting in a circular orbit, the angular momentum is given by
+\begin{align}
+  \vec{L} & = r p = \frac{h r}{\lambda}
+\end{align}
+For the electron wave to be continous around the orbit of radius $r$, the wavelength must be an integer multiple of the circumference of the orbit:
+\begin{align}
+  \lambda & = \frac{2 \pi r}{n}, \quad n = 1, 2, 3, \ldots \implies \vec{L} = n \frac{h}{2 \pi} := n \hbar
+\end{align}
+
+\subsection{Schrödinger Equation}
+Now, a classical wave obeys a wave equation:
+\begin{align}
+  \frac{1}{v^2} \pdv[2]{\psi}{t} - \nabla^2 \psi & = 0
+\end{align}
+but does the matter wave also obey wave equation?
+
+Well, not a classical wave equation, but a quantum wave should follow a quantum wave equation, which must satisfy a few conditions that match with the physics as we know it:
+\begin{itemize}
+  \item Planck-Einstein relation: $E = \hbar \omega$, $\vec{p} = \hbar \vec{k}$
+  \item Energy equation: $E = T + V$
+  \item For $V = V_0$, the solution must be a plane wave: $\psi(\vec{x}, t) = A e^{i (\vec{k} \cdot \vec{x} - \omega t)}$(i.e. constant momentum and constant energy).
+\end{itemize}
+The energy equation is given by
+\begin{align}
+  E & = T + V = \frac{p^2}{2m} + V_0 \iff \hbar \omega = \frac{\hbar^2 \vec{k}^{\,2}}{2m} + V
+\end{align}
+If we multiply both sides by $\psi(\vec{x}, t)$, we get
+\begin{align}
+  \hbar \omega \psi(\vec{x}, t) & = \frac{\hbar^2}{2m} \vec{k}^{\,2} \psi(\vec{x}, t) + V \psi(\vec{x}, t)
+\end{align}
+For a plane wave solution,
+\begin{alignat}{2}
+  \pdv{}{t} \psi(\vec{x}, t)                     & = - i \omega \psi(\vec{x}, t)
+                                                 & \quad \implies
+  i \hbar \pdv{}{t} \psi(\vec{x}, t)             & = \hbar \omega \psi(\vec{x}, t)                      \\
+  \nabla^2 \psi(\vec{x}, t)                      & = - \vec{k}^{\,2} \psi(\vec{x}, t)
+                                                 & \quad \implies
+  - \frac{\hbar^2}{2m} \nabla^2 \psi(\vec{x}, t) & =  \frac{\hbar^2 \vec{k}^{\,2}}{2m} \psi(\vec{x}, t)
+\end{alignat}
+Thus, we can write the wave equation as
+\begin{align}
+  i \hbar \pdv{}{t} \psi(\vec{x}, t) & = - \frac{\hbar^2}{2m} \nabla^2 \psi(\vec{x}, t) + V_0 \psi(\vec{x}, t)
+\end{align}
+And we postulate that for any potential $V(\vec{x})$, the wave equation is given by
+\prcp{Schrödinger Equation}{
+  The Schrödinger equation is given by
+  \begin{align}
+    i \hbar \pdv{}{t} \psi(\vec{x}, t) & = - \frac{\hbar^2}{2m} \nabla^2 \psi(\vec{x}, t) + V(\vec{x}) \psi(\vec{x}, t)
+  \end{align}
+  where $\psi(\vec{x}, t)$ is the wave function, $V(\vec{x})$ is the potential, and $m$ is the mass of the particle.
+}

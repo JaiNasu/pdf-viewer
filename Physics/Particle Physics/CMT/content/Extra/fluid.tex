@@ -105,7 +105,14 @@ thus, by taking $\Delta t \to 0 (\implies \Delta x \to 0)$, we can rewrite the e
   \mdv{X(\vec{\xi}, t_i)}{t} & := \pdv{X(\vec{\xi}, t_i)}{t} + \vec{u}(\vec{\xi}, t_i) \cdot  \nabla X(\vec{\xi}, t_i)
 \end{align}
 where $\mdv{}{t}$ indicates that we are tracking the box 1 and its measurement of $X$.
-This is caled the \emph{Lagrange derivative}.
+This is called the \emph{Lagrange derivative}:
+\dfn{Lagrange Derivative}{
+  The Lagrange description in Eulerian perspective is given as the \emph{Lagrange derivative}:
+  \begin{align}
+    \mdv{X}{t} := \pdv{X}{t} + \vec{u} \cdot \nabla X
+  \end{align}
+  which tracks the change of a physical quantity $X$ with the flow.
+}
 
 Now, define a new quantity called the "position function" $\vec{x}(\vec{r}, t)$:
 \begin{align}
@@ -167,8 +174,6 @@ then the Hamiltonian density should be defined by the Legendre transformation:
   \hami(\vec{\pi}, \vec{x}) & = \vec{\pi} \cdot \mdv{\vec{x}}{t} - \lagr \pab{\vec{x}, \mdv{\vec{x}}{t}}                               \\
                             & = \frac{1}{2} \pab{\mdv{\vec{x}}{t}}^2 + \tilde{V}(\vec{x}) - \frac{1}{\rho} \nabla \cdot \sigma \vec{x}
 \end{align}
-
-
 
 
 \cite{suzuki-leastActionFluid}

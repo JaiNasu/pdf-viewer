@@ -26,6 +26,7 @@
 \input{setting/tableofcontents}
 
 \addbibresource{ref.bib}
+\newcommand{\samples}{1000}
 %footer/header 
 
 \begin{document}
@@ -36,22 +37,36 @@
 
 % \include{content/example}
 
+
+
+
 % Analytical Mechanics
 \chapter{Analytical Mechanics}
-\input{content/AM/func_der}
 \input{content/AM/lagrange_formalism}
 \input{content/AM/hamilton_formalism}
-\input{content/AM/summary}
+\input{content/AM/symmetry_am}
+\input{content/AM/summary_am}
 
 % Quantum Mechanics
 \chapter{Quantum Mechanics}
-\input{content/QM/schrodinger.tex}
+\input{content/QM/hilbert}
+\input{content/QM/linear_algebra}
 
 % Analytical Mechanics on Continuum
 \chapter{Physics of Fields}
-% \input{content/field/fluid.tex}
-\input{content/field/string.tex}
+\input{content/field/intro}
+\input{content/field/lagr}
+\input{content/field/hami}
 
+% Mathematical Notes
+\chapter{Mathematical Remarks}
+\input{content/math/func_der}
+\input{content/math/dual_der}
+
+% Extra 
+\chapter{Extra}
+\input{content/Extra/schrodinger}
+\input{content/Extra/fluid}
 
 
 \renewcommand{\emph}[1]{\textit{#1}}

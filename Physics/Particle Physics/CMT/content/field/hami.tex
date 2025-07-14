@@ -1,0 +1,123 @@
+\section{Hamilton Formalism}
+\subsection{Legendre Transformation}
+Now, remember that we obtained the \emph{Hamiltonian} $H$ of the system through the \emph{Legendre transformation} of the Lagrangian $L$:
+\begin{align}
+  H(q_i, p_i) & = \sum_i p_i \dot{q}_i - L(q_i, \dot{q}_i)
+\end{align}
+where $i$ represents each degree of freedom of the system.
+
+In the field, the degree of freedom is infinite - each indexed by the spatial position $\vec{x}$, then,
+\dfn{Hamiltonian of a Field}{
+  The \emph{Hamiltonian} of a field $\psi(\vec{x}, t)$ (whose \emph{canonical momentum density} is $\pi(\vec{x}, t)$) is defined as
+  \begin{align}
+    H[\psi(\vec{x}, t), \pi(\vec{x}, t)] & = \int \odif[3]{\vec{x}} \, \bab{\pi \cdot \pdif{t} \psi \vphantom{\frac{1}{1}}} - L
+    = \int \odif[3]{\vec{x}} \, \bab{\pi \cdot \pdif{t} \psi - \lagr \vphantom{\frac{1}{1}}}
+  \end{align}
+}
+thus, we should define the \emph{Hamiltonian density} $\hami$ as:
+\dfn{Hamiltonian Density}{
+  \emph{Hamiltonian density} $\hami$ is defined as the Hamiltonian per unit volume of the field:
+  \begin{align}
+    \hami[\psi(\vec{x}, t), \pi(\vec{x}, t)] & = \pi \cdot \pdif{t} \psi - \lagr
+  \end{align}
+  which satisfies:
+  \begin{align}
+    \int \odif[3]{\vec{x}} \, \hami[\psi(\vec{x}, t), \pi(\vec{x}, t)] & = H[\psi(\vec{x}, t), \pi(\vec{x}, t)]
+  \end{align}
+}
+\
+\nt{
+  Similarly to the discrete case, we can write the Lagrangian densty $\lagr$ in terms of the Hamiltonian density $\hami$:
+  \begin{align}
+    \lagr[\psi(\vec{x}, t), \pi(\vec{x}, t)] & = \pi \cdot \pdif{t} \psi - \hami[\psi(\vec{x}, t), \pi(\vec{x}, t)]
+  \end{align}
+  where
+  \begin{align}
+    \pdif{t} \psi & = \pdv{\hami[\psi, \pi]}{\pi}
+  \end{align}
+}
+
+\subsection{Canonical Equations of Fields}
+We are also interested in the \emph{canonical equations} of fields, which are derived from the variational principle:
+\begin{align}
+  \fdif{S} = 0 \iff \delta \int \odif{t} \int \odif[3]{\vec{x}} \lagr & = \delta \int \odif{t} \int \odif[3]{\vec{x}} \, \pi \cdot \pdif{t} \psi - \hami
+\end{align}
+The variation on this integral can be expanded as follows:
+\begin{align}
+  \delta S & = \int \odif{t} \int \odif[3]{\vec{x}} \, \delta \pi \pdif{t} \psi + \pi \delta(\pdif{t} \psi) - \delta \hami                                                 \\
+           & = \int \odif{t} \int \odif[3]{\vec{x}} \, \delta \pi \pdif{t} \psi + \pi \pdif{t} (\delta \psi) - \pdv{\hami}{\psi} \delta \psi - \pdv{\hami}{\pi} \delta \pi \\
+           & = \int \odif{t} \int \odif[3]{\vec{x}} \pab{\pdif{t} \psi - \pdv{\hami}{\pi}} \delta \pi + \pab{\pi \pdif{t}(\delta \psi) - \pdv{\hami}{\psi} \delta \psi}
+\end{align}
+the $\pdif{t}(\delta \psi)$ term can be integrated by parts:
+\begin{align}
+  \int \odif{t} \int \odif[3]{\vec{x}} \, \pi \pdif{t}(\delta \psi)
+   & = \int \odif{t} \int \odif[3]{\vec{x}} \, \pdif{t} ( \pi \delta \psi) - \int \odif{t} \int \odif[3]{\vec{x}} \, \pdif{t} \pi \delta \psi \\
+   & = \int \odif[3]{\vec{x}} \, \bab{ \pi \delta \psi}_{\text{boundary}} - \int \odif{t} \int \odif[3]{\vec{x}} \, \pdif{t} \pi \delta \psi
+\end{align}
+since $\delta \psi$ at the boundary is zero, first term vanishes, and we have:
+\begin{align}
+  \int \odif{t} \int \odif[3]{\vec{x}} \, \pi \pdif{t}(\delta \psi) & = - \int \odif{t} \int \odif[3]{\vec{x}} \, \pdif{t} \pi \delta \psi
+\end{align}
+and thus the variation of the action becomes:
+\begin{align}
+  \delta S & = \int \odif{t} \int \odif[3]{\vec{x}} \, \pab{\pdif{t} \psi - \pdv{\hami}{\pi}} \delta \pi - \pab{\pdif{t} \pi + \pdv{\hami}{\psi}} \delta \psi
+\end{align}
+for the action to be stationary, the integrand must vanish:
+\begin{align}
+  \begin{dcases}
+    \pdif{t} \psi - \pdv{\hami}{\pi} & = 0 \\
+    \pdif{t} \pi + \pdv{\hami}{\psi} & = 0
+  \end{dcases} \iff
+  \begin{dcases}
+    \pdv{\psi(\vec{x}, t)}{t} & = \pdv{\hami[\psi, \pi]}{\pi}   \\
+    \pdv{\pi(\vec{x}, t)}{t}  & = -\pdv{\hami[\psi, \pi]}{\psi}
+  \end{dcases}
+\end{align}
+Thus we have the \emph{canonical equations of fields}:
+\thm{Canonical Equations of Fields}{
+  The variational principle in Hamilton formalism leads to the \emph{canonical equations of fields}:
+  \begin{align}
+    \pdv{\psi(\vec{x}, t)}{t} & = \pdv{\hami[\psi, \pi]}{\pi}, \quad \pdv{\pi(\vec{x}, t)}{t} = -\pdv{\hami[\psi, \pi]}{\psi}
+  \end{align}
+}
+
+\subsection{Poisson Bracket}
+In the discrete case, the time evolution of a physical quantity $X(q_i, p_i, t)$, $\dot{X}$ can be written as:
+\begin{align}
+  \dot{X} =  \odv{X}{t} & =\pdv{X}{t} + \sum_i \pab{\pdv{X}{q_i} \dot{q}_i + \pdv{X}{p_i} \dot{p}_i} = \pdv{X}{t} + \pobra{X}{H}
+\end{align}
+
+In the continous case, a physical quantity $X$ should be an integral of $X$-density $\tilde{X}$ over some volume:
+\begin{align}
+  X & = \int_V \odif[3]{\vec{x}} \, \tilde{X}(\vec{x}, t)
+\end{align}
+and assume that $\tilde{X}$ is a function of the field $\psi(\vec{x}, t)$ and its conjugate momentum density $\pi(\vec{x}, t)$ (which makes $X$ a functional of the fields):
+\begin{align}
+  \implies \quad X[\psi, \pi] & = \int_V \odif[3]{\vec{x}} \, \tilde{X}(\psi, \pi, t)
+\end{align}
+Then the time evolution of $X$ can be written as:
+\begin{align}
+  \odv{X[\psi, \pi, t]}{t}
+   & = \odv{}{t} \int_V \odif[3]{\vec{x}} \, \tilde{X}(\psi(\vec{x}, t), \pi(\vec{x}, t), t)                                    \\
+   & = \int_V \odif[3]{\vec{x}} \, \pdv{\tilde{X}(\psi, \pi, t)}{t}                                                             \\
+   & = \int_V \odif[3]{\vec{x}} \, \pdv{\tilde{X}}{t} + \pdv{\tilde{X}}{\psi} \pdif{t} \psi + \pdv{\tilde{X}}{\pi} \pdif{t} \pi \\
+   & = \int_V \odif[3]{\vec{x}} \, \pdv{\tilde{X}}{t}
+  + \int_V \odif[3]{\vec{x}} \, \pab{\pdv{\tilde{X}}{\psi} \pdv{\hami}{\pi} - \pdv{\tilde{X}}{\pi} \pdv{\hami}{\psi}}
+\end{align}
+If we were to write the coordinates explicitly,
+\begin{align}
+  \odv{X_V}{t} & = \pdv{X}{t} + \int_V \odif[3]{\vec{x}^{\,\prime}} \,\pab{\frac{\partial \tilde{X}(\vec{x}^{\,\prime}, t)}{\partial \psi(\vec{x}^{\,\prime}, t)} \frac{\partial \hami[\psi, \pi]}{\partial \pi(\vec{x}^{\,\prime}, t)} - \frac{\partial \tilde{X}(\vec{x}^{\,\prime}, t)}{\partial \pi(\vec{x}^{\,\prime}, t)} \frac{\partial \hami[\psi, \pi]}{\partial \psi(\vec{x}^{\,\prime}, t)}}
+\end{align}
+Now, notice that if $X = \tilde{X} (\vec{x}, t)$,
+\begin{align}
+  X = \tilde{X}(\vec{x}, t)                        & = \int \odif[3]{\vec{x}^{\,\prime}} \, \delta(\vec{x} - \vec{x}^{\,\prime}) \tilde{X}(\vec{x}^{\,\prime}, t) \\
+  \implies \quad \tilde{X}(\vec{x}^{\, \prime}, t) & \to \delta(\vec{x} - \vec{x}^{\,\prime}) \tilde{X}(\vec{x}^{\,\prime}, t)
+\end{align}
+and the time evolution of $X = \tilde{X}(\vec{x}, t)$ can be written as:
+\begin{align}
+  \odv{\tilde{X}(\vec{x}, t)}{t} & = \pdv{\tilde{X}(\vec{x}, t)}{t}
+  + \int_V \odif[3]{\vec{x}^{\,\prime}} \, \delta(\vec{x} - \vec{x}^{\,\prime}) \pab{\frac{\partial \tilde{X}(\vec{x}^{\,\prime}, t)}{\partial \psi(\vec{x}^{\,\prime}, t)} \frac{\partial \hami[\psi, \pi]}{\partial \pi(\vec{x}^{\,\prime}, t)} - \frac{\partial \tilde{X}(\vec{x}^{\,\prime}, t)}{\partial \pi(\vec{x}^{\,\prime}, t)} \frac{\partial \hami[\psi, \pi]}{\partial \psi(\vec{x}^{\,\prime}, t)}} \\
+  \odv{\tilde{X}(\vec{x}, t)}{t} & = \pdv{\tilde{X}(\vec{x}, t)}{t}
+  + \hphantom{\int_V \odif[3]{\vec{x}^{\,\prime}} \delta(\vec{x} - \vec{x}^{\,\prime})} \, \hspace{7.5pt} \frac{\partial \tilde{X}(\vec{x}, t)}{\partial \psi(\vec{x}, t)} \frac{\partial \hami[\psi, \pi]}{\partial \pi(\vec{x}, t)}
+  - \frac{\partial \tilde{X}(\vec{x}, t)}{\partial \pi(\vec{x}, t)} \frac{\partial \hami[\psi, \pi]}{\partial \psi(\vec{x}, t)}
+\end{align}
