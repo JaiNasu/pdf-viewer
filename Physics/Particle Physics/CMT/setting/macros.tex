@@ -1,4 +1,20 @@
 %My Own Addition
+\newif\ifinvert
+\invertfalse
+
+\newcommand{\changecolor}{
+  \ifinvert
+    \newcommand{\emphcolor}{cyan!80!black}
+    \newcommand{\txtcolor}{white}
+    \pagecolor{black}
+    \color{white}
+  \else
+    \newcommand{\emphcolor}{blue}
+    \newcommand{\txtcolor}{black}
+  \fi
+}
+\renewcommand{\emph}[1]{\textcolor{\emphcolor}{\sffamily\bfseries#1}}
+
 \newcommand{\epna}{\varepsilon_0}
 \newcommand{\vb}[1]{\mathbf{#1}}
 
@@ -62,8 +78,6 @@
 
 \newcommand{\independent}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
-
-\renewcommand{\emph}[1]{\textcolor{blue}{\sffamily\bfseries#1}}
 
 \newcommand{\defcolor}{blue}
 \newenvironment{defalign}{%

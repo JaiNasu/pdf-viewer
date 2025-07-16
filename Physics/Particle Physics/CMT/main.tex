@@ -17,7 +17,9 @@
 \newcommand{\titl}{Review for Particle Physics}
 \newcommand{\subjct}{Particle Physics}
 
+
 \input{setting/package}
+\input{setting/color}
 \input{setting/preamble}
 \input{setting/macros}
 \input{setting/letterfonts}
@@ -30,6 +32,7 @@
 %footer/header 
 
 \begin{document}
+\changecolor
 \makeTitle{\includegraphics[height=\paperheight]{background/background.pdf}}
 \pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
@@ -41,32 +44,32 @@
 
 
 % Analytical Mechanics
-\chapter{Analytical Mechanics}
-\input{content/AM/lagrange_formalism}
-\input{content/AM/hamilton_formalism}
-\input{content/AM/symmetry_am}
-\input{content/AM/summary_am}
+% \chapter{Analytical Mechanics}
+% \input{content/AM/lagrange_formalism}
+% \input{content/AM/hamilton_formalism}
+% \input{content/AM/symmetry_am}
+% \input{content/AM/summary_am}
 
-% Quantum Mechanics
-\chapter{Quantum Mechanics}
-\input{content/QM/hilbert}
-\input{content/QM/linear_algebra}
+% % Quantum Mechanics
+% \chapter{Quantum Mechanics}
+% \input{content/QM/hilbert}
+% \input{content/QM/linear_algebra}
 
-% Analytical Mechanics on Continuum
-\chapter{Physics of Fields}
-\input{content/field/intro}
-\input{content/field/lagr}
+% % Analytical Mechanics on Continuum
+% \chapter{Physics of Fields}
+% \input{content/field/intro}
+% \input{content/field/lagr}
 \input{content/field/hami}
 
 % Mathematical Notes
 \chapter{Mathematical Remarks}
 \input{content/math/func_der}
-\input{content/math/dual_der}
+% \input{content/math/dual_der}
 
-% Extra 
-\chapter{Extra}
-\input{content/Extra/schrodinger}
-\input{content/Extra/fluid}
+% % Extra 
+% \chapter{Extra}
+% \input{content/Extra/schrodinger}
+% \input{content/Extra/fluid}
 
 
 \renewcommand{\emph}[1]{\textit{#1}}

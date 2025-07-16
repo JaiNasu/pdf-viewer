@@ -100,11 +100,11 @@ This is the \emph{Euler-Lagrange equation} for a field $\psi(\vec{x}, t)$:
   where $\lagr$ is the Lagrangian density of the field $\psi(\vec{x}, t)$.
 }
 
-Additionally, we define the \emph{conjugate momentum density} $\pi (\vec{x}, t)$ as:
-\dfn{Canonical Momentum Density}{
-  The \emph{conjugate momentum density} of a field $\pi(\vec{x}, t)$ is defined as the derivative of the Lagrangian density with respect to the time derivative of the field:
+Additionally, we define the \emph{canonical conjugate field} $\pi (\vec{x}, t)$ as:
+\dfn{Canonical Conjugate Field}{
+  The \emph{canonical conjugate field} or \emph{canonical momentum density} $\pi(\vec{x}, t)$ is defined as the derivative of the Lagrangian density with respect to the time derivative of the field $\psi$:
   \begin{align}
-    \pi(\vec{x}, t) & := \pdif{t} \psi(\vec{x}, t)
+    \pi(\vec{x}, t) & := \frac{\partial \lagr}{\partial (\pdif{t} \psi(\vec{x}, t))}
   \end{align}
 }
 

@@ -9,7 +9,7 @@ So, to denote the dependence of $I$ on the function $F$, we write
 \begin{align}
   I[f] := \int_A^B \odif{x} \, F(x)
 \end{align}
-This is called a \emph{functional}.
+This is called a \emph{(linear) functional}.
 Now, imagine that $F$ is a function of $f$, for example, $F[f] = f(x)^2$.
 By chain rule, a small change in $F$, denoted as $\fdif{F}$, can be expressed as:
 \begin{align}
@@ -18,21 +18,30 @@ By chain rule, a small change in $F$, denoted as $\fdif{F}$, can be expressed as
 \end{align}
 so, similarly,
 \begin{align}
-  \fdif{I}[F] & = I[F + \fdif{F}] - I[F]                   \\
-              & = \int_A^B \odif{x} \, \fdif{F}[f]         \\
-              & = \int_A^B \odif{x} \, \pdv{F}{f} \fdif{f}
+  \fdif{I}[F] & = I[F + \fdif{F}] - I[F]                                              \\
+              & = \int_A^B \odif{x} \, \fdif{F}[f]                                    \\
+              & = \int_A^B \odif{x} \, \pdv{F}{f} \fdif{f} \label{eq:func_deriv_def1}
 \end{align}
 Then, the \emph{functional derivative} of $I$ with respect to $f$, $\fdv{I}{f}$, is defined as follows:
 \dfn{Functional Derivative}{
-  If a function $X(x)$ exists, such that
+  If a function $\phi(x)$ exists, such that
   \begin{align}
-    \fdif{I} & = \int_A^B \odif{x} \, X(x) \fdif{f}(x),
+    \fdif{I} & = \int_A^B \odif{x} \, \phi(x) \fdif{f}(x),
   \end{align}
-  we say that $X(x)$ is the \emph{functional derivative} of $I$ with respect to $f$, and denote it as
+  we say that $\phi(x)$ is the \emph{functional derivative} of $I$ with respect to $f$, and denote it as
   \begin{align}
-    \fdv{I}{f} := X(x) \iff \fdif{I} := \int_B^A \odif{x} \, \fdv{I}{f} \fdif{f}.
+    \fdv{I}{f(x)} := \phi(x) \iff \fdif{I} := \int_B^A \odif{x} \, \fdv{I}{f(x)} \fdif{f}(x). \label{eq:func_deriv_def}
   \end{align}
 }
+Immidiately, by comparing Eq.(\ref{eq:func_deriv_def}) and Eq.(\ref{eq:func_deriv_def1}), we see the following relation:
+\thm{Functional-density relation}{
+  For a quantity $I[F]$ and its density $F[f(x)]$, the functional derivative satisfies the following relation:
+  \begin{align}
+    I & = \int_A^B \odif{x} \, F[f(x)] \quad \implies \quad \fdv{I}{f(x)} = \pdv{F[f(x)]}{f(x)}
+  \end{align}
+  \label{thm:func_deriv_relation}
+}
+
 
 
 \subsection{Two function case}
@@ -139,7 +148,6 @@ Comparing with this with the definition of \emph{Dirac delta function}:
   \end{align}
 }
 we have
-\newpage
 \thm{Property of Functional Derivative}{
   For a functional $f_i(t)$ or $f(x, t)$, the functional derivative satisfies the following property:
   \begin{align}
@@ -148,5 +156,12 @@ we have
     \label{eq:func_deriv_delta}
   \end{align}
 }
+
+Also, when $I[F]$ and $F$ are functionals of $f_i(x)$,
+\begin{align}
+  \fdif{I} = \int_A^B \odif{x'} \, \fdif{F}
+   & = \sum_i \int_A^B \odif{x'} \, \fdv{I}{f_i(x')} \fdif{f_i(x')} \\
+   & = \sum_i \int_A^B \odif{x'} \, \pdv{F}{f_i(x')} \fdif{f_i(x')}
+\end{align}
 
 \cite{eman-functionalDerivative}
