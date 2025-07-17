@@ -157,11 +157,48 @@ we have
   \end{align}
 }
 
-Also, when $I[F]$ and $F$ are functionals of $f_i(x)$,
+\subsection{In a n-dimensional space}
+In the previous discussions, we have considered the functional $I$ as an integral on 1D space represented by $x$.
+Here, we aim to generalize the discussion to $n$-dimensional space, e.g. $\real^n$.
+For $\real^n$, let us define a functional $I$ and functional derivative as follows:
+\dfn{Functional on $\real^n$}{
+  A quantity $I \in \real$ defined on $V \subset \real^n$ is called a \emph{(linear) functional} if it can be expressed as follows:
+  \begin{align}
+    I[f_i] := \int_{x \in V} \odif[n]{x} \, F(f_i(x)) = \int_{V} \odif[n]{x} \, F(f_i(x)),
+    \quad i \in \ntrl
+  \end{align}
+}
+\dfn{Functional Derivative on $\real^n$}{
+}
+Then, the variation of the functional $\fdif{I}$ can be expressed as:
 \begin{align}
-  \fdif{I} = \int_A^B \odif{x'} \, \fdif{F}
-   & = \sum_i \int_A^B \odif{x'} \, \fdv{I}{f_i(x')} \fdif{f_i(x')} \\
-   & = \sum_i \int_A^B \odif{x'} \, \pdv{F}{f_i(x')} \fdif{f_i(x')}
+  \fdif{I} = \delta \int_V \odif[n]{x'} \, F(f_j(x'))
+   & = \int_V \odif[n]{x'} \, \fdif{F}(f_j(x'))
+  = \int_V \odif[n]{x'} \, \sum_j \pdv{F}{f_j(x')} \fdif{f_j}(x')
 \end{align}
+Now,
+\begin{align}
+  \delta f_j(x') & = \int_V \odif[n]{x} \, \delta^n(x - x')\delta f_j(x)                         \\
+                 & = \int_V \odif[n]{x} \,  \sum_i \delta_{ij} \, \delta^n(x - x') \delta f_i(x)
+\end{align}
+\begin{align}
+  \frac{\delta f_j(x')}{\delta f_i(x)} & = \delta_{ij} \, \delta^n(x - x')
+\end{align}
+so,
+\begin{align}
+  \fdv{I}{f_i(x)} & = \int_V \odif[n]{x'} \, \pdv{F}{f_i (x')} \delta(x - x') = \pdv{F}{f_i(x)}
+\end{align}
+thus we see that the functional-density relation still holds:
+\thm{Functional-density relation}{
+  For a quantity $I[F]$ and its density $F[f_i(x)]$, the functional derivative satisfies the following relation:
+  \begin{align}
+    I = \int_V \odif[n]{x} \, F[f_j(x)] \quad \implies \quad \fdv{I[f_j]}{f_i(x)} = \pdv{F[f_j]}{f_i(x)}
+  \end{align}
+  or equivalently,
+  \begin{align}
+    \fdv{f_j(x')}{f_i(x)} & = \delta_{ij} \, \delta^n(x - x')
+  \end{align}
+  \label{thm:func_deriv_relation_n}
+}
 
 \cite{eman-functionalDerivative}
