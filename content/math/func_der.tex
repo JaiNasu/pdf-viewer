@@ -169,6 +169,11 @@ For $\real^n$, let us define a functional $I$ and functional derivative as follo
   \end{align}
 }
 \dfn{Functional Derivative on $\real^n$}{
+  The \emph{functional derivative} of a functional $I[f_i]$ with respect to $f_i(x)$ is defined as follows:
+  \begin{align}
+    \fdv{I[f_j]}{f_i(x)} := \phi_i(x) \iffdef \fdif{I} = \int_V \odif[n]{x'} \, \fdv{I[f_j]}{f_i(x')} \fdif{f_i}(x')
+  \end{align}
+  where $\phi_i(x)$ is a function of $x$.
 }
 Then, the variation of the functional $\fdif{I}$ can be expressed as:
 \begin{align}
@@ -178,11 +183,9 @@ Then, the variation of the functional $\fdif{I}$ can be expressed as:
 \end{align}
 Now,
 \begin{align}
-  \delta f_j(x') & = \int_V \odif[n]{x} \, \delta^n(x - x')\delta f_j(x)                         \\
-                 & = \int_V \odif[n]{x} \,  \sum_i \delta_{ij} \, \delta^n(x - x') \delta f_i(x)
-\end{align}
-\begin{align}
-  \frac{\delta f_j(x')}{\delta f_i(x)} & = \delta_{ij} \, \delta^n(x - x')
+  \delta f_j(x')                                       & = \int_V \odif[n]{x} \, \delta^n(x - x')\delta f_j(x)                         \\
+                                                       & = \int_V \odif[n]{x} \,  \sum_i \delta_{ij} \, \delta^n(x - x') \delta f_i(x) \\
+  \implies \quad  \frac{\delta f_j(x')}{\delta f_i(x)} & = \delta_{ij} \, \delta^n(x - x')
 \end{align}
 so,
 \begin{align}
@@ -193,10 +196,6 @@ thus we see that the functional-density relation still holds:
   For a quantity $I[F]$ and its density $F[f_i(x)]$, the functional derivative satisfies the following relation:
   \begin{align}
     I = \int_V \odif[n]{x} \, F[f_j(x)] \quad \implies \quad \fdv{I[f_j]}{f_i(x)} = \pdv{F[f_j]}{f_i(x)}
-  \end{align}
-  or equivalently,
-  \begin{align}
-    \fdv{f_j(x')}{f_i(x)} & = \delta_{ij} \, \delta^n(x - x')
   \end{align}
   \label{thm:func_deriv_relation_n}
 }
