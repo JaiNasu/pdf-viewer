@@ -1,0 +1,81 @@
+\section{General Notations}
+\label{sec:notations}
+\subsection{Vectors and Functions}
+A vector (in a non-relativistic context) is denoted by an arrow:
+\begin{align}
+  \vec{x}, \vec{r}, \vec{p}, \vec{F}, \vec{v}, \vec{a}, \ldots
+\end{align}
+
+If a function depends on multiple variables (e.g., $\{q_i\} = \{q_1, q_2, q_3, \ldots\}$), we may denote it in a short-handed way:
+\begin{align}
+  f(q_1, q_2, q_3, \ldots) \iff f(q_i)
+\end{align}
+
+A partial derivative by the variable $x$ is denoted by:
+\begin{align}
+  \pdv{f}{x} = \pdif{x} f,
+\end{align}
+
+For a general coordinate system $(x_1, x_2, x_3, \ldots)$, we denote the partial derivative by:
+\begin{align}
+  \pdv{f}{x_i} = \pdif{i} f
+\end{align}
+
+\section{Relativity Notations}
+\subsection{Vectors(in Relativity)}
+For 4-vectors in relativity, sans-serif font is used:
+\begin{align}
+  \rel{x}, \rel{p}^\mu, \rel{g}_{\mu \nu}
+\end{align}
+Each component of a 4-vector is denoted by a superscript or subscript:
+\begin{align}
+  \rel{x}^\mu = x^0, x^1, x^2 \text{ or } x^3
+\end{align}
+and without an index, it represents the entire vector:
+\begin{align}
+  \rel{x} = (x^0, x^1, x^2, x^3) = (ct, \vec{x})
+\end{align}
+
+
+\subsection{Einstein's Summation Convention}
+If an index such as $i, j, k, \mu, \nu$, etc., appears twice in a single term, it implies summation over that index. For example:
+\eg{Examples}{
+  \begin{align}
+    A_i B^i                                   & = \sum_{i = 1}^{3} A_i B^i                                          \\
+    \rel{g}_{\mu \nu} \rel{u}^\mu \rel{v}^\nu & = \sum_{\mu, \nu = 0}^{3} \rel{g}_{\mu \nu} \rel{u}^\mu \rel{v}^\nu
+  \end{align}
+}
+Note that the greek index such as $\mu, \nu$ usually runs from $0$ to $3$, while the latin index such as $i, j, k$ usually runs from $1$ to $3$.
+
+\subsection{Metric Tensor}
+As per the convention in particle physics, we take the $(+, -, -, -)$ metric signature, and the Minkowski metric $\eta_{\mu \nu}$ is denoted by:
+\begin{align}
+  \eta_{\mu \nu}
+  = \begin{pmatrix}
+      \eta_{00} & \eta_{01} & \eta_{02} & \eta_{03} \\
+      \eta_{10} & \eta_{11} & \eta_{12} & \eta_{13} \\
+      \eta_{20} & \eta_{21} & \eta_{22} & \eta_{23} \\
+      \eta_{30} & \eta_{31} & \eta_{32} & \eta_{33}
+    \end{pmatrix}
+  = \begin{pmatrix}
+      1 & 0  & 0  & 0  \\
+      0 & -1 & 0  & 0  \\
+      0 & 0  & -1 & 0  \\
+      0 & 0  & 0  & -1
+    \end{pmatrix}
+\end{align}
+
+\subsection{Units}
+In principle, we use SI units:
+\begin{alignat}{2}
+  \text{Length} & = & \bab{L} & = \si{\meter}    \\
+  \text{Time}   & = & \bab{T} & = \si{\second}   \\
+  \text{Mass}   & = & \bab{M} & = \si{\kilogram} \\
+  \text{Charge} & = & \bab{C} & = \si{\coulomb}
+\end{alignat}
+
+However, for particle physics, we often use natural units, where:
+\begin{align}
+  \hbar = c = 1
+\end{align}
+which makes mass and energy equivalent as well as

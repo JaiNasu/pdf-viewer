@@ -1,1 +1,104 @@
 \section{Symmetry of a System}
+\subsection{Symmetry}
+A fundamental concept in physics is \emph{symmetry}.
+Let us see an example of symmetry in geometry:
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.2]
+    \draw[thick] (-4, -1) node[left]{$A$} -- (-4, 1) node[left]{$B$} -- (-2, 1) node[right]{$C$} -- (-2, -1) node[right]{$D$} -- cycle;
+    \draw[thick, dashed] (-3, -2.5) -- (-3, 2.5);
+    \draw[ultra thick, ->] (-1.5, 0) -- (1.5, 0) node[midway, above]{Flip};
+    \draw[thick] (2, -1) node[left]{$D$} -- (2, 1) node[left]{$C$} -- (4, 1) node[right]{$B$} -- (4, -1) node[right]{$A$} -- cycle;
+    \draw[thick, dashed] (3, -2.5) -- (3, 2.5);
+    \draw[thick, ->](-3.75, 1.2) arc[start angle=180, end angle = 0, radius=0.75];
+  \end{tikzpicture}
+  \caption{A square and its reflection.}
+  \label{fig:symmetry_square}
+\end{figure}
+Notice how we flipped the square, and it looks the same without the labels.
+In a more formal sense, we can say that the system(square) is \emph{invariant} under the transformation(flip).
+
+
+\subsection{Transformations}
+For example, Newtonian mechanics(or Newton's equation of motion) has some symmetries.
+\eg{Equation of Motion}{
+  For example, the equation of motion is unchanged under Galilean transformation.
+  \begin{align}
+    \sum \vec{F} & = m \vec{a}
+  \end{align}
+}
+\dfn{Galilean Transformation}{
+  The \emph{Galilean transformation} is a transformation of coordinates from a stationary observer to a moving observer with constant velocity $v$.
+  \begin{align}
+    \vec{\xi}(\vec{x}, t) & = \vec{x} - \vec{v} t
+  \end{align}
+  where $\vec{\xi}$ is the new coordinate, $\vec{x}$ is the old coordinate, $\vec{v}$ is the velocity of the observer, and $t$ is time.
+}
+and space/ time reversal:
+\dfn{Space/Time Reversal}{
+  The \emph{space reversal} is a transformation of coordinates that flips the sign of the position vector:
+  \begin{align}
+    \vec{x}' & = -\vec{x}
+  \end{align}
+  The \emph{time reversal} is a transformation of time that flips the sign of time:
+  \begin{align}
+    t' & = -t
+  \end{align}
+}
+
+
+
+In the context of analytical mechanics, the system is described by the action $S$.
+If the variation of the action $\delta S$ is invariant under a transformation, we say that the system has a symmetry under that transformation.
+
+Notice that the Lagrangian has a degree of freedom(that is, the Lagrangian can be modified by adding a total derivative and variation of action remains the same):
+\thm{Degree of Freedom in Lagrangian}{
+  Adding a total derivative of time to the Lagrangian does not change the action:
+  \begin{align}
+    L'(q_i, \dot{q}_i, t) & = L(q_i, \dot{q}_i, t) + \odv{}{t}f(q(t), t) \implies \delta S'[L'] = \delta S[L]
+  \end{align}
+}
+\pf{Proof}{
+  The action is given by
+  \begin{align}
+    S'[L'] & = \int_{t_i}^{t_f} \odif{t} \, L'(q_i(t), \dot{q}_i(t), t)                                                   \\
+           & = \int_{t_i}^{t_f} \odif{t} \, L(q_i(t), \dot{q}_i(t), t) + \int_{t_i}^{t_f} \odif{t} \, \odv{}{t}f(q(t), t) \\
+           & = S[L] + \bab{\vphantom{\frac{a}{a}} f(q_i, t)}_{t_i}^{t_f} = S[L] + f(q_i(t_f), t_f) - f(q(t_i), t_i)
+  \end{align}
+  Since by taking the variation, $\delta q(t_f) = \delta q(t_i) = 0$, the last term is zero. Thus
+  \begin{align}
+    \delta S'[L'] & = \delta S[L]
+  \end{align}
+}
+
+
+\subsection{Noether's Theorem}
+In Analytical Mechanics, there is a general family of transformations called \emph{point transformation}
+\dfn{Point Transformation}{
+  A \emph{point transformation} is a transformation of the generalized coordinates $q_i$ and time $t$ to new coordinates $Q_i$
+  \begin{align}
+    Q_j & = Q_j(q_i, t)
+  \end{align}
+  Note: if there are $N$ generalized coordinates $q_i$, then there must be $N$ new coordinates $Q_j$.
+}
+Point transformation does not change the action, i.e., the variation of the action is invariant under point transformation(proof in \ref{sec:invariance-euler-lagrange}):
+\thm{Invariance of Euler-Lagrange Equation}{
+  The Euler-Lagrange equation is invariant under point transformation:
+  \begin{align}
+    \pdv{L}{q_i} - \odv{}{t} \pab{\pdv{L}{\dot{q}_i}} & = 0
+    \implies \pdv{L}{Q_j} - \odv{}{t} \pab{\pdv{L}{\dot{Q}_j}}  = 0
+  \end{align}
+  proof is given in Sec. \ref{sec:invariance-euler-lagrange}.
+}
+
+Now, using the point transformation, we can give the definition of symmetry, in the context of analytical mechanics:
+\dfn{Symmetry of the System}{
+  A system is said to have a \emph{symmetry} under a point transformation $q_i \to Q_i$ if the change in Lagrangian $L$ is up to the degree of freedom:
+  \begin{align}
+    \tilde{L}(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \odv{}{t}f(q_i(t), t)
+  \end{align}
+  where $L$ is the Lagrangian of the system.
+}
+
+\cite{hachiware-analyticalMechanics}

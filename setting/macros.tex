@@ -1,6 +1,6 @@
 %My Own Addition
 \newif\ifinvert
-\inverttrue
+\invertfalse
 
 \newcommand{\changecolor}{
   \ifinvert
@@ -8,12 +8,17 @@
     \newcommand{\txtcolor}{white}
     \pagecolor{black}
     \color{white}
+    \tikzset{
+      draw={\txtcolor}
+    }
   \else
     \newcommand{\emphcolor}{blue}
     \newcommand{\txtcolor}{black}
   \fi
 }
 \renewcommand{\emph}[1]{\textcolor{\emphcolor}{\sffamily\bfseries#1}}
+
+\newcommand{\rel}[1]{\mathsf{#1}}
 
 \newcommand{\epna}{\varepsilon_0}
 \newcommand{\vb}[1]{\mathbf{#1}}
