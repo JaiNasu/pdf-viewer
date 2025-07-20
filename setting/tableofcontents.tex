@@ -2,6 +2,7 @@
 % TABLE OF CONTENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\setcounter{tocdepth}{2}
 \usepackage{tikz}
 \definecolor{doc}{RGB}{0,60,110}
 \usepackage{titletoc}
@@ -10,7 +11,8 @@
 {\addvspace{30pt}%
   \begin{tikzpicture}[remember picture, overlay]%
     \draw[fill=doc!60,draw=doc!60] (-7,-0.15) rectangle (-0.1,0.55);%
-    \pgftext[left,x=-3.4cm,y=0.2cm]{\color{white}\Large\headsfont\scshape\bfseries Chapter\ \thecontentslabel};%
+    \pgftext[left,x=-3.4cm,y=0.2cm]{%
+      \Large\headfont\scshape\bfseries\textcolor{white}{Chapter\ \thecontentslabel}};%
   \end{tikzpicture}\color{doc!60}\large\scshape\bfseries}%
 {}
 {}
@@ -36,13 +38,14 @@
   \chapter*{%
     \vspace*{-20\p@}%
     \begin{tikzpicture}[remember picture, overlay]%
-      % CONTENTS
+      %CONTENT on Top Right
       \def\boundary{12.6}%
       \pgftext[right,x=15cm,y=0.2cm]{\color{doc!60}\Huge\scshape\bfseries \contentsname};%
       \draw[fill=doc!60,draw=doc!60] (\boundary,-.75) rectangle (20,1);%
       \clip (\boundary,-.75) rectangle (20,1);
       \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\scshape\bfseries \contentsname};%
     \end{tikzpicture}}%
+  % Actual Table of Contents
   \@starttoc{toc}
   \vfill
 }

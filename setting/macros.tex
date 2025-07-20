@@ -16,12 +16,64 @@
     \newcommand{\txtcolor}{black}
   \fi
 }
-\renewcommand{\emph}[1]{\textcolor{\emphcolor}{\sffamily\bfseries#1}}
 
-\newcommand{\rel}[1]{\mathsf{#1}}
+
+\setmathfontface\caligraph{NewCMMath-Book.otf}
+\setmathfontface\relfont{Fira Math}
+\newcommand{\rel}[1]{%
+  \ifcat\noexpand#1\noexpand a
+    \symsfit{#1}
+  \else
+    \relfont{#1}
+  \fi
+}
+
+% \usepackage{expl3,xparse}
+% \ExplSyntaxOn
+% \keys_define:nn { pluton / tensor } {
+%   latin          .tl_set:N = \pluton_tensor_latin_tl,
+%   greek          .tl_set:N = \pluton_tensor_greek_tl,
+%   latin-alphabet .tl_set:N = \pluton_tensor_latin_alphabet_tl,
+%   greek-alphabet .tl_set:N = \pluton_tensor_greek_alphabet_tl,
+% }
+% \cs_new:Nn \pluton_tensor:n {
+%   \tl_if_in:NnTF \pluton_tensor_latin_alphabet_tl { #1 } {
+%     \pluton_tensor_latin_tl { #1 }
+%   } {
+%     \tl_if_in:NnT \pluton_tensor_greek_alphabet_tl{ #1 } {
+%       \pluton_tensor_greek_tl { #1 }
+%     }
+%   }
+% }
+% \NewDocumentCommand \rel { O{} m } {
+%   \group_begin:
+%   \keys_set:nn { pluton / tensor } {
+%     latin-alphabet = abcdefhijklmnopqrstuvwxyz
+%     ABCDEFHIJKLMNOPQRSTUVWXYZ,
+%     greek-alphabet = \alpha\beta\delta\epsilon
+%     \phi\gamma\eta\iota\theta
+%     \kappa\lambda\mu\nu\pi\chi
+%     \rho\sigma\tau\omega\xi\psi\xi
+%     \Alpha\Beta\Delta\Epsilon  % capitals; some of
+%     \Phi\Gamma\Eta\Iota\Theta  % these *definitely*
+%     \Kappa\Lambda\Mu\Nu\Pi\Chi % aren't defined, but
+%     \Rho\Sigma\Tau\Omega\Xi\Psi\Xi, % emacs helps :)
+%     latin = \symsfit,
+%     greek = \symsfit,
+%     #1
+%   }
+%   \pluton_tensor:n { #2 }
+%   \group_end:
+% }
+% \ExplSyntaxOff
+
+
+
+
+\renewcommand{\emph}[1]{\textcolor{\emphcolor}{\sffamily\bfseries#1}}
+\DeclareMathAlphabet{\amsmathcal}{OMS}{cmsy}{m}{n}
 
 \newcommand{\epna}{\varepsilon_0}
-\newcommand{\vb}[1]{\mathbf{#1}}
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
@@ -51,19 +103,18 @@
 \newcommand{\expect}[1]{\left\langle #1 \right\rangle}
 \newcommand{\var}[1]{\mathbb{V}\lbrac{#1}}
 \newcommand{\zeroket}{\ket{\bm{0}}}
-\newcommand{\idty}{\hat{\mathbf{I}}}
+\newcommand{\idty}{\hat{\symbf{I}}}
 \newcommand{\threevec}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
 \newcommand{\pobra}[2]{\left\lbrace #1 ,\, #2 \right\rbrace}
 \newcommand{\commt}[2]{\left\lbrack #1 ,\, #2 \right\rbrack}
-\newcommand{\lagr}{\mathcal{L}}
-\newcommand{\hami}{\mathcal{H}}
-\newcommand{\hilbert}{\mathcal{H}}
+\newcommand{\lagr}{\symcal{L}}
+\newcommand{\hami}{\symcal{H}}
+\newcommand{\hilbert}{\symbb{H}}
 \newcommand{\iffdef}{\underset{\mathrm{def}}{\iff}}
 
 \renewcommand{\Re}{\text{Re }}
 \renewcommand{\Im}{\text{Im }}
 
-\DeclareSIUnit\angstrom{Å}
 
 \DeclareMathOperator{\lapl}{\mathcal{L}}
 \DeclareMathOperator{\fourier}{\mathcal{F}}

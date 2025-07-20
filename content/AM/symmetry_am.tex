@@ -73,8 +73,8 @@ Notice that the Lagrangian has a degree of freedom(that is, the Lagrangian can b
 }
 
 
-\subsection{Noether's Theorem}
-In Analytical Mechanics, there is a general family of transformations called \emph{point transformation}
+\subsection{Point Transformation}
+In Analytical Mechanics, there is a general family of transformations called \emph{point transformation}.
 \dfn{Point Transformation}{
   A \emph{point transformation} is a transformation of the generalized coordinates $q_i$ and time $t$ to new coordinates $Q_i$
   \begin{align}
@@ -82,7 +82,21 @@ In Analytical Mechanics, there is a general family of transformations called \em
   \end{align}
   Note: if there are $N$ generalized coordinates $q_i$, then there must be $N$ new coordinates $Q_j$.
 }
-Point transformation does not change the action, i.e., the variation of the action is invariant under point transformation(proof in \ref{sec:invariance-euler-lagrange}):
+\eg{Point Transformation}{
+  For example, changing from Cartesian coordinates to polar coordinates is a point transformation:
+  \begin{alignat}{2}
+    (x, y)      & \to (r, \theta) \quad \iff \begin{cases}
+                                               r      & = \sqrt{x^2 + y^2}          \\
+                                               \theta & = \arctan \pab{\frac{y}{x}}
+                                             \end{cases} \\
+    (r, \theta) & \to (x, y) \quad \iff \begin{cases}
+                                          x & = r \cos \theta \\
+                                          y & = r \sin \theta
+                                        \end{cases}
+  \end{alignat}
+  notice how each new coordinate only depends on the old coordinates, not the velocity.
+}
+Point transformation does not change the action, i.e., the variation of the action is invariant under point transformation:
 \thm{Invariance of Euler-Lagrange Equation}{
   The Euler-Lagrange equation is invariant under point transformation:
   \begin{align}
@@ -94,11 +108,38 @@ Point transformation does not change the action, i.e., the variation of the acti
 
 Now, using the point transformation, we can give the definition of symmetry, in the context of analytical mechanics:
 \dfn{Symmetry of the System}{
-  A system is said to have a \emph{symmetry} under a point transformation $q_i \to Q_i$ if the change in Lagrangian $L$ is up to the degree of freedom:
+  A system is said to have a \emph{symmetry} under a point transformation $q_i \to Q_i$ if the change in Lagrangian is up to the degree of freedom:
   \begin{align}
-    \tilde{L}(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \odv{}{t}f(q_i(t), t)
+    L(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \underbrace{\odv{}{t}f(q_i, t)}_{\text{change in } L}
   \end{align}
-  where $L$ is the Lagrangian of the system.
+  where $L$ is the Lagrangian of the system before the point transformation. Note that the Lagrangian of LHS has the same functional form as RHS(i.e. $Q$ nad $\dot{Q}$ are substituted for $q$ and $\dot{q}$).
+  Or equivalently, the action is invariant under the point transformation:
+  \begin{align}
+    S[Q_i, \dot{Q}_i, t] & = S[q_i, \dot{q}_i, t] + \int_{t_i}^{t_f} \odif{t} \, \odv{}{t}f(q_i, t) = S[q_i, \dot{q}_i, t]
+  \end{align}
 }
+
+Importantly, the point transformation can be either discrete or continous, and collection of point transformations that preserve the action is called a \emph{group}.
+In short, it means three things:
+\begin{enumerate}
+  \item There is an identity transformation (i.e. no change)
+  \item If there are multiple transformations, there is a single transformation that is the result of applying those transformations in sequence.
+  \item If there is a transformation, there is an \emph{inverse transformation} that undoes the transformation.
+\end{enumerate}
+
+This concept is very important in particle physics.
+
+\subsection{Noether's Theorem}
+\thm{Noether's Theorem}{
+  Every real paramter of a continuous symmetry of the action corresponds to a conserved quantity, called \emph{Noether's charge} $\symcal{Q}$.
+  If the continous symmetry is given by an infinitesimal transformation: $Q_i(t) = q_i(t) + \epsilon F_i(q(t), t) + \mathcal{O}(\epsilon^2)$,
+  \begin{align}
+    \symcal{Q} & = \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
+  \end{align}
+  where $\Lambda(q(t), t)$ is the change in the Lagrangian under the infinitesimal transformation.
+}
+Now, assume that
+Thus if we consider a very "small" transformation that is almost the identity transformation
+
 
 \cite{hachiware-analyticalMechanics}

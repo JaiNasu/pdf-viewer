@@ -1,22 +1,32 @@
-%preamble
+\DocumentMetadata{
+  % tagging=on,
+  pdfversion=2.0,
+  pdfstandard=UA-2,
+  lang=en-US,
+}
 \directlua{
-  pdf.setminorversion(7)
-  pdf.setcompresslevel(1)
+  os.remove("out/main.xmpdata")
 }
 % PDF/X-4 compliant document
 \begin{filecontents*}{\jobname.xmpdata}
   \Title{A Survey of Preliminary of Particle Physics: A Comprehensive Overview of Analytical Mechanics and Quantum Mechanics} 
+  \Owner{Jai Nasu}
 \end{filecontents*}
   
 
-\documentclass[12pt, titlepage=false]{scrreprt}
+\documentclass[
+  12pt, 
+  titlepage=false,
+  bookmarkpackage=false
+  ]{scrreprt}
 
+% If you want to use the document for school or university, please fill in your name and student ID below.
 \newcommand{\myname}{} 
-\newcommand{\studentid}{}
+\newcommand{\email}{\phantom{FakeAhhEmail@gmail.com}}
 \newcommand{\titl}{Review for Particle Physics}
 \newcommand{\subjct}{Particle Physics}
 
-
+% Preamble
 \input{setting/package}
 \input{setting/color}
 \input{setting/preamble}
@@ -26,28 +36,24 @@
 \input{setting/title}
 \input{setting/tableofcontents}
 
-\addbibresource{ref.bib}
+% Bibliography
+\input{ref/bibliography}
 \newcommand{\samples}{1000}
 %footer/header 
 
 \begin{document}
 \changecolor
-\makeTitle{\includegraphics[height=\paperheight]{background/background.pdf}}
-\pdfbookmark[section]{\contentsname}{toc}
+\maketitle
 \tableofcontents
 \setcounter{page}{1}
 
 % \include{content/example}
 
 
-% Summary of Notation/ Physical Constants
+
+% Summary of Notation
 \chapter{Notations and Conventions}
 \input{content/intro/notation}
-
-
-% Mathematical Notes
-\chapter{Mathematical Remarks}
-\input{content/math/func_der}
 
 
 % Analytical Mechanics
@@ -55,7 +61,7 @@
 \input{content/AM/lagrange_formalism}
 \input{content/AM/hamilton_formalism}
 \input{content/AM/symmetry_am}
-\input{content/AM/summary_am}
+% \input{content/AM/summary_am}
 
 
 % % Analytical Mechanics on Continuum
@@ -71,15 +77,20 @@
 \input{content/QM/linear_algebra}
 
 
+% Mathematical Notes
+\chapter{Mathematical Remarks}
+\input{content/math/func_der}
+\input{content/math/group}
+
 % Extra 
 \chapter{Extra}
-% \input{content/Extra/newton}
+\input{content/Extra/newton}
 \input{content/Extra/E-L-inv}
 \input{content/Extra/schrodinger}
 \input{content/Extra/dual_der}
 \input{content/Extra/fluid}
 \input{content/Extra/physical_constant}
-
+\input{content/Extra/textbooks}
 
 % Bibliography lol
 \renewcommand{\emph}[1]{\textit{#1}}

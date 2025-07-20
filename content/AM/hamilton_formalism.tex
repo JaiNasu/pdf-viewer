@@ -50,8 +50,7 @@ Now, we define Hamiltonian $H = H(q, p)$ as the Legendre transform of Lagrangian
 }
 This is actually a physically intuitive quantity. Since $p$ is defined as the derivative of Lagrangian $L$:
 \begin{align}
-  p & = \pdv{L}{\dot{q}}                                                 \\
-    & = \pdv{}{\dot{q}} \pab{\frac{1}{2} m \dot{q}^2 - V(q)} = m \dot{q}
+  p & = \pdv{L}{\dot{q}} = \pdv{}{\dot{q}} \pab{\frac{1}{2} m \dot{q}^2 - V(q)} = m \dot{q}
 \end{align}
 and we can rewrite the Hamiltonian as
 \begin{align}
@@ -66,11 +65,11 @@ This relation is useful because we can obtain Lagrangian $L$ from the Hamiltonia
   L(q, \dot{q}) & = \dot{q} \cdot p - H(q, p) \implies \dot{q} = \pdv{H}{p}
 \end{align}
 and the Euler-Lagrange equation can be rewritten in terms of Hamiltonian:
-\begin{alignat}{2}
-   &          & \pdv{L}{q} - \odv{}{t} \pab{\pdv{L}{\dot{q}}} & = 0 \\
-   & \implies & \quad -\pdv{H}{q} - \odv{}{t} \pab{p}         & = 0
+\begin{align}
+  \pdv{L}{q} - \odv{}{t} \pab{\pdv{L}{\dot{q}}} = 0
+  \implies -\pdv{H}{q} - \odv{}{t} \pab{p} = 0
   \iff \quad \dot{p} = - \pdv{H}{q}
-\end{alignat}
+\end{align}
 These two equations are called the \emph{canonical equations} or \emph{Hamilton's equations}:
 \thm{Canonical Equations}{
   The relationship between a mechanical variable $q$ and its canonical conjugate variable $p$ is given by the canonical equations:
@@ -112,6 +111,8 @@ If a physical quantity $X$ does not explicitly depend on time, we can rewrite th
 \begin{align}
   \odv{X(q_i, p_i)}{t} & = \pobra{X}{H}
 \end{align}
+Due to this property, we often call the Hamiltonian $H$ the \emph{generator} of time evolution.
+
 Now, what happens if $X$ happens to be $q_i$ or $p_i$?
 A physical quantity $q_i$ or $p_i$ can be written as a function of $q_i$ and $p_i$ - simply as itself (noting that no explicit time dependence is present):
 \begin{align}
