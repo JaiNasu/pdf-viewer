@@ -12,7 +12,7 @@ export default function ViewPDFPage() {
         </h1>
       
       {/* The fileUrl points to the PDF in the /public folder */}
-      <PdfViewer fileUrl="/pdf/main.pdf" />
+      <PDFViewer fileUrl="/latex/main.pdf" />
     </main>
   );
 }
