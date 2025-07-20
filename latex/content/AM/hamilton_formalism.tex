@@ -1,0 +1,151 @@
+\section{Hamiltonian Formalism}
+\subsection{Legendre Transform}
+Consider a function $f(x, y)$.
+The total differential of $f$ is given by
+\begin{align}
+  \odif{f} & = \pdv{f}{x} \odif{x} + \pdv{f}{y} \odif{y}
+\end{align}
+Often we want to find another function $g$ such that
+\begin{align}
+  g & = p \cdot y - f(x, y)
+\end{align}
+and the total differential of $g$ is given by
+\begin{align}
+  \odif{g} & = \pdv{g}{p} \odif{p} + \pdv{g}{y} \odif{y} - \odif{f}                \\
+           & = y \odif{p} + p \odif{y} - \pdv{f}{x} \odif{x} - \pdv{f}{y} \odif{y} \\
+           & = y \odif{p} - \pdv{f}{x} \odif{x} + \pab{p - \pdv{f}{y}} \odif{y}
+\end{align}
+for this function $g$ to be a function of $x$ and $p$, we need to have
+\begin{align}
+  p = \pdv{f}{y}, \quad \pdv{g}{x} = - \pdv{f}{x}.
+\end{align}
+This is called the \emph{Legendre transform} of $f$.
+\dfn{Legendre transform(Analytical Mechanics)}{
+  The Legendre transform of a function $f(x, y)$ is defined as
+  \begin{align}
+    g(p, x) & = p \cdot y - f(x, y)
+  \end{align}
+  where
+  \begin{align}
+    p = \pdv{f}{y}, \quad \pdv{g}{x} = - \pdv{f}{x}
+  \end{align}.
+}
+
+\cite{eman-legendreTransform}
+
+\subsection{Hamiltonian and Canonical Equations}
+Now, we define Hamiltonian $H = H(q, p)$ as the Legendre transform of Lagrangian $L = L(q, \dot{q})$:
+\dfn{Hamiltonian $H$}{
+  The Hamiltonian $H(q, p)$ is defined as the Legendre transform of the Lagrangian $L(q, \dot{q})$ ($\dot{q} \to p$):
+  \begin{align}
+    H(q, p) & = p \cdot \dot{q} - L(q, \dot{q})
+  \end{align}
+  where
+  \begin{align}
+    p & = \pdv{L}{\dot{q}}, \quad \pdv{H}{q} = - \pdv{L}{q}
+  \end{align}
+}
+\nt{
+  In Lagrange formalism, generalized coordinate span the configuration space, while in Hamilton formalism, generalized coordinates and \emph{generalized momenta} or \emph{conjugate momenta} span the \emph{phase space}.
+}
+This is actually a physically intuitive quantity. Since $p$ is defined as the derivative of Lagrangian $L$:
+\begin{align}
+  p & = \pdv{L}{\dot{q}} = \pdv{}{\dot{q}} \pab{\frac{1}{2} m \dot{q}^2 - V(q)} = m \dot{q}
+\end{align}
+and we can rewrite the Hamiltonian as
+\begin{align}
+  H(q, p) & = p \cdot \dot{q} - L(q, \dot{q})                              \\
+          & = m \cdot \dot{q}^{\ 2} - \pab{\frac{1}{2} m \dot{q}^2 - V(q)} \\
+          & = \frac{1}{2} m \dot{q}^{\ 2} + V(q) = T + V
+\end{align}
+This is the total energy of the system, for the case of non-velocity dependent potential $V(q)$.
+
+This relation is useful because we can obtain Lagrangian $L$ from the Hamiltonian $H$ as well:
+\begin{align}
+  L(q, \dot{q}) & = \dot{q} \cdot p - H(q, p) \implies \dot{q} = \pdv{H}{p}
+\end{align}
+and the Euler-Lagrange equation can be rewritten in terms of Hamiltonian:
+\begin{align}
+  \pdv{L}{q} - \odv{}{t} \pab{\pdv{L}{\dot{q}}} = 0
+  \implies -\pdv{H}{q} - \odv{}{t} \pab{p} = 0
+  \iff \quad \dot{p} = - \pdv{H}{q}
+\end{align}
+These two equations are called the \emph{canonical equations} or \emph{Hamilton's equations}:
+\thm{Canonical Equations}{
+  The relationship between a mechanical variable $q$ and its canonical conjugate variable $p$ is given by the canonical equations:
+  \begin{align}
+    \dot{q} & = \pdv{H}{p}, \quad \dot{p} = - \pdv{H}{q}
+  \end{align}
+}
+
+For multiple degrees of freedom, we can write the Hamiltonian as
+\begin{align}
+  H(\{q_i\}, \{ p_i\}, t) & = \sum_i p_i \dot{q}_i - L(\{q_i\}, \{\dot{q}_i\}, t)
+\end{align}
+and the canonical equations as
+\begin{align}
+  \dot{q}_i & = \pdv{H}{p_i}, \quad \dot{p}_i = - \pdv{H}{q_i} \label{eq:hamilton-canonical-eq}
+\end{align}
+where
+\begin{align}
+  p_i & = \pdv{L}{\dot{q}_i}, \quad \pdv{H}{q_i} = - \pdv{L}{q_i}
+\end{align}
+
+\subsection{Poisson Bracket}
+Now, consider how a physical quantity $X(q_i, p_i, t)$ changes with time:
+\begin{align}
+  \odv{X(q_i, p_i, t)}{t} & = \pdv{X}{t} + \pdv{X}{q_i} \dot{q}_i + \pdv{X}{p_i} \dot{p}_i
+\end{align}
+from the canonical equations, the second part becomes:
+\begin{align}
+  \pdv{X}{q_i} \dot{q}_i + \pdv{X}{p_i} \dot{p}_i & = \pdv{X}{q_i} \pdv{H}{p_i} - \pdv{X}{p_i} \pdv{H}{q_i}
+\end{align}
+Since this term only depend on $X$ and $H$, given $q_i$ and $p_i$, we can define a new quantity called the \emph{Poisson bracket}:
+\dfn{Poisson Bracket}{
+  The Poisson bracket of two physical quantities $A$ and $B$ is defined as
+  \begin{align}
+    \pobra{A}{B} & := \sum_i \pab{\pdv{A}{q_i} \pdv{B}{p_i} - \pdv{A}{p_i} \pdv{B}{q_i}}
+  \end{align}
+}
+If a physical quantity $X$ does not explicitly depend on time, we can rewrite the time derivative as:
+\begin{align}
+  \odv{X(q_i, p_i)}{t} & = \pobra{X}{H}
+\end{align}
+Due to this property, we often call the Hamiltonian $H$ the \emph{generator} of time evolution.
+
+Now, what happens if $X$ happens to be $q_i$ or $p_i$?
+A physical quantity $q_i$ or $p_i$ can be written as a function of $q_i$ and $p_i$ - simply as itself (noting that no explicit time dependence is present):
+\begin{align}
+  q_i(q_i, p_i) & = q_i, \quad p_i(q_i, p_i) = p_i
+\end{align}
+Then, the Poisson bracket of $q_i$ and $H$ is given by
+\begin{align}
+  \pobra{q_i}{H} & = \sum_j \pab{\pdv{q_i}{q_j} \pdv{H}{p_j} - \pdv{q_i}{p_j} \pdv{H}{q_j}} \\
+                 & = \sum_j \pab{\delta_{ij} \pdv{H}{p_j} - 0} = \pdv{H}{p_i}
+\end{align}
+where Eq. \eqref{eq:func_deriv_kronecker_delta} is used.
+Similarly, the Poisson bracket of $p_i$ and $H$ is given by
+\begin{align}
+  \pobra{p_i}{H} & = \sum_j \pab{\pdv{p_i}{q_j} \pdv{H}{p_j} - \pdv{p_i}{p_j} \pdv{H}{q_j}} \\
+                 & = \sum_j \pab{0 - \delta_{ij} \pdv{H}{q_j}} = - \pdv{H}{q_i}
+\end{align}
+Thus, we can rewrite the canonical equations in terms of Poisson bracket:
+\thm{Canonical Equations with Poisson Bracket}{
+  The canonical equations can be rewritten in terms of Poisson bracket as follows:
+  \begin{align}
+    \dot{q}_i & = \pobra{q_i}{H}, \quad \dot{p}_i = \pobra{p_i}{H}
+  \end{align}
+}
+
+Finally, note that the Poisson bracket of $q_i$ and $p_j$ gives:
+\begin{align}
+  \pobra{q_i}{p_j} & = \sum_k \pdv{q_i}{q_k} \pdv{p_j}{p_k} - \pdv{q_i}{p_k} \pdv{p_i}{q_k} \\
+                   & = \sum_k \delta_{ik} \delta_{jk} - 0 = \delta_{ij}
+\end{align}
+\thm{Canonical Conjugate Relation in Analytical Mechanics}{
+  The Poisson bracket of the generalized coordinate $q_i$ and its conjugate momentum $p_j$ is given by
+  \begin{align}
+    \pobra{q_i}{p_j} & = \delta_{ij}
+  \end{align}
+}
+
