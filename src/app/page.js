@@ -1,18 +1,17 @@
 import Image from "next/image";
 
-// /app/view-pdf/page.jsx
+// /app/page.js (or whatever your page is)
 
-import PDFViewer from '@/components/PDFViewer';
+// ✅ CRITICAL: Make sure you import the DYNAMIC wrapper.
+import DynamicPdfViewer from '@/components/DynamicPdfViewer';
 
-export default function ViewPDFPage() {
+export default function MyPage() {
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        PDF
-        </h1>
+    <main>
+      <h1>My Document</h1>
       
-      {/* The fileUrl points to the PDF in the /public folder */}
-      <PDFViewer fileUrl="/latex/main.pdf" />
+      {/* Use the dynamic loader component here */}
+      <DynamicPdfViewer fileUrl="/latex/main.pdf" />
     </main>
   );
 }
