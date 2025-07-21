@@ -1,17 +1,23 @@
+'use client';
+
+// /app/page.js
+
+
 import Image from "next/image";
+import dynamic from 'next/dynamic';
 
-// /app/page.js (or whatever your page is)
+// Dynamically import the PDFViewer with SSR turned off
+const PDFViewer = dynamic(() => import('../components/PdfViewer'), {
+  ssr: false,
+});
 
-// ✅ CRITICAL: Make sure you import the DYNAMIC wrapper.
-import DynamicPdfViewer from '@/components/DynamicPdfViewer';
+export default function Home() {
+  const pdfFile = '/latex/main.pdf'; // Make sure this PDF is in your /public directory
 
-export default function MyPage() {
   return (
     <main>
-      <h1>My Document</h1>
-      
-      {/* Use the dynamic loader component here */}
-      <DynamicPdfViewer fileUrl="/latex/main.pdf" />
+      <h1 style={{ textAlign: 'center' }}>Continuous PDF Viewer</h1>
+      <PDFViewer fileUrl={pdfFile} />
     </main>
   );
 }

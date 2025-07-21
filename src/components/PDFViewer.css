@@ -1,0 +1,65 @@
+/* /components/PDFViewer.css */
+
+.pdf-viewer-container {
+    display: flex;
+    height: 100vh;
+    /* Full viewport height */
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.pdf-sidebar {
+    width: 280px;
+    /* A bit wider for better readability */
+    flex-shrink: 0;
+    /* Prevents the sidebar from shrinking */
+    border-right: 1px solid #e0e0e0;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.pdf-sidebar h4 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Styling for the nested list of bookmarks */
+.pdf-sidebar ul {
+    padding-left: 1rem;
+    list-style: none;
+    margin: 0;
+}
+
+.pdf-sidebar li {
+    margin: 0.75rem 0;
+}
+
+.pdf-sidebar a {
+    cursor: pointer;
+    color: #0056b3;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.pdf-sidebar a:hover {
+    text-decoration: underline;
+}
+
+/* The main area where the PDF pages will be displayed and scrolled */
+.pdf-main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background-color: #e9ecef;
+}
+
+/* Add a little space and shadow to each page for better separation */
+.react-pdf__Page {
+    margin: 0 auto 1.5rem auto;
+    /* Center the page and add margin below */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

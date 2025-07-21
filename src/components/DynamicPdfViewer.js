@@ -4,7 +4,7 @@
 
 import dynamic from 'next/dynamic';
 
-const PdfViewer = dynamic(() => import('@/components/PdfViewer'), {
+const PdfViewer = dynamic(() => import('@/components/PdfViewer_bak'), {
     ssr: false, // ✅ CRITICAL: This disables server-side rendering for the component.
 });
 

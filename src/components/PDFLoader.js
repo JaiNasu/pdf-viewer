@@ -5,7 +5,7 @@
 import dynamic from 'next/dynamic';
 
 // Dynamically import the PDFViewer component with SSR disabled
-const PDFViewer = dynamic(() => import('@/components/PdfViewer'), {
+const PDFViewer = dynamic(() => import('@/components/PdfViewer_bak'), {
   ssr: false,
   loading: () => <p style={{ padding: '20px' }}>Loading PDF viewer...</p>,
 });
