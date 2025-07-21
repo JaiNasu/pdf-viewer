@@ -13,11 +13,13 @@ import {
     Bars3Icon, // Hamburger menu icon
     XMarkIcon, // Close icon
   EnvelopeIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/outline';
 
 // Sidebar navigation links
 const navigation = [
-  { name: 'Home', href: 'https://home-d0ot0s2er-jainasus-projects.vercel.app/', icon: HomeIcon },
+  { name: 'Source', href: 'hhttps://github.com/JaiNasu/Homepage', icon: CodeBracketIcon },
+  { name: 'Home', href: 'https://home-pi-lac.vercel.app/', icon: HomeIcon },
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
   { name: 'Gmail', href: 'https://mail.google.com/mail/u/0/#inbox', icon: EnvelopeIcon },
