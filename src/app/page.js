@@ -18,7 +18,7 @@ import {
 
 // Sidebar navigation links
 const navigation = [
-  { name: 'Source', href: 'hhttps://github.com/JaiNasu/Homepage', icon: CodeBracketIcon },
+  { name: 'Source', href: 'https://github.com/JaiNasu/Homepage', icon: CodeBracketIcon },
   { name: 'Home', href: 'https://home-pi-lac.vercel.app/', icon: HomeIcon },
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
