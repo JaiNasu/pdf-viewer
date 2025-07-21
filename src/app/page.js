@@ -26,7 +26,7 @@ const navigation = [
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
   { name: 'Gmail', href: 'https://mail.google.com/mail/u/0/#inbox', icon: EnvelopeIcon },
   { name: 'Discord', href: 'https://discord.com/', icon: ChatBubbleLeftIcon },
-  {name: 'Gemini AI', href: 'https://gemini.google.com/u/2/app?hl=ja', icon: BoltIcon},
+  { name: 'Gemini AI', href: 'https://gemini.google.com/u/2/app?hl=ja', icon: BoltIcon},
 ];
 
 export default function HomePage() {
@@ -34,7 +34,7 @@ export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen md:flex">
+    <div className="relative min-h-screen bg-gray-100 md:flex">
       {/* --- Mobile Sidebar Overlay --- */}
       {isSidebarOpen && (
         <div
@@ -98,7 +98,20 @@ export default function HomePage() {
                   className="block w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 text-left shadow-md transition-all hover:border-blue-500 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                   <h2 className="text-xl font-semibold text-gray-900">
-                  Preliminaries for Particle Physics &rarr;
+                  Preliminaries for Particle Physics
+                  </h2>
+                  <p className="mt-2 text-gray-500">
+                    WORK IN PROGRESS
+                  </p>
+                </Link>
+            </div>
+            <div className="mt-10 flex items-center justify-center">
+                <Link
+                  href="/test"
+                  className="block w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 text-left shadow-md transition-all hover:border-blue-500 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    Testing Things Out...
                   </h2>
                   <p className="mt-2 text-gray-500">
                     WORK IN PROGRESS

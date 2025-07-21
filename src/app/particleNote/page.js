@@ -1,6 +1,6 @@
 'use client';
 
-// /app/page.js
+// /app/particle-note/page.js
 
 
 import Image from "next/image";
@@ -16,7 +16,6 @@ export default function Home() {
 
   return (
     <main>
-      <h1 style={{ textAlign: 'center' }}>Continuous PDF Viewer</h1>
       <PDFViewer fileUrl={pdfFile} />
     </main>
   );
