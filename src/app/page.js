@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline';
 // Sidebar navigation links
 const navigation = [
-  { name: 'Home', href: '', icon: HomeIcon },
+  { name: 'Home', href: 'https://home-d0ot0s2er-jainasus-projects.vercel.app/', icon: HomeIcon },
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
 ];
@@ -37,7 +37,7 @@ export default function HomePage() {
       <div className="flex-grow p-10 flex items-center justify-center">
         <main className="w-full max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            
+            HOME
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-gray-600">
