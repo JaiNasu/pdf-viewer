@@ -21,6 +21,12 @@ const navigation = [
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
 ];
 
+export const metadata = {
+  title: "Jai Nasu's Homepage",
+  description: "A Place to Put Things",
+}
+
+
 export default function HomePage() {
   // State to manage sidebar visibility on mobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
