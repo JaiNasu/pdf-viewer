@@ -93,7 +93,7 @@ export default function HomePage() {
                   Preliminaries for Particle Physics &rarr;
                   </h2>
                   <p className="mt-2 text-gray-500">
-                    Click to Open PDF
+                    WORK IN PROGRESS
                   </p>
                 </Link>
             </div>
