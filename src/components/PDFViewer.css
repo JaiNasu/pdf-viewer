@@ -1,65 +1,152 @@
 /* /components/PDFViewer.css */
-
 .pdf-viewer-container {
     display: flex;
     height: 100vh;
-    /* Full viewport height */
     overflow: hidden;
-    font-family: sans-serif;
+    background-color: #f9f9f9;
+    /* Base background */
+    color: #333;
+    /* Base text color */
 }
 
 .pdf-sidebar {
-    width: 280px;
-    /* A bit wider for better readability */
-    flex-shrink: 0;
-    /* Prevents the sidebar from shrinking */
-    border-right: 1px solid #e0e0e0;
+    width: 250px;
+    border-right: 1px solid #ccc;
     padding: 1rem;
     overflow-y: auto;
-    background-color: #f8f9fa;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    /* Smooth transition */
 }
 
-.pdf-sidebar h4 {
-    margin-top: 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.5rem;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-/* Styling for the nested list of bookmarks */
+/* ... (ul, li, etc. styles remain the same) ... */
 .pdf-sidebar ul {
+    flex-grow: 1;
+    overflow-y: auto;
     padding-left: 1rem;
-    list-style: none;
-    margin: 0;
+    list-style-type: none;
 }
 
 .pdf-sidebar li {
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
 }
 
 .pdf-sidebar a {
-    cursor: pointer;
-    color: #0056b3;
     text-decoration: none;
-    font-size: 0.9rem;
+    color: #007bff;
 }
 
 .pdf-sidebar a:hover {
     text-decoration: underline;
 }
 
-/* The main area where the PDF pages will be displayed and scrolled */
+/* --- [UPDATED] Styles for the top controls --- */
+.sidebar-controls {
+    margin-bottom: 1rem;
+    /* Add space below the button */
+    padding-bottom: 1rem;
+    /* Add more space below the button */
+    border-bottom: 1px solid #ccc;
+    /* Add a line below */
+    transition: border-color 0.3s;
+}
+
+.sidebar-controls button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+
+.sidebar-controls button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.sidebar-controls button:hover {
+    background-color: #0056b3;
+}
+
 .pdf-main-content {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 1.5rem;
-    background-color: #e9ecef;
+    padding: 1rem;
+    background-color: #e9e9e9;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
-/* Add a little space and shadow to each page for better separation */
 .react-pdf__Page {
-    margin: 0 auto 1.5rem auto;
-    /* Center the page and add margin below */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: filter 0.3s;
+}
+
+.pdf-page-pair {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 1rem;
+}
+
+/* --- [NEW] Inverted Color Theme --- */
+
+/* Inverted Sidebar */
+.pdf-viewer-container.color-inverted .pdf-sidebar {
+    background-color: #2a2a2a;
+    border-right-color: #444;
+    color: #e0e0e0;
+}
+
+.pdf-viewer-container.color-inverted .pdf-sidebar a {
+    color: #58a6ff;
+}
+
+.pdf-viewer-container.color-inverted .sidebar-controls {
+    border-bottom-color: #444;
+    /* Invert the border color */
+}
+
+.pdf-viewer-container.color-inverted .sidebar-controls button {
+    background-color: #58a6ff;
+    color: #121212;
+}
+
+.pdf-viewer-container.color-inverted .sidebar-controls button:hover {
+    background-color: #79bbff;
+}
+
+.pdf-viewer-container.color-inverted .pdf-main-content {
+    background-color: #121212;
+}
+
+.pdf-viewer-container.color-inverted .react-pdf__Page {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Inverted Main Content */
+.pdf-viewer-container.color-inverted .pdf-main-content {
+    background-color: #121212;
+    /* Dark background for the content area */
+}
+
+.pdf-viewer-container.color-inverted .react-pdf__Page {
+    /* This inverts the PDF page itself (white becomes black, text becomes white) */
+    filter: invert(1) hue-rotate(180deg);
+    /* hue-rotate preserves color fidelity */
 }
