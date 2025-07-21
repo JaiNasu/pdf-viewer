@@ -30,7 +30,7 @@ export default function HomePage() {
       {/* --- Mobile Sidebar Overlay --- */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-20 bg-black bg-opacity-50 md:hidden"
+          className="fixed inset-0 z-20 bg-opacity-50 bg-light transition-opacity"
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
@@ -61,7 +61,7 @@ export default function HomePage() {
         {/* Top bar with mobile menu button */}
         <div className="sticky top-0 z-10 bg-white shadow-sm md:hidden">
           <div className="flex items-center justify-between p-4">
-            <span className="text-lg font-bold text-gray-800">Menu</span>
+            <span className="text-lg font-bold text-gray-800">Hi</span>
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className="p-2 rounded-md text-gray-500 hover:bg-gray-100"
@@ -94,7 +94,7 @@ export default function HomePage() {
                   Preliminaries for Particle Physics &rarr;
                   </h2>
                   <p className="mt-2 text-gray-500">
-Click to Open PDF
+                    Click to Open PDF
                   </p>
                 </Link>
             </div>
