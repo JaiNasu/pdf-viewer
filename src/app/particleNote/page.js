@@ -12,7 +12,7 @@ const PDFViewer = dynamic(() => import('../../components/PdfViewer'), {
 });
 
 export default function Home() {
-  const pdfFile = '/latex/main.pdf'; // Make sure this PDF is in your /public directory
+  const pdfFile = '/latex/particle-note/main.pdf'; // Make sure this PDF is in your /public directory
 
   return (
     <main>

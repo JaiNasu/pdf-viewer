@@ -54,7 +54,7 @@ export default function PDFViewer({ fileUrl }) {
       return;
     }
 
-    const layoutThreshold = 2.1;
+    const layoutThreshold = 1.9;
 
     const containerWidth = containerRef.current.offsetWidth;
     const page = await pdf.getPage(1);
