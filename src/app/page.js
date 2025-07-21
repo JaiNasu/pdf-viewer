@@ -12,8 +12,10 @@ import {
     RssIcon,
     Bars3Icon, // Hamburger menu icon
     XMarkIcon, // Close icon
-  EnvelopeIcon,
-  CodeBracketIcon,
+    EnvelopeIcon,
+    CodeBracketIcon,
+    ChatBubbleLeftIcon,
+    BoltIcon
 } from '@heroicons/react/24/outline';
 
 // Sidebar navigation links
@@ -23,6 +25,8 @@ const navigation = [
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
   { name: 'Gmail', href: 'https://mail.google.com/mail/u/0/#inbox', icon: EnvelopeIcon },
+  { name: 'Discord', href: 'https://discord.com/', icon: ChatBubbleLeftIcon },
+  {name: 'Gemini AI', href: 'https://gemini.google.com/u/2/app?hl=ja', icon: BoltIcon},
 ];
 
 export default function HomePage() {
