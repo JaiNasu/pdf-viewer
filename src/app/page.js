@@ -38,14 +38,14 @@ export default function HomePage() {
       {/* --- Mobile Sidebar Overlay --- */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-20 bg-opacity-50 bg-light transition-opacity"
+          className="fixed inset-0 z-30 bg-[rgba(0, 0, 0, 0)]" // This is the key change!
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
 
       {/* --- Sidebar --- */}
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-64 flex-shrink-0 transform bg-white p-6 border-r border-gray-200 transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 w-64 flex-shrink-0 transform bg-white p-6 border-r border-gray-200 transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
