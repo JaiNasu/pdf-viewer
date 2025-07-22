@@ -129,9 +129,36 @@ In short, it means three things:
 
 This concept is very important in particle physics.
 
+\subsection{Symmetry including Time}
+So far we have seen symmetry under point transformation, but it is also useful to think about symmetry under transformations including time:
+\begin{align}
+  t'      & = t'(q_i, t)  \\
+  Q_j(t') & = Q_j(q_i, t)
+\end{align}
+and define
+\begin{align}
+  \dot{Q}_j & := \odv{Q(t')}{t'}
+\end{align}
+For this transformation to be a symmetry of the system, the change in action must keep the variation of action invariant:
+\begin{align}
+  S[Q_i] & = \int_{t_i'}^{t_f'} \odif{t'} \, L(Q_i(t'), \dot{Q}_i(t'), t')       \\
+         & = \int_{t_i}^{t_f} \odif{t} \odv{t'}{t} L(Q_i(t'), \dot{Q}_i(t'), t')
+\end{align}
+For the variation of action to be invariant, the change in Lagrangian must be up to the degree of freedom:
+\begin{align}
+  \odv{t'}{t} L(Q_i(t'), \dot{Q}_i(t'), t') & = L(q_i, \dot{q}_i, t) + \odv{}{t} f(q_i, t)
+\end{align}
+Thus the symmetry under the transformation including time is defined as:
+\dfn{Symmetry of the System including Time}{
+  A system is said to have a \emph{symmetry} under a transformation including time $t' = t'(q_i, t)$ and $Q_j(t') = Q_j(q_i, t)$ if the change in Lagrangian can be written as follows:
+  \begin{align}
+    \odv{t'}{t} L(Q_i(t'), \dot{Q}_i(t'), t') & = L(q_i, \dot{q}_i, t) + \odv{}{t} f(q_i, t)
+  \end{align}
+}
+
 \subsection{Noether's Theorem}
-\thm{Noether's Theorem}{
-  Every real paramter of a continuous symmetry of the action corresponds to a conserved quantity, called \emph{Noether's charge} $\symcal{Q}$.
+\thm{Noether's Theorem (No time translation)}{
+  Every real paramter of a continuous symmetry of the action corresponds to a conserved quantity $\symcal{Q}$.
   If the continous symmetry is given by an infinitesimal transformation: $Q_i(t) = q_i(t) + \epsilon F_i(q(t), t) + \mathcal{O}(\epsilon^2)$,
   \begin{align}
     \symcal{Q} & = \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
@@ -141,8 +168,64 @@ This concept is very important in particle physics.
 Now, assume that a system has a continous symmetry.
 Thus if we consider a very "small" transformation that is almost the identity transformation:
 \begin{align}
-  Q_i(t) & = q_i(t) + \epsilon F_i(q(t), t) + \mathcal{O}(\epsilon^2)
+  Q_i(t) & = q_i(t) + \epsilon F_i(q(t), t) + \symcal{O}(\epsilon^2)
 \end{align}
+by differntiating w.r.t. $t$, we get
+\begin{align}
+  \dot{Q}_i (t) & = \dot{q}_i(t) + \epsilon \odv{}{t} F_i(q(t), t) + \symcal{O}(\epsilon^2)
+\end{align}
+Here, since the system has a symmetry under this transformation, the change in Lagrangian must be up to $\odv{f}{t} (q(t), t)$:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) = \odv{}{t} f(q(t), t)
+\end{align}
+given that the transformation is infinitesimal, we can write the change in Lagrangian as:
+\begin{align}
+  \odv{}{t} f(q(t), t)                                       & = \epsilon \odv{}{t} \Lambda(q(t), t) + \symcal{O}(\epsilon^2) \\
+  \implies \quad L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \odv{}{t} \Lambda(q(t), t) + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian1}
+\end{align}
+Now, the new Lagrangian can be expanded as a Taylor series around the old Lagrangian with a small parameter $\epsilon$:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \sum_i  \pab{
+    \epsilon F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{q_i} + \epsilon \odv{}{t} F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+\end{align}
+So the change in Lagrangian is:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \sum_i \pab{
+    F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{q_i} + \odv{}{t} F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+\end{align}
+Frp, the Euler-Lagrange equation, we know that
+\begin{align}
+  \pdv{L(q_i, \dot{q}_i, t)}{q_i} = \odv{}{t} \pab{\pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}}
+\end{align}
+the change in Lagrangian can be written as:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \odv{}{t} \sum_i \pab{
+    F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian2}
+\end{align}
+By comparing Eq. \eqref{eq:change_lagrangian1} and Eq. \eqref{eq:change_lagrangian2}, we can see that
+\begin{align}
+  \odv{}{t} \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} & = \odv{}{t} \Lambda(q(t), t) \\
+  \implies \quad \odv{}{t} \bab{
+    \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
+  }                                                                     & = 0
+\end{align}
+Thus, the quantity:
+\begin{align}
+  \symcal{Q} & := \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
+\end{align}
+does not change with time, that is, $\symcal{Q}$ is conserved.
+This is \emph{Noether's theorem}.
+
+In the case where the transformation includes time translation: $t' = t + \epsilon T(q(t), t) + \symcal{O}(\epsilon^2)$,
+\begin{align}
+  L(Q_i(t'), \dot{Q}_i(t'), t') & = L(Q_i(t), \dot{Q}_i(t), t) + \odv{}{t} f(Q_i(t), t)
+\end{align}
+
 
 
 
