@@ -51,7 +51,7 @@ export default function HomePage() {
         }`}
       >
         <nav className="flex flex-col space-y-2">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Navigation</h2>
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Links</h2>
           {navigation.map((item) => (
             <a
               key={item.name}
