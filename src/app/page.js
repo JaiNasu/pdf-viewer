@@ -39,7 +39,7 @@ export default function HomePage() {
       {/* --- Mobile Sidebar Overlay --- */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-[rgba(113, 113, 113, 0.5)]" // This is the key change!
+          className="fixed inset-0 z-30 bg-[rgba(113, 113, 113, 255)]" // This is the key change!
           onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
