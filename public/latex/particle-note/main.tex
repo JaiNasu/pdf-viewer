@@ -17,8 +17,9 @@
 \documentclass[
   12pt, 
   titlepage=false,
-  bookmarkpackage=false
-  ]{scrreprt}
+  bookmarkpackage=false,
+  oneside
+  ]{scrbook}
 
 % If you want to use the document for school or university, please fill in your name and student ID below.
 \newcommand{\myname}{} 
@@ -42,12 +43,14 @@
 
 \begin{document}
 \changecolor
+\frontmatter
 \maketitle
 
-\pdfbookmark[1]{toc}{TOC}
+\pdfbookmark[1]{Table of Contents}{TOC}
 \tableofcontents
 \setcounter{page}{1}
 
+\mainmatter
 % \include{content/example}
 
 
@@ -101,6 +104,7 @@
 % \input{content/Extra/physical_constant}
 % \input{content/Extra/textbooks}
 
+\backmatter
 % Bibliography 
 \renewcommand{\emph}[1]{\textit{#1}}
 \printbibliography
