@@ -30,11 +30,11 @@ thus, we should define the \emph{Hamiltonian density} $\hami$ as:
 \nt{
   Similarly to the discrete case, we can write the Lagrangian densty $\lagr$ in terms of the Hamiltonian density $\hami$:
   \begin{align}
-    \lagr[\psi(\vec{x}, t), \pi(\vec{x}, t)] & = \pi \cdot \pdif{t} \psi - \hami[\psi(\vec{x}, t), \pi(\vec{x}, t)]
+    \lagr[\psi, \pdif{i} \psi, \pi, t] & = \pi \cdot \pdif{t} \psi - \hami[\psi, \pdif{i} \psi, \pi, t]
   \end{align}
   where
   \begin{align}
-    \pdif{t} \psi & = \pdv{\hami[\psi, \pi]}{\pi}
+    \pdif{t} \psi & = \pdv{\hami[\psi, \pdif{i} \psi, \pi, t]}{\pi}
   \end{align}
 }
 
@@ -124,7 +124,7 @@ Thus we have the \emph{canonical equations of fields}:
 \cor{Canonical Equations of Fields using $H$}{
   Using Theorem \ref{thm:func_deriv_relation}, the \emph{canonical equations of fields} can be re-written using the Hamiltonian $H$ instead of the Hamiltonian density $\hami$:
   \begin{align}
-    \pdv{\psi(\vec{x}, t)}{t} & = \fdv{H[\psi, \pi]}{\pi}, \quad \pdv{\pi(\vec{x}, t)}{t} = -\fdv{H[\psi, \pi]}{\psi}
+    \pdv{\psi(\vec{x}, t)}{t} & = \fdv{H}{\pi}, \quad \pdv{\pi(\vec{x}, t)}{t} = -\fdv{H}{\psi}
   \end{align}
 }
 
@@ -136,21 +136,21 @@ In the discrete case, the time evolution of a physical quantity $X(q_i, p_i, t)$
 
 In the continous case, a physical quantity $X$ should be an integral of "density" $\tilde{X}$ over some volume:
 \begin{align}
-  X & = \int_V \odif[3]{\vec{x'}} \, \tilde{X}(\vec{x'}, t)
+  X & = \int_V \odif[3]{\vec{x}^{\prime}} \, \tilde{X}(\vec{x}^{\prime}, t)
 \end{align}
 and assume that $\tilde{X}$ is a function of the field $\psi(\vec{x}, t)$ and its conjugate field $\pi(\vec{x}, t)$ (which makes $X$ a functional of the fields):
 \begin{align}
-  \implies \quad X[\psi, \pi, t] & = \int_V \odif[3]{\vec{x'}} \, \tilde{X}(\psi(\vec{x'}, t), \pi(\vec{x'}, t), t)
+  \implies \quad X[\psi, \pdif{i} \psi, \pi, t] & = \int_V \odif[3]{\vec{x}^{\prime}} \, \tilde{X}(\psi(\vec{x}^{\prime}, t), \pi(\vec{x}^{\prime}, t), t)
 \end{align}
 Then the time evolution of $X$ can be written as:
 \begin{align}
-  \odv{X[\psi, \pi, t]}{t}
-   & = \odv{}{t} \int_V \odif[3]{\vec{x'}} \, \tilde{X}(\psi(\vec{x'}, t), \pi(\vec{x'}, t), t) = \int_V \odif[3]{\vec{x'}} \, \odv{\tilde{X}(\psi(\vec{x'}, t), \pi(\vec{x'}, t), t)}{t} \\
-   & = \int_V \odif[3]{\vec{x'}} \, \pdv{\tilde{X}(\psi, \pi, t)}{t}
+  \odv{X[\psi, \pdif{i} \psi, \pi, t]}{t}
+   & = \odv{}{t} \int_V \odif[3]{\vec{x}^{\prime}} \, \tilde{X}(\psi(\vec{x}^{\prime}, t), \pi(\vec{x}^{\prime}, t), t) = \int_V \odif[3]{\vec{x}^{\prime}} \, \odv{\tilde{X}(\psi(\vec{x}^{\prime}, t), \pi(\vec{x}^{\prime}, t), t)}{t} \\
+   & = \int_V \odif[3]{\vec{x}^{\prime}} \, \pdv{\tilde{X}(\psi, \pi, t)}{t}
   + \pdv{\tilde{X}(\psi, \pi, t)}{\psi} \pdif{t} \psi
-  + \pdv{\tilde{X}(\psi, \pi, t)}{\pi} \pdif{t} \pi                                                                                                                                       \\
-   & = \int_V \odif[3]{\vec{x'}} \, \pdv{\tilde{X}}{t}
-  + \int_V \odif[3]{\vec{x'}} \, \pab{\pdv{\tilde{X}}{\psi} \pdv{\hami}{\pi} - \pdv{\tilde{X}}{\pi} \pdv{\hami}{\psi}}
+  + \pdv{\tilde{X}(\psi, \pi, t)}{\pi} \pdif{t} \pi                                                                                                                                                                                       \\
+   & = \int_V \odif[3]{\vec{x}^{\prime}} \, \pdv{\tilde{X}}{t}
+  + \int_V \odif[3]{\vec{x}^{\prime}} \, \pab{\pdv{\tilde{X}}{\psi} \pdv{\hami}{\pi} - \pdv{\tilde{X}}{\pi} \pdv{\hami}{\psi}}
 \end{align}
 Using Theorem \ref{thm:func_deriv_relation}, the partial derivatives can be replaced with functional derivatives:
 \begin{align}
@@ -158,26 +158,26 @@ Using Theorem \ref{thm:func_deriv_relation}, the partial derivatives can be repl
 \end{align}
 Thus, we can write the time evolution of $X$ as:
 \begin{align}
-  \odv{X[\psi, \pi, t]}{t}
-   & = \pdv{X[\psi, \pi, t]}{t} + \int \odif[3]{\vec{x'}} \, \pab{\fdv{X}{\psi} \fdv{H}{\pi} - \fdv{X}{\pi} \fdv{H}{\psi}}
+  \odv{X[\psi, \pdif{i} \psi, \pi, t]}{t}
+   & = \pdv{X[\psi, \pdif{i} \psi, \pi, t]}{t} + \int \odif[3]{\vec{x}^{\prime}} \, \pab{\fdv{X}{\psi} \fdv{H}{\pi} - \fdv{X}{\pi} \fdv{H}{\psi}}
 \end{align}
 If we were to write the coordinates explicitly,
 \begin{align}
-  \odv{X[\psi, \pi, t]}{t} & = \pdv{X}{t} +
-  \int \odif[3]{\vec{x'}} \, \pab{
-    \frac{\delta X[\psi, \pi, t]}{\delta \psi(\vec{x'}, t)} \frac{\delta H[\psi, \pi, t]}{\delta \pi(\vec{x'}, t)}
-    - \frac{X[\psi, \pi, t]}{\delta \pi(\vec{x'}, t)} \fdv{H[\psi, \pi, t]}{\psi(\vec{x'}, t)}
+  \odv{X[\psi, \pdif{i} \psi, \pi, t]}{t} & = \pdv{X}{t} +
+  \int \odif[3]{\vec{x}^{\prime}} \, \pab{
+    \frac{\delta X[\psi, \pdif{i} \psi, \pi, t]}{\delta \psi(\vec{x}^{\prime}, t)} \frac{\delta H[\psi, \pdif{i} \psi, \pi, t]}{\delta \pi(\vec{x}^{\prime}, t)}
+    - \frac{X[\psi, \pdif{i} \psi, \pi, t]}{\delta \pi(\vec{x}^{\prime}, t)} \fdv{H[\psi, \pdif{i} \psi, \pi, t]}{\psi(\vec{x}^{\prime}, t)}
   }
 \end{align}
 Comparing with the discrete case, we can define the \emph{Poisson bracket} of two physical quantities $X$ and $Y$ as:
 \dfn{Poisson Bracket of a Field}{
-  The \emph{Poisson bracket} of two physical quantities $X[\psi, \pi, t]$ and $Y[\psi, \pi, t]$ is defined as:
+  The \emph{Poisson bracket} of two physical quantities $X[\psi, \pdif{i} \psi, \pi, t]$ and $Y[\psi, \pdif{i} \psi, \pi, t]$ is defined as:
   \begin{align}
-    \pobra{X}{Y} & = \int \odif[3]{\vec{x'}} \, \pab{\fdv{X}{\psi(\vec{x'}, t)} \fdv{Y}{\pi(\vec{x'}, t)} - \fdv{X}{\pi(\vec{x'}, t)} \fdv{Y}{\psi(\vec{x'}, t)}}
+    \pobra{X}{Y} & = \int \odif[3]{\vec{x}^{\prime}} \, \pab{\fdv{X}{\psi(\vec{x}^{\prime}, t)} \fdv{Y}{\pi(\vec{x}^{\prime}, t)} - \fdv{X}{\pi(\vec{x}^{\prime}, t)} \fdv{Y}{\psi(\vec{x}^{\prime}, t)}}
   \end{align}
 }
 \thm{Time Evolution of a Physical Quantity}{
-  The time evolution of a physical quantity $X[\psi, \pi, t]$ can be written as:
+  The time evolution of a physical quantity $X[\psi, \pdif{i} \psi, \pi, t]$ can be written as:
   \begin{align}
     \odv{X}{t} & = \pdv{X}{t} + \pobra{X}{H}
   \end{align}
@@ -185,8 +185,8 @@ Comparing with the discrete case, we can define the \emph{Poisson bracket} of tw
 \thm{Poisson Brackets of Fields}{
   For $\psi$ and its conjugate field $\pi$, the Poisson bracket satisfies the following properties:
   \begin{align}
-    \pobra{\psi(\vec{x}, t)}{\pi(\vec{x'}, t)}  & = \delta^3(\vec{x} - \vec{x'}) \\
-    \pobra{\psi(\vec{x}, t)}{\psi(\vec{x'}, t)} & = 0                            \\
-    \pobra{\pi(\vec{x}, t)}{\pi(\vec{x'}, t)}   & = 0
+    \pobra{\psi(\vec{x}, t)}{\pi(\vec{x}^{\prime}, t)}  & = \delta^3(\vec{x} - \vec{x}^{\prime}) \\
+    \pobra{\psi(\vec{x}, t)}{\psi(\vec{x}^{\prime}, t)} & = 0                                    \\
+    \pobra{\pi(\vec{x}, t)}{\pi(\vec{x}^{\prime}, t)}   & = 0
   \end{align}
 }

@@ -1,0 +1,173 @@
+\section{Noether's Theorem}
+\label{sec:proof-noether-theorem}
+\subsection{Symmetry under Point Transformation}
+\thm{Noether's Theorem under Point Transformation}{
+  Every real paramter of a continuous symmetry of the action corresponds to a conserved quantity $\symcal{Q}$.
+  If the continous symmetry is given by an infinitesimal transformation: $Q_i(t) = q_i(t) + \epsilon F_i(q(t), t) + \mathcal{O}(\epsilon^2)$,
+  \begin{align}
+    \symcal{Q} & = \sum_i F_i(q(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
+  \end{align}
+  where $\Lambda(q(t), t)$ is the change in the Lagrangian under the infinitesimal transformation.
+}
+Assume that a system has a continous symmetry.
+Thus if we consider a very "small" transformation that is almost the identity transformation:
+\begin{align}
+  Q_i(t) & = q_i(t) + \epsilon F_i(q(t), t) + \symcal{O}(\epsilon^2)
+\end{align}
+by differntiating w.r.t. $t$, we get
+\begin{align}
+  \dot{Q}_i (t) & = \dot{q}_i(t) + \epsilon \odv{}{t} F_i(q(t), t) + \symcal{O}(\epsilon^2)
+\end{align}
+Here, since the system has a symmetry under this transformation, the change in Lagrangian must be up to $\odv{f}{t} (q(t), t)$:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) = \odv{}{t} f(q(t), t)
+\end{align}
+given that the transformation is infinitesimal, we can write the change in Lagrangian as:
+\begin{align}
+  \odv{}{t} f(q(t), t)                                       & = \epsilon \odv{}{t} \Lambda(q(t), t) + \symcal{O}(\epsilon^2) \\
+  \implies \quad L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \odv{}{t} \Lambda(q(t), t) + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian1}
+\end{align}
+Now, the new Lagrangian can be expanded as a Taylor series around the old Lagrangian with a small parameter $\epsilon$:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \sum_i  \pab{
+    \epsilon F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{q_i} + \epsilon \odv{}{t} F_i(q_i, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+\end{align}
+So the change in Lagrangian is:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \sum_i \pab{
+    F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{q_i} + \odv{}{t} F_i(q_i, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian2}
+\end{align}
+From the Euler-Lagrange equation, we know that
+\begin{align}
+  \pdv{L(q_i, \dot{q}_i, t)}{q_i} = \odv{}{t} \pab{\pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}}
+\end{align}
+the change in Lagrangian can be written as:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \odv{}{t} \sum_i \pab{
+    F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian2}
+\end{align}
+By comparing Eq. \eqref{eq:change_lagrangian1} and Eq. \eqref{eq:change_lagrangian2}, we can see that
+\begin{align}
+  \odv{}{t} \sum_i F_i(q_i(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}
+   & = \odv{}{t} \Lambda(q_i(t), t) \\
+  \implies \quad \odv{}{t} \bab{
+    \sum_i F_i(q_i(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i} - \Lambda(q_i(t), t)
+  }
+   & = 0
+\end{align}
+Thus, the quantity:
+\begin{align}
+  \symcal{Q} & := \sum_i \bab{
+    F_i(q(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}
+  } - \Lambda(q(t), t)
+\end{align}
+does not change with time, that is, $\symcal{Q}$ is conserved.
+
+\subsection{Symmetry under Transformation Including Time}
+\thm{Noether's Theorem under Transformation Including Time}{
+  If the system is symmetric under the transformation includes time translation:
+  \begin{align}
+    t'      & = t + \epsilon T(q_i(t), t) + \symcal{O}(\epsilon^2)        \\
+    Q_i(t') & = q_i(t) + \epsilon F_i(q_i(t), t) + \symcal{O}(\epsilon^2)
+  \end{align}
+  There is a conserved quantity $\symcal{Q}$ given by:
+  \begin{align}
+    \symcal{Q} & =
+    \begin{multlined}[t]
+      \sum_i \bab{F_i(q_i(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}} - \Lambda(q_i, t) \\
+      \qquad - T(q_i(t), t) \sum_i \bab{\dot{q}_i (t)\pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i} - L(q_i(t), \dot{q}_i(t), t)}
+    \end{multlined}
+  \end{align}
+}
+Given that $t' = t + \epsilon T(q_i(t), t) + \symcal{O}(\epsilon^2)$,
+the Taylor expansion of $L(Q_i(t'), \dot{Q}_i(t'), t')$ around $L(Q_i(t), \dot{Q}_i(t), t)$ is:
+\begin{align}
+  L(Q_i(t'), \dot{Q}_i(t'), t') & = L(Q_i(t), \dot{Q}_i(t), t) + \epsilon T(q_i(t), t) \odv{}{t} L(Q_i(t), \dot{Q}_i(t), t) + \symcal{O}(\epsilon^2)
+\end{align}
+and
+\begin{align}
+  \odv{t'}{t} & = 1 + \epsilon \odv{}{t} T(q_i(t), t) + \symcal{O}(\epsilon^2)
+\end{align}
+here, remember the definition of symmetry:
+\begin{align}
+  \odv{t'}{t} L(Q_i(t'), \dot{Q}_i(t'), t') & = L(q_i, \dot{q}_i, t) + \odv{}{t} f(q_i, t)
+\end{align}
+thus, for the system to be symmetric under the transformation including time, we must have:
+\begin{align}
+   & \phantom{=} L(q_i, \dot{q}_i, t) + \odv{}{t} f(q_i(t), t)                                                                                                                     \\
+   & = \begin{multlined}[t]
+         \pab{1 + \epsilon \odv{}{t} T(q_i(t), t) + \symcal{O}(\epsilon^2)} \\
+         \times \pab{L(Q_i(t), \dot{Q}_i(t), t) + \epsilon T(q_i(t), t) \odv{}{t} L(Q_i(t), \dot{Q}_i(t), t) + \symcal{O}(\epsilon^2)}
+       \end{multlined} \\
+   & = L(Q_i, \dot{Q}_i, t) + \epsilon \odv{}{t} \pab{T(q_i(t), t)  L(Q_i(t), \dot{Q}_i(t), t)} + \symcal{O}(\epsilon^2)
+\end{align}
+Since the difference between $L(Q_i, \dot{Q}_i, t)$ and $L(q_i, \dot{q}_i, t)$ is $\symcal{O}(\epsilon)$:
+\begin{align}
+  L(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \symcal{O}(\epsilon)
+\end{align}
+we can replace $L(Q_i(t), \dot{Q}_i(t), t)$ with $L(q_i, \dot{q}_i, t)$ in the above equation as the difference is of order $\symcal{O}(\epsilon^2)$:
+\begin{align}
+  L(q_i, \dot{q}_i, t) + \odv{}{t} f(q_i(t), t) & =
+  L(Q_i(t), \dot{Q}_i(t), t)
+  + \epsilon \odv{}{t} \pab{
+    T(q_i(t), t)  L(q_i(t), \dot{q}_i(t), t)
+    \vphantom{\frac{a}{b}}} + \symcal{O}(\epsilon^2)
+\end{align}
+and if we write the change in Lagrangian as:
+\begin{align}
+  \odv{}{t} f(q_i(t), t) & = \epsilon \odv{}{t} \Lambda(q_i(t), t) + \symcal{O}(\epsilon^2)
+\end{align}
+we get:
+\begin{align}
+  L(Q_i(t), \dot{Q}_i(t), t) - L(q_i(t), \dot{q}_i(t), t)
+   & = - \epsilon \odv{}{t} \pab{
+    T(q_i(t), t)  L(q_i(t), \dot{q}_i(t), t)
+    - \Lambda(q_i(t), t)
+    \vphantom{\frac{a}{b}}} + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian3}
+\end{align}
+Now, given that $t' = t + \epsilon T(q_i(t), t) + \symcal{O}(\epsilon^2)$, the coordinates and velocities transform as follows:
+\begin{align}
+  Q_i(t)                      & = \underbrace{q_i(t) + \epsilon F_i(q_i(t), t)}_{ = Q_(t')} - \underbrace{\epsilon \odv{Q_i(t)}{t} T(q_i(t), t)}_{\text{cancel time transformation}} + \symcal{O}(\epsilon^2)
+  \intertext{since $Q_i(t) - q_i(t) \approx \symcal{O}{\epsilon}$, we can write}
+  \dot{Q}_i(t)                & = q_i(t) + \epsilon \pab{F_i(q_i(t), t) - T(q_i(t), t) \dot{q}_i(t) \vphantom{\frac{a}{b}}} + \symcal{O}(\epsilon^2)                                                          \\
+  \implies \quad \dot{Q}_i(t) & =\dot{q}_i(t) + \epsilon \odv{}{t} \pab{
+    F_i(q_i(t), t) -  T(q_i(t), t) \dot{q}_i(t)
+    \vphantom{\frac{a}{b}}} + \symcal{O}(\epsilon^2)
+\end{align}
+by the same discussion in Eq.\eqref{eq:change_lagrangian1} to \eqref{eq:change_lagrangian2}, we can write the change in Lagrangian as:
+\begin{align}
+  \quad & \phantom{=} L(Q_i(t), \dot{Q}_i(t), t) - L(q_i(t), \dot{q}_i(t), t) \\
+        & = \epsilon \odv{}{t} \sum_i \bab{
+    \pab{
+      F_i(q_i(t), t) -  T(q_i(t), t) \dot{q}_i(t) \vphantom{\frac{a}{b}}
+    } \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}
+  } + \symcal{O}(\epsilon^2)
+  \label{eq:change_lagrangian4}
+\end{align}
+by comparing Eq. \eqref{eq:change_lagrangian3} and Eq. \eqref{eq:change_lagrangian4}, we can see that
+\begin{align}
+   & \quad - \epsilon \odv{}{t} \pab{
+    T(q_i(t), t)  L(q_i(t), \dot{q}_i(t), t)
+    - \Lambda(q_i(t), t)
+  \vphantom{\frac{a}{b}}}              \\
+   & = \epsilon \odv{}{t} \sum_i \bab{
+    \pab{
+      F_i(q_i(t), t) -  T(q_i(t), t) \dot{q}_i(t) \vphantom{\frac{a}{b}}
+    } \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}
+  }
+\end{align}
+which gives the conserved quantity $\symcal{Q}$ as:
+\begin{align}
+  \symcal{Q} & =
+  \begin{multlined}[t]
+    \sum_i \bab{F_i(q_i(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}} - \Lambda(q_i, t) \\
+    \qquad - T(q_i(t), t) \sum_i \bab{\dot{q}_i (t)\pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i} - L(q_i(t), \dot{q}_i(t), t)}
+  \end{multlined}
+\end{align}

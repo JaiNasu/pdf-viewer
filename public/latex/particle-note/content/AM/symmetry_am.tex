@@ -129,8 +129,7 @@ In short, it means three things:
 
 This concept is very important in particle physics.
 
-\subsection{Symmetry including Time}
-So far we have seen symmetry under point transformation, but it is also useful to think about symmetry under transformations including time:
+\subsection{Symmetry of the System including Time}
 \begin{align}
   t'      & = t'(q_i, t)  \\
   Q_j(t') & = Q_j(q_i, t)
@@ -156,75 +155,83 @@ Thus the symmetry under the transformation including time is defined as:
   \end{align}
 }
 
+
+
 \subsection{Noether's Theorem}
-\thm{Noether's Theorem (No time translation)}{
+Here, I introduce Noether's theorem, highlights the direct correspondence between symmetries and conservation laws:
+\thm{Noether's Theorem under Point Transformation}{
   Every real paramter of a continuous symmetry of the action corresponds to a conserved quantity $\symcal{Q}$.
   If the continous symmetry is given by an infinitesimal transformation: $Q_i(t) = q_i(t) + \epsilon F_i(q(t), t) + \mathcal{O}(\epsilon^2)$,
   \begin{align}
-    \symcal{Q} & = \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
+    \symcal{Q} & = \sum_i F_i(q(t), t) \pdv{L(Q_i(t), \dot{Q}_i(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
   \end{align}
   where $\Lambda(q(t), t)$ is the change in the Lagrangian under the infinitesimal transformation.
 }
-Now, assume that a system has a continous symmetry.
-Thus if we consider a very "small" transformation that is almost the identity transformation:
+This might be quite abstract, so let us see an example of Noether's theorem in action.
+First, take the generalized coordinates $\vec{q}(t)$ to be the position vector $\vec{r}(t)$ of a particle in space.
+Then the new coordinates $Q_i(t)$ can be defined as:
 \begin{align}
-  Q_i(t) & = q_i(t) + \epsilon F_i(q(t), t) + \symcal{O}(\epsilon^2)
+  Q_i(t) & = r_i(t) + \epsilon F_i(\vec{r}(t), t) + \mathcal{O}(\epsilon^2)
 \end{align}
-by differntiating w.r.t. $t$, we get
-\begin{align}
-  \dot{Q}_i (t) & = \dot{q}_i(t) + \epsilon \odv{}{t} F_i(q(t), t) + \symcal{O}(\epsilon^2)
-\end{align}
-Here, since the system has a symmetry under this transformation, the change in Lagrangian must be up to $\odv{f}{t} (q(t), t)$:
-\begin{align}
-  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) = \odv{}{t} f(q(t), t)
-\end{align}
-given that the transformation is infinitesimal, we can write the change in Lagrangian as:
-\begin{align}
-  \odv{}{t} f(q(t), t)                                       & = \epsilon \odv{}{t} \Lambda(q(t), t) + \symcal{O}(\epsilon^2) \\
-  \implies \quad L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \odv{}{t} \Lambda(q(t), t) + \symcal{O}(\epsilon^2)
-  \label{eq:change_lagrangian1}
-\end{align}
-Now, the new Lagrangian can be expanded as a Taylor series around the old Lagrangian with a small parameter $\epsilon$:
-\begin{align}
-  L(Q_i, \dot{Q}_i, t) & = L(q_i, \dot{q}_i, t) + \sum_i  \pab{
-    \epsilon F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{q_i} + \epsilon \odv{}{t} F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
-  } + \symcal{O}(\epsilon^2)
-\end{align}
-So the change in Lagrangian is:
-\begin{align}
-  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \sum_i \pab{
-    F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{q_i} + \odv{}{t} F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
-  } + \symcal{O}(\epsilon^2)
-\end{align}
-Frp, the Euler-Lagrange equation, we know that
-\begin{align}
-  \pdv{L(q_i, \dot{q}_i, t)}{q_i} = \odv{}{t} \pab{\pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}}
-\end{align}
-the change in Lagrangian can be written as:
-\begin{align}
-  L(Q_i, \dot{Q}_i, t) - L(q_i, \dot{q}_i, t) & = \epsilon \odv{}{t} \sum_i \pab{
-    F_i(q, t) \pdv{L(q_i, \dot{q}_i, t)}{\dot{q}_i}
-  } + \symcal{O}(\epsilon^2)
-  \label{eq:change_lagrangian2}
-\end{align}
-By comparing Eq. \eqref{eq:change_lagrangian1} and Eq. \eqref{eq:change_lagrangian2}, we can see that
-\begin{align}
-  \odv{}{t} \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} & = \odv{}{t} \Lambda(q(t), t) \\
-  \implies \quad \odv{}{t} \bab{
-    \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
-  }                                                                     & = 0
-\end{align}
-Thus, the quantity:
-\begin{align}
-  \symcal{Q} & := \sum_i F_i(q(t), t) \pdv{L(q(t), \dot{q}(t), t)}{\dot{q}_i} - \Lambda(q(t), t)
-\end{align}
-does not change with time, that is, $\symcal{Q}$ is conserved.
-This is \emph{Noether's theorem}.
+\eg{Translation in Space}{
+  If we consider a constant translation in space, we can write the infinitesimal transformation as:
+  \begin{align}
+    Q_i(t) & = r_i(t) + \epsilon a_i + \mathcal{O}(\epsilon^2) \\
+  \end{align}
+  If Lagrangian only depends on $\dot{\vec{r}}_i(t)$ or $\vec{r}_n - \vec{r}_m$ (often called internal forces, which satisfy action-reaction law),
+  the effect of constant translation is cancelled out (i.e. $\Lambda = 0$):
+  \begin{align}
+    \implies \quad \symcal{Q} & = \sum_i a_i \pdv{L}{\dot{r}_i} \implies \dot{\symcal{Q}} = \sum_i a_i \odv{}{t} \pdv{L}{\dot{r}_i} = 0
+  \end{align}
+  since $a_i$ is arbitrary, the only possibility is that
+  \begin{align}
+    \pdv{L}{\dot{r}_i} & = \text{const.}
+  \end{align}
+  which is the momentum of the particle!
+}
+There are many more symmetries and corresponding conserved quantities, which I summarize below:
+\begin{table}[htbp]
+  \centering
+  \caption{Symmetries and Corresponding Conserved Quantities}
+  \footnotesize
+  \begin{tabular}{cccc}
+    \toprule
+    Symmetry                & Transformation                          & Conserved Quantity $\symcal{Q}$         & Group $G$ \\
+    \midrule
+    Spatial Translation     & $\vec{r}' = \vec{r} + \epsilon \vec{a}$ & Linear Momenum $\sum \vec{p}$           & $\real^3$ \\
+    Temporal translation    & $t' = t + \epsilon T(q_i(t), t)$        & Energy $E$                              & $\real$   \\
+    Spatial Rotation        & $\vec{r}' = R(\theta) \vec{r}$          & Angular Momentum $\sum \vec{L}$         & $SO(3)$   \\
+    Spin Rotation           & $\vec{r}' = R(\theta) \vec{r}$          & Spin $\sum \vec{S}$                     & $SO(3)$   \\
+    Galilean Transformation & $\vec{r}' = \vec{r} - \vec{v} t$        & $\sum \vec{p} - t \vec{P}_{\text{obs}}$ & $\real^3$ \\
+    Phase Transformation    & $\psi' = e^{i \theta} \psi$             & Number of particles $N$ / Charge $Q$    & $U(1)$    \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:symmetries}
+  \normalsize
+\end{table}
+\nt{
+  Proofs are in Section \ref{sec:proof-noether-theorem}.
+}
+\thm{Noether's Theorem under Transformation Including Time}{
+  If the system is symmetric under the transformation includes time translation:
+  \begin{align}
+    t'      & = t + \epsilon T(q_i(t), t) + \symcal{O}(\epsilon^2)        \\
+    Q_i(t') & = q_i(t) + \epsilon F_i(q_i(t), t) + \symcal{O}(\epsilon^2)
+  \end{align}
+  There is a conserved quantity $\symcal{Q}$ given by:
+  \begin{align}
+    \symcal{Q} & =
+    \begin{multlined}[t]
+      \sum_i \bab{F_i(q_i(t), t) \pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i}} - \Lambda(q_i, t) \\
+      \qquad - T(q_i(t), t) \sum_i \bab{\dot{q}_i (t)\pdv{L(q_i(t), \dot{q}_i(t), t)}{\dot{q}_i} - L(q_i(t), \dot{q}_i(t), t)}
+    \end{multlined}
+  \end{align}
+}
 
-In the case where the transformation includes time translation: $t' = t + \epsilon T(q(t), t) + \symcal{O}(\epsilon^2)$,
-\begin{align}
-  L(Q_i(t'), \dot{Q}_i(t'), t') & = L(Q_i(t), \dot{Q}_i(t), t) + \odv{}{t} f(Q_i(t), t)
-\end{align}
+
+
+
+
 
 
 
