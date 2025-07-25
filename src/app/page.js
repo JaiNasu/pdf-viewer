@@ -90,7 +90,7 @@ export default function HomePage() {
 
             <div className="mt-10 flex items-center justify-center">
                 <Link
-                  href="/particleNote"
+                  href="particleNote"
                   className="block w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 text-left shadow-md transition-all hover:border-blue-500 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                   <h2 className="text-xl font-semibold text-gray-900">
