@@ -22,15 +22,9 @@ import {
 // Sidebar navigation links
 const navigation = [
   { name: 'Source', href: 'https://github.com/JaiNasu/Homepage', icon: CodeBracketIcon },
-  { name: 'Home', href: 'https://home-pi-lac.vercel.app/', icon: HomeIcon },
-  { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
-  { name: 'Syllabus', href: 'https://www.wsl.waseda.jp/syllabus/JAA101.php', icon: BookOpenIcon },
-  { name: 'Gmail', href: 'https://mail.google.com/mail/u/0/#inbox', icon: EnvelopeIcon },
-  { name: 'Heap Mail', href:'https://webmail.m.mse.waseda.ac.jp/', icon: EnvelopeIcon },
-  { name: 'Gemini AI', href: 'https://gemini.google.com/u/2/app?hl=ja', icon: BoltIcon},
-  { name: 'Discord', href: 'https://discord.com/', icon: ChatBubbleLeftIcon },
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
-  { name: 'Lab Page', href: 'https://www.heap.phys.waseda.ac.jp/', icon: AtSymbolIcon },
+  { name: 'Home', href: 'https://my-vercel-app-opal-iota.vercel.app/', icon: HomeIcon },
+  { name: 'Discord', href: 'https://discord.com/', icon: ChatBubbleLeftIcon },
 ];
 
 export default function HomePage() {
