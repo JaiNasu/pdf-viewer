@@ -35,34 +35,8 @@ const navigation = [
 
 export default function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [notification, setNotification] = useState(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetch('http://your-backend-server-ip:3001/check-email')
-        .then(response => response.json())
-        .then(data => {
-          if (data.newMail) {
-            setNotification(data.message);
-            // Hide notification after 5 seconds
-            setTimeout(() => setNotification(null), 5000);
-          }
-        })
-        .catch(error => console.error('Error fetching email status:', error));
-    }, 10000); // Poll every 10 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-
   return (
     <div className="relative min-h-screen bg-gray-100 md:flex">
-      {/* --- Notification Banner --- */}
-      {notification && (
-         <div className="fixed top-5 right-5 bg-blue-500 text-white p-4 rounded-lg shadow-lg">
-           {notification}
-         </div>
-       )}
       {/* --- Mobile Sidebar Overlay --- */}
       {isSidebarOpen && (
         <div
@@ -127,6 +101,19 @@ export default function HomePage() {
                 >
                   <h2 className="text-xl font-semibold text-gray-900">
                   Preliminaries for Particle Physics
+                  </h2>
+                  <p className="mt-2 text-gray-500">
+                    WORK IN PROGRESS
+                  </p>
+                </Link>
+            </div>
+            <div className="mt-10 flex items-center justify-center">
+                <Link
+                  href="/test"
+                  className="block w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 text-left shadow-md transition-all hover:border-blue-500 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    Planning: Introduction to Astrophysics
                   </h2>
                   <p className="mt-2 text-gray-500">
                     WORK IN PROGRESS
