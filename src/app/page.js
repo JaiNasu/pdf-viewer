@@ -26,6 +26,7 @@ const navigation = [
   { name: 'Moodle', href:'https://wsdmoodle.waseda.jp/my/courses.php', icon: AcademicCapIcon },
   { name: 'Syllabus', href: 'https://www.wsl.waseda.jp/syllabus/JAA101.php', icon: BookOpenIcon },
   { name: 'Gmail', href: 'https://mail.google.com/mail/u/0/#inbox', icon: EnvelopeIcon },
+  { name: 'Heap Mail', href:'https://webmail.m.mse.waseda.ac.jp/cpsess0576877607/3rdparty/roundcube/?_task=mail&_mbox=INBOX', icon: EnvelopeIcon },
   { name: 'Gemini AI', href: 'https://gemini.google.com/u/2/app?hl=ja', icon: BoltIcon},
   { name: 'Discord', href: 'https://discord.com/', icon: ChatBubbleLeftIcon },
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
