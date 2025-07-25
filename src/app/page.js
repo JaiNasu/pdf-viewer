@@ -15,7 +15,8 @@ import {
     EnvelopeIcon,
     CodeBracketIcon,
     ChatBubbleLeftIcon,
-    BoltIcon
+    BoltIcon,
+    AtSymbolIcon
 } from '@heroicons/react/24/outline';
 
 // Sidebar navigation links
@@ -28,6 +29,7 @@ const navigation = [
   { name: 'Gemini AI', href: 'https://gemini.google.com/u/2/app?hl=ja', icon: BoltIcon},
   { name: 'Discord', href: 'https://discord.com/', icon: ChatBubbleLeftIcon },
   { name: 'Github', href: 'https://github.com/JaiNasu?tab=repositories', icon:  CommandLineIcon},
+  { name: 'Lab Page', href: 'https://www.heap.phys.waseda.ac.jp/', icon: AtSymbolIcon },
 ];
 
 export default function HomePage() {
