@@ -34,11 +34,35 @@ const navigation = [
 ];
 
 export default function HomePage() {
-  // State to manage sidebar visibility on mobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [notification, setNotification] = useState(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch('http://your-backend-server-ip:3001/check-email')
+        .then(response => response.json())
+        .then(data => {
+          if (data.newMail) {
+            setNotification(data.message);
+            // Hide notification after 5 seconds
+            setTimeout(() => setNotification(null), 5000);
+          }
+        })
+        .catch(error => console.error('Error fetching email status:', error));
+    }, 10000); // Poll every 10 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   return (
     <div className="relative min-h-screen bg-gray-100 md:flex">
+      {/* --- Notification Banner --- */}
+      {notification && (
+         <div className="fixed top-5 right-5 bg-blue-500 text-white p-4 rounded-lg shadow-lg">
+           {notification}
+         </div>
+       )}
       {/* --- Mobile Sidebar Overlay --- */}
       {isSidebarOpen && (
         <div
