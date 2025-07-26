@@ -150,3 +150,22 @@ Finally, note that the Poisson bracket of $q_i$ and $p_j$ gives:
 }
 
 \subsection{Generators}
+Let us remark on some more important properties of the Poisson bracket:
+We know that for $q_i$ and $p_j$, the Poisson bracket is given by
+\begin{align}
+  \pobra{q_i}{p_j} & = \delta_{ij}
+\end{align}
+but what if we replace $q_i$ to some other physical quantity $f(q_i, p_j)$?
+
+Let us write down the Poisson bracket explicitly:
+\begin{align}
+  \pobra{f(q_i, p_j)}{p_k} & = \sum_{l} \pdv{f(q_i, p_j)}{q_l} \pdv{p_k}{p_l} - \pdv{f(q_i, p_j)}{p_l} \pdv{p_k}{q_l}
+  \intertext{the second term is always zero, so}
+                           & = \sum_{l} \pdv{f(q_i, p_j)}{q_l} \delta_{kl}                                            \\
+                           & = \pdv{f(q_i, p_j)}{q_k}
+\end{align}
+so we have seen that the taking the derivative of a physical quantity with respect to $q_k$ is equivalent to taking the Poisson bracket with $p_k$.
+By linearity,
+\begin{align}
+  \pobra{f(q_i, p_j)}{\epsilon p_k} & = \epsilon \pdv{f(q_i, p_j)}{q_k}
+\end{align}

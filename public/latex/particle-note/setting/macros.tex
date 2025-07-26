@@ -17,6 +17,16 @@
   \fi
 }
 
+\newenvironment{Chapter}[1]{%
+  \chapter{#1}%
+  % \color{doc!60}\hrulefill
+  % \startcontents[chapters]%
+  % \printcontents[chapters]{}{1}{}%
+  % \hrulefill\color{black}%
+}{%
+  % \stopcontents[chapters]%
+}
+
 
 \setmathfontface\caligraph{NewCMMath-Book.otf}
 \setmathfontface\relfont{Fira Math}
@@ -109,7 +119,7 @@
 \newcommand{\commt}[2]{\left\lbrack #1 ,\, #2 \right\rbrack}
 \newcommand{\lagr}{\symcal{L}}
 \newcommand{\hami}{\symcal{H}}
-\newcommand{\hilbert}{\symbb{H}}
+\newcommand{\hilbert}{\symbfsf{H}}
 \newcommand{\iffdef}{\underset{\mathrm{def}}{\iff}}
 
 \renewcommand{\Re}{\text{Re }}

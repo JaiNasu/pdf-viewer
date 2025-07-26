@@ -1,0 +1,38 @@
+\subsection{Rules for Quantum Mechanics}
+Now, as always in physics, we need to find a way to connect the mathematics to the real world.
+One part of this is to assign a Hermitian operator to each observable, which is a physical quantity that can be measured.
+\dfn{Observable}{
+  An \emph{observable} is a physical quantity that can be measured, such as position, momentum, or energy. In quantum mechanics, each observable is represented by a Hermitian operator.
+  Its possible value is given by the eigenvalues of the operator, and corresponding vector is called the \emph{eigenstate} of the observable.
+}
+Another part of it is to do exactly what we have seen in the previous section: interpret the inner products as probabilities.
+\prcp{State Vector}{
+  A \emph{state vector} (or \emph{state ket}) $\ket{\psi}$ is a normalized vector in the Hilbert space $\hilbert$ that represents the state of a quantum system.
+  You can think of it as the vector containing the probability distribution for all possible measurements of the system, as we have seen in the previous section.
+}
+\prcp{Born's Probability Rule/ Interpretation}{
+  Assume that an observable $\hat{A}$ has eigenstates $\ket{a}$ with eigenvalues $a$.
+  For a general state $\ket{\psi} \in \hilbert$, the probability of measuring the observable $\hat{A}$ and obtaining the value $a$ is given by
+  \begin{align}
+    \symbb{P}(a) = \abs{\braket{a}{\psi}}^2 = \abs{\braket{\psi}{a}}^2.
+  \end{align}
+}
+\cor{Normalization Condition}{
+  Any state vector must be normalized, meaning that the total probability of measuring any value of the observable must equal 1:
+  \begin{align}
+    \norm{\ket{\psi}} = \sqrt{\brac{\psi}{\psi}} = 1.
+  \end{align}
+}
+\prcp{Collapse of the State}{
+  After we measure an observable $\hat{A}$ and obtain the value $a$, the state of the system collapses to the corresponding eigenstate $\ket{a}$ of $\hat{A}$:
+  \begin{align}
+    \ket{\psi} \xrightarrow{\text{measure } a} \ket{a}.
+  \end{align}
+}
+\thm{Rays}{
+  Two states $\ket{\psi}$ and $\ket{\phi}$ are physically indistinguishable if they differ only by a complex phase factor:
+  \begin{align}
+    \ket{\phi} = e^{i \theta} \ket{\psi}.
+  \end{align}
+  In this case, we say that $\ket{\psi}$ and $\ket{\phi}$ represent the same physical state, or that they are \emph{rays} in the Hilbert space.
+}

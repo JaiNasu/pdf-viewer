@@ -1,0 +1,547 @@
+\section{Basic Probability Theory}
+\label{sec:probability}
+\subsection{Discrete Probability}
+A fundamental interpretation of quantum mechanics is based on the principles of probability theory.
+Thus, let us review some basics of probability theory.
+
+Let $\Omega$ be the collection of all possible outcomes of an experiment (called the \emph{sample space}). Subsets of $\Omega$ are called events. Then the probability $\symbb{P}$ is a rule to assign each event a number between 0 and 1, called the \emph{probability} of an event, in a REASONABLE way.
+
+Such "probability" must satisfy the following conditions:
+\prcp{Requirements for Probability}{
+  \begin{enumerate}
+    \item $\symbb{P}(\Omega) = 1$ (the probability of any outcome is 1),
+    \item $0 \leq \symbb{P}(A) \leq 1$ for all events $A$ (the probability of an event is non-negative),
+    \item If $A_1, A_2, \ldots$ are disjoint events (mutually exclusive), then
+          \begin{align}
+            \symbb{P}\pab{\bigcup_{i=1}^{\infty} A_i } = \sum_{i=1}^{\infty} \symbb{P}(A_i).
+          \end{align}
+  \end{enumerate}
+}
+Sometimes, it is useful to know the expectation value of dice when you need to make a bet, let's say.
+It can be defined as a weighted average:
+\dfn{Expectation Value}{
+  The expectation value (or expected value) of a random variable $X$ is defined as:
+  \begin{align}
+    \expt{X} = \expect{X} = \sum_{i=1}^{n} x_i \cdot \symbb{P}(x_i)
+  \end{align}
+  where $x_i$ are the possible outcomes and $\symbb{P}(x_i)$ is the probability of observing the outcome $x_i$
+}
+\eg{A fair dice}{
+  Consider a fair dice - which means each face is equally likely to appear on top every time the dice is rolled.
+  The sample space is $\Omega = \{1, 2, 3, 4, 5, 6\}$.
+  The probability of each face appearing is $\symbb{P}(i) = \frac{1}{6}$ for $i = 1, 2, 3, 4, 5, 6$.
+  The expectation value of the dice is:
+  \begin{align}
+    \expect{\omega} & = \sum_{i=1}^{6} i \cdot \symbb{P}(i) = \frac{21}{6} = 3.5.
+  \end{align}
+  This means that if you roll the dice many times, the average outcome will be around 3.5.
+}
+
+\subsection{Continous Probability}
+Sometimes, we deal with continous data/ random variables, such as height, weight, or temperature.
+For such cases, we notice that the probability of observing a single value is zero, since there are infinitely many possible values.
+We need to consider a range of values.
+For example, we may not be able to find a person with exactly $\SI[parse-numbers=false]{1.74012959278\ldots}{\metre}$ tall, but we can find people who are between $\SI{1.74}{\metre}$ and $\SI{1.75}{\metre}$ tall.
+So, instead of probabilities for single value, we assign a \emph{probability density function} (PDF) to a certain range of values:
+\dfn{Probability Density Function}{
+  A probability density function (PDF) $P(x)$ is a function whose integral describes the likelihood of a random variable $X$ taking on a value in a certain range.
+  The probability of $X$ being in the interval $[a, b]$ is given by:
+  \begin{align}
+    \symbb{P}(a \leq X \leq b) = \int_{a}^{b} \odif{x} \, P(x).
+  \end{align}
+}
+\nt{
+  The PDF must satisfy the following conditions:
+  \begin{enumerate}
+    \item $P(x) \geq 0$ for all $x$ (the PDF is non-negative),
+    \item $\int_{-\infty}^{\infty} \odif{x} P(x) = 1$ (the total probability is 1).
+  \end{enumerate}
+  which is very much an extension of the discrete case.
+}
+
+\section{Braket Notation}
+\label{sec:braket-notation}
+\subsection{Discrete Probability and Vectors}
+For a discrete distribution, we can also use vectors to represent expectation values.
+Using the dice as an example again, let us study how we can use vectors to represent probabilites.
+First, define a vector $\ket{\omega}$ as follows (maybe a not familiar notation, but just follow me for now):
+\begin{align}
+  \ket{\omega} = \begin{pmatrix}
+                   \omega_1 \\
+                   \omega_2 \\
+                   \vdots   \\
+                   \omega_6
+                 \end{pmatrix}
+\end{align}
+Just assume that $\omega_i$ is a number between 0 and 1.
+Now, consider what happens when we calculate the norm (or length) of this vector:
+\begin{align}
+  \norm{\ket{\omega}} & = \sqrt{\sum_{i=1}^{6} \omega_i^2} = \sqrt{\omega_1^2 + \omega_2^2 + \ldots + \omega_6^2}
+\end{align}
+Now, what happens if $\omega_i = \sqrt{\symbb{P}(i)}$, the probability of observing the outcome $i$?
+Then, we have:
+\begin{align}
+  \norm{\ket{\omega}} & = \sqrt{\sum_{i=1}^{6} \symbb{P}(i)} = \sqrt{1} = 1.
+\end{align}
+This means that the vector $\ket{\omega}$ is a \emph{normalized vector} or \emph{unit vector}, which is a vector whose length is 1.
+
+This vector notation is very useful because when the dice is not fair, we can just change the values of $\omega_i$ to represent the probabilities of each outcome, while maintaining the normalization condition $\norm{\ket{\omega}} = 1$:
+\eg{Not so fair dice}{
+  A dice where the probability of rolling a 6 is twice as likely as rolling any other number can be represented by a vector:
+  \begin{align}
+    \ket{\omega} = \frac{1}{\sqrt{7}} \begin{pmatrix}
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        \sqrt{2}
+                                      \end{pmatrix}
+  \end{align}
+}
+And notice that this vector contains the information about probability distribution of the dice: how likely each outcome is to occur, but not the outcome itself.
+
+\subsection{Matrixs and Expectation Values}
+Thus, to truly apply linear algebra to probabilistic theory, we need to define another quantity, a \emph{matrix}:
+\dfn{Matrix}{
+  A matrix is a 2 dimensional array of numbers:
+  \begin{align}
+    \hat{M} & = \begin{pmatrix}
+                  M_{11} & M_{12} & \cdots & M_{1n} \\
+                  M_{21} & M_{22} & \cdots & M_{2n} \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  M_{m1} & M_{m2} & \cdots & M_{mn}
+                \end{pmatrix}
+  \end{align}
+  We can specify each element (or entry) of the matrix using two indices $M_{ij}$, where $i$ is the row index and $j$ is the column index.
+  If a matrix has $m$ rows and $n$ columns, we say that the matrix is of size $m \times n$.
+  If $i = j$, we call the element $M_{ii}$ a \emph{diagonal element} of the matrix.
+}
+and we define the multiplication of a vector and a matrix as follows:
+
+\begin{align}
+  \ket{\omega}         & = \begin{pmatrix}
+                             \omega_1 \\
+                             \omega_2 \\
+                             \vdots   \\
+                             \omega_n
+                           \end{pmatrix}, \quad
+  \hat{M} = \begin{pmatrix}
+              M_{11} & M_{12} & \cdots & M_{1n} \\
+              M_{21} & M_{22} & \cdots & M_{2n} \\
+              \vdots & \vdots & \ddots & \vdots \\
+              M_{m1} & M_{m2} & \cdots & M_{mn}
+            \end{pmatrix}                                                                                               \\
+  \hat{M} \ket{\omega} & =\textcolor{gray!50}{\sum_{j = 1}^{n}} \begin{pmatrix}
+                                                                  M_{1j} \omega_j \\
+                                                                  M_{2j} \omega_j \\
+                                                                  \vdots          \\
+                                                                  M_{mj} \omega_j
+                                                                \end{pmatrix}  = \begin{pmatrix}
+                                                                                   \textcolor{gray!50}{\sum_{j = 1}^{n}}M_{1j} \omega_j \\
+                                                                                   \textcolor{gray!50}{\sum_{j = 1}^{n}}M_{2j} \omega_j \\
+                                                                                   \vdots                                               \\
+                                                                                   \textcolor{gray!50}{\sum_{j = 1}^{n}}M_{mj} \omega_j
+                                                                                 \end{pmatrix}
+\end{align}
+(we will use Einstein convention, but still keep the summation as a reminder for now).
+and if the matrix is an $1 \times n$ matrix, it is equivalent to a row vector, which we denote as $\bra{\psi}$ (the transpose of a column vector $\ket{\psi}$. for now):
+\begin{align}
+  \bra{\psi} & = \begin{pmatrix}
+                   \psi_1 & \psi_2 & \cdots & \psi_n
+                 \end{pmatrix} = \pab{\ket{\psi}}^T
+  \label{eq:bra_vector}
+\end{align}
+following the matrix multiplication rules, row vector and column vector, we can define the \emph{inner product} as follows:
+\dfn{Inner product}{
+  The inner product of a row vector $\bra{\psi}$ and a column vector $\ket{\omega}$ is defined as:
+  \begin{align}
+    \braket{\psi}{\omega} = \begin{pmatrix}
+                              \psi_1 & \psi_2 & \cdots & \psi_n
+                            \end{pmatrix} \begin{pmatrix}
+                                            \omega_1 \\
+                                            \omega_2 \\
+                                            \vdots   \\
+                                            \omega_n
+                                          \end{pmatrix}
+    = \textcolor{gray!50}{\sum_{i = 1}^{n}} \psi_i \cdot \omega_i
+  \end{align}
+}
+which is a linear operation for both $\bra{\psi}$ and $\ket{\omega}$ (we call it bi-linear):
+\begin{align}
+  \bra{\psi}\pab{a \ket{\omega_1} + b \ket{\omega_2}} & = a \braket{\psi}{\omega_1} + b \braket{\psi}{\omega_2}
+  \label{eq:braketop}
+\end{align}
+In physics, we often call the row vector $\bra{\psi}$ a \emph{bra} and the column vector $\ket{\omega}$ a \emph{ket}, so we will be calling them as such from now on.
+
+Now, consider what happens when we replace $\ket{\omega}$ with $\hat{M} \ket{\omega}$:
+\begin{align}
+  \braketop{\psi}{(\hat{M}}{\omega}) = : \braketop{\psi}{\hat{M}}{\omega} = \psi_i \cdot M_{ij} \cdot \omega_j
+  = M_{ij} \psi_i \omega_j
+\end{align}
+and further, let's say that $\ket{\psi} = \ket{\omega}$, then we have:
+\begin{align}
+  \braketop{\psi}{\hat{M}}{\omega} & = \textcolor{gray!50}{\sum_{i, j = 1}^{n}} M_{ij} \omega_i \omega_j
+  \label{eq:hint1}
+\end{align}
+now compare this with the definition of expectation value:
+\begin{align}
+  \expect{X} = \textcolor{gray!50}{\sum_{i=1}^{n}} x_i \cdot \symbb{P}(x_i)
+\end{align}
+Here, let us define a quantity called \emph{Kronecker delta} $\delta_{ij}$ as follows:
+\dfn{Kronecker Delta}{
+  The Kronecker delta $\delta_{ij}$ is defined as:
+  \begin{align}
+    \delta_{ij} = \begin{cases}
+                    1 & \text{if } i = j,    \\
+                    0 & \text{if } i \neq j.
+                  \end{cases}
+  \end{align}
+}
+we see that if $M_{ij} = x_i \delta_{ij}$, we can see that the expression in Eq.\eqref{eq:hint1} is equivalent to the expectation value of a random variable $X$ because $\symbb{P}(x_i) = \omega_i^2$.
+
+This means that our matrix is a diagonal matrix, which only has diagonal elements, and the off-diagonal elements are all zero:
+\begin{align}
+  \hat{M} & = \begin{pmatrix}
+                x_1    & 0      & \cdots & 0      \\
+                0      & x_2    & \cdots & 0      \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0      & 0      & \cdots & x_n
+              \end{pmatrix}
+\end{align}
+notice how this matrix contains all the outcomes $x_i$ of the random variable $X$ on the diagonal, and the probabilities $\symbb{P}(x_i) = \omega_i^2$ are encoded in the vector $\ket{\omega}$.
+Thus given a vector $\ket{\omega}$ in which all probabilities are encoded, and a matrix $\hat{M}$ in which all outcomes are encoded, we can calculate the expectation value of a random variable $X$ as follows:
+\begin{align}
+  \expect{X} & = \braketop{\omega}{\hat{M}}{\omega} = \textcolor{gray!50}{\sum_{i = 1}^{n}} M_{ii} \omega_i^2
+\end{align}
+
+\subsection{Specific Outcome: Eigenvectors and Eigenvalues}
+Now, let us come back to the example of a fair dice:
+\begin{align}
+  \ket{\omega} & = \frac{1}{\sqrt{6}} \begin{pmatrix}
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1
+                                      \end{pmatrix}, \quad
+  \hat{X}   = \begin{pmatrix}
+                1 & 0 & 0 & 0 & 0 & 0 \\
+                0 & 2 & 0 & 0 & 0 & 0 \\
+                0 & 0 & 3 & 0 & 0 & 0 \\
+                0 & 0 & 0 & 4 & 0 & 0 \\
+                0 & 0 & 0 & 0 & 5 & 0 \\
+                0 & 0 & 0 & 0 & 0 & 6
+              \end{pmatrix}
+\end{align}
+and again, let me remind you that $\ket{\omega}$ contains the probabilities of each outcome, and $\hat{X}$ contains the outcomes themselves.
+
+Now, how can we calculate the probability of observing a specific outcome, say 3?
+To do that, we have to define the \emph{basis vectors}:
+\begin{align}
+  \ket{1} & = \begin{pmatrix}
+                1 \\
+                0 \\
+                0 \\
+                0 \\
+                0 \\
+                0
+              \end{pmatrix}, \quad
+  \ket{2} = \begin{pmatrix}
+              0 \\
+              1 \\
+              0 \\
+              0 \\
+              0 \\
+              0
+            \end{pmatrix}, \cdots,
+  \ket{6} = \begin{pmatrix}
+              0 \\
+              0 \\
+              0 \\
+              0 \\
+              0 \\
+              1
+            \end{pmatrix}
+\end{align}
+just like the 3-dimensional Cartesian coordinates, these basis vectors are unit vectors and orthogonal to one another:
+\begin{align}
+  \braket{i}{j} = \delta_{ij}
+\end{align}
+\nt{
+  A set of basis vectors satisfying $\braket{i}{j} = \delta_{ij}$ is called an \emph{orthonormal basis}.
+}
+(refer to Eq. \eqref{eq:bra_vector} for $\bra{i}$)
+This means that we can express the vector $\ket{\omega}$ in terms of these basis vectors:
+\begin{align}
+  \ket{\omega} & = \frac{1}{\sqrt{6}} \begin{pmatrix}
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1 \\
+                                        1
+                                      \end{pmatrix} = \sum_{j=1}^{6} \omega_j \ket{j}
+\end{align}
+where $\omega_i = \sqrt{\symbb{P}(x_i)} = \frac{1}{\sqrt{6}}$ for $i = 1, 2, 3, 4, 5, 6$.
+By taking the inner product with $\bra{i}$, we get:
+\begin{align}
+  \braket{i}{\omega} & = \bra{i} \sum_{j=1}^{6} \omega_j \ket{j}
+  = \sum_{j=1}^{6} \omega_j \braket{i}{j}
+  = \sum_{j=1}^{6} \omega_j \delta_{ij}
+  = \omega_i = \sqrt{\symbb{P}(x_i)}
+\end{align}
+thus, we can write the $\ket{\omega}$ using $\braket{i}{\omega}$ as follows:
+\begin{align}
+  \ket{\omega} & = \sum_{i=1}^{6} \ket{i}\braket{i}{\omega} \label{eq:ket_omega}
+\end{align}
+if we define an \emph{identity matrix} $\idty$ as follows:
+\dfn{Identity Matrix}{
+  The identity matrix $\idty$ is a square matrix with ones on the diagonal and zeros elsewhere:
+  \begin{align}
+    \idty = \begin{pmatrix}
+              1      & 0      & 0      & \cdots & 0      \\
+              0      & 1      & 0      & \cdots & 0      \\
+              0      & 0      & 1      & \cdots & 0      \\
+              \vdots & \vdots & \vdots & \ddots & \vdots \\
+              0      & 0      & 0      & \cdots & 1
+            \end{pmatrix}
+  \end{align}
+  it elements can be written simply as $\idty_{ij} = \delta_{ij}$, where $i$ and $j$ are the row and column indices, respectively.
+}
+we can re-write Eq.\eqref{eq:ket_omega} as:
+\begin{align}
+  \idty \ket{\omega} & = \sum_{i=1}^{6} \ket{i}\braket{i}{\omega}
+  \implies \quad \pab{\idty - \sum_{i=1}^{6} \ket{i}\bra{i}} \ket{\omega} = 0
+\end{align}
+since all $\omega_i$ are non-zero, the term inside bracket must be zero:
+\begin{align}
+  \idty - \sum_{i=1}^{6} \ketbra{i}{i} = 0 \iff \sum_{i=1}^{6} \ketbra{i}{i} = \idty
+\end{align}
+This is a fundamental result in quantum mechanics, and holds in the case where the number of outcome is (countably) infinite as well:
+\thm{Completeness Relation}{
+  Given an orthonormal basis $\{\ket{i}\}$, the completeness relation holds:
+  \begin{align}
+    \sum_{i} \ketbra{i}{i} = \idty
+  \end{align}
+}
+Another way to think about this is to think of a so-called \emph{projection matrix}:
+\begin{align}
+  \hat{\symcal{P}}_i & = \ketbra{i}{i}
+\end{align}
+the reason for its name is made clear when we consider the action of this operator on a vector $\ket{\omega}$:
+\begin{align}
+  \hat{\symbf{P}}_i \ket{\omega} & = \ket{i} \braket{i}{\omega} = \braket{i}{\omega} \ket{i}
+\end{align}
+note that $\braket{i}{\omega}$ is a scalar, so it can be moved around.
+It "projects" the vector $\ket{\omega}$ onto the vector $\ket{i}$, which is the basis vector corresponding to the outcome $i$.
+Or in other words, it isolates the component of $\ket{i}$ from $\ket{\omega}$.
+Using this projection operator, the completeness relation can be written as:
+\begin{align}
+  \idty & = \sum_{i} \hat{\symcal{P}}_i
+\end{align}
+This matrix can be written explicitly too. For example, in the case of the fair dice, we have:
+\begin{align}
+  \ket{1} & = \begin{pmatrix}
+                1 \\
+                0 \\
+                0 \\
+                0 \\
+                0 \\
+                0
+              \end{pmatrix},
+\end{align}
+then the projection matrix for the outcome $1$, $\hat{\symcal{P}}_1$, is given by:
+\begin{align}
+  \hat{\symcal{P}}_1 = \ketbra{1}{1} = \begin{pmatrix}
+                                         1 \\
+                                         0 \\
+                                         0 \\
+                                         0 \\
+                                         0 \\
+                                         0
+                                       \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0 & 0 & 0 & 0 & 0
+  \end{pmatrix}
+   & = \begin{pmatrix}
+         1 & 0 & 0 & 0 & 0 & 0 \\
+         0 & 0 & 0 & 0 & 0 & 0 \\
+         0 & 0 & 0 & 0 & 0 & 0 \\
+         0 & 0 & 0 & 0 & 0 & 0 \\
+         0 & 0 & 0 & 0 & 0 & 0 \\
+         0 & 0 & 0 & 0 & 0 & 0
+       \end{pmatrix}
+\end{align}
+from which we can immidiately see that the sum of all projection matrices gives the identity matrix.
+\nt{
+  Here, we just applied normal matrix multiplication rules.
+  The product between a row vector and column vector is sometimes called the \emph{dyadic product}.
+  A more general products between vectors are \emph{tensor products}, but in this particular context, they give the same result.
+}
+Now, also note that by the matrix multiplication rules,
+\begin{align}
+  \hat{X} \ket{i} & = x_i \ket{i} \quad \text{for } i = 1, 2, 3, 4, 5, 6
+\end{align}
+notice that on LHS, we have a matrix $\hat{X}$ acting on a vector $\ket{i}$, and on RHS, we have a scalar $x_i$ multiplying the same vector $\ket{i}$.
+This means that $\ket{i}$ and $\hat{X}$ are special set of vectors and a matrix.
+We call these special vectors \emph{eigenvectors} and the scalars \emph{eigenvalues}:
+\dfn{Eigenvectors and Eigenvalues}{
+  When there is a matrix $\hat{M}$ and a vector $\ket{\psi}$ such that:
+  \begin{align}
+    \hat{M} \ket{\psi} = \lambda \ket{\psi}
+  \end{align}
+  where $\lambda$ is a scalar, we say that $\ket{\psi}$ is an \emph{eigenvector} of the matrix $\hat{M}$ and $\lambda$ is the corresponding \emph{eigenvalue}.
+}
+and importantly, the outcome of the measurement of the random variable $X$ is given as the eigenvalue of the matrix $\hat{X}$, $x_i$.
+
+Formally, if we put $\bra{i}$ to the right of both sides of the equation, we have:
+\begin{align}
+  \hat{X} \ketbra{i}{i} & = x_i \ketbra{i}{i} = x_i \hat{\symcal{P}}_i
+\end{align}
+by taking the summation over all $i$ (notice that $\hat{X}$ does not depend on $i$), we have:
+\begin{align}
+  \sum_{i=1}^{6} \hat{X} \ketbra{i}{i} = \hat{X} \sum_{i=1}^{6} \ketbra{i}{i} & = \sum_{i=1}^{6} x_i \hat{\symcal{P}}_i = \sum_{i=1}^{6} x_i \ketbra{i}{i}
+\end{align}
+
+An important note is that we have obtained eigenvalues from a diagonal matrix.
+However, it is also possible to obtain diagonal matrix from eigenvalues (a process called \emph{diagonalization}):
+
+\subsection{Continous Case}
+It may be intuitive to compare expectation value in the discrete case with the continous case:
+\begin{align}
+  \text{Discrete : } \expect{X} & = \sum_i x_i \cdot \braket{i}{\omega}^2            \\
+  \text{Continous: } \expect{X} & = \int_{-\infty}^{\infty} \odif{x} \, x \cdot P(x)
+\end{align}
+A naive transition may be to consider that the PDF may also be a square of "something", let's say $\psi(x)$, such that $P(x) = [\psi(x)]^2$, as well as $\sum_i \to \int_{-\infty}^{\infty} \odif{x}$.
+For simplicity, let us simply omit the integraiton bound.
+Since $\braket{i}{\omega}$ was the probability of observing the outcome $i$, we can think of $\psi(x)$ as the probability of observing a value $x$:
+\begin{align}
+  \int_{-\infty}^{\infty} \odif{x} = \int \odif{x}, \quad \psi(x) & := \braket{x}{\psi}
+\end{align}
+and the completeness relation becomes
+\begin{align}
+  \ket{\omega} & = \sum_i \ket{i} \braket{i}{\omega} \to \ket{\psi} =  \int \odif{x} \, \ket{x} \braket{x}{\psi} \implies \int \odif{x} \, \ketbra{x}{x} = \idty
+\end{align}
+Let us also look at the orthonormality condition of the basis vectors.
+Remember in the discrete case, we had $\braket{i}{j} = \delta_{ij}$, which is the Kronecker delta.
+This comes from the completeness relation applied onto the basis vectors:
+\begin{align}
+  \ket{j} & = \sum_i \ket{i} \braket{i}{j} \implies \braket{i}{j} = \delta_{ij}
+\end{align}
+and similarly, we should think that for the continous eigenvector $\ket{x}$,
+\begin{align}
+  \ket{x} & = \int \odif{x^{\prime}} \ket{x^{\prime}} \braket{x^{\prime}}{x}
+\end{align}
+if we compare this with the definition of \emph{Dirac delta function}(refer to Eq. \eqref{eq:dirac_delta_def}), we see that
+\begin{align}
+  \braket{x^\prime}{x} & = \delta(x^\prime - x)
+\end{align}
+
+This is essentially the same mathematics used in the quantum mechanics, where we have three fundamental objects:
+\begin{itemize}
+  \item A \emph{ket} vector $\ket{\psi}$ containing "probabilities"
+  \item A \emph{matrix} $\hat{M}$ containing "outcomes"
+  \item A \emph{basis} that diagonalizes the matrix $\hat{M}$
+\end{itemize}
+
+\section{Preparation for Quantum Mechanics}
+\subsection{A More Formal Summary}
+In quantum mechanics, there is some physical requirements so that it is more than just a general probability theory.
+First of the is the existence of a \emph{state vector} $\ket{\psi}$, which is a normalized vector in \emph{Hilbert space} $\hilbert$.
+\nt{
+  Explanation of Hilbert space is kind of complicated, but we have some perspectives to look at it from:
+  \begin{enumerate}
+    \item Linear Algebra PoV: A vector space equal to $\cmplx^n$
+    \item Analysis PoV: A space of square integrable functions $L^2(\real^d)$
+  \end{enumerate}
+  but essence is that it is a "nice" space where quantum mechanics can be formulated.
+}
+We have seen that a matrix and its eigenvalues can represent the "outcomes", but in quantum mechanics, we use a little more general object called an \emph{linear operator}:
+\dfn{Linear Operator}{
+  A linear operator $\hat{A}$ acts on a vector to change it to another vector ($\hat{A}: \hilbert \ni \ket{\psi} \mapsto \hat{A}\ket{\psi} \in \hilbert$).
+  It must satisfy linearity
+  \begin{align}
+    \hat{A}(a \ket{\psi_1} + b \ket{\psi_2}) & = a \hat{A}(\ket{\psi_1}) + b \hat{A}(\ket{\psi_2})
+  \end{align}
+  for all vectors $\ket{\psi_1}, \ket{\psi_2}$ and scalars $a, b$.
+}
+whose \emph{Hermitian conjugate} is defined as follows:
+\dfn{Hermitian Conjugate}{
+  The Hermitian conjugate (or adjoint) of a linear operator $\hat{A}$, denoted as $\hat{A}^{\dagger}$, is defined such that:
+  \begin{align}
+    \braket{\psi_1}{\hat{A}\psi_2} & = \braket{\hat{A}^{\dagger}\psi_1}{\psi_2}
+  \end{align}
+  for all vectors $\ket{\psi_1}, \ket{\psi_2}$.
+  Or as a matrix, if
+  \begin{align}
+    \hat{A}         & = \begin{pmatrix}
+                          a_{11} & a_{12} & \cdots & a_{1n} \\
+                          a_{21} & a_{22} & \cdots & a_{2n} \\
+                          \vdots & \vdots & \ddots & \vdots \\
+                          a_{m1} & a_{m2} & \cdots & a_{mn}
+                        \end{pmatrix}
+    \intertext{then}
+    \hat{A}^\dagger & = \begin{pmatrix}
+                          a_{11}^* & a_{21}^* & \cdots & a_{m1}^* \\
+                          a_{12}^* & a_{22}^* & \cdots & a_{m2}^* \\
+                          \vdots   & \vdots   & \ddots & \vdots   \\
+                          a_{1n}^* & a_{2n}^* & \cdots & a_{mn}^*
+                        \end{pmatrix}
+  \end{align}
+  where $a_{ij}^*$ is the complex conjugate of $a_{ij}$.
+}
+\thm{Property of Hermitian Conjugate}{
+  Given two linear operators $\hat{A}$ and $\hat{B}$, the following properties hold:
+  \begin{align}
+    \pab{\hat{A} + \hat{B}}^{\dagger} & = \hat{A}^{\dagger} + \hat{B}^{\dagger}, \\
+    \pab{a \hat{A}}^{\dagger}         & = a^* \hat{A}^{\dagger},                 \\
+    \pab{\hat{A} \hat{B}}^{\dagger}   & = \hat{B}^{\dagger} \hat{A}^{\dagger},   \\
+    \idty^{\dagger}                   & = \idty,                                 \\
+    \pab{\hat{A}^{\dagger}}^{\dagger} & = \hat{A}.
+  \end{align}
+}
+\dfn{Inner Product}{
+  The inner product of two vectors $\ket{\psi}, \ket{\phi} \in \hilbert$ is defined as:
+  \begin{align}
+    \braket{\phi}{\psi} & = \pab{\ket{\phi}}^\dagger \ket{\psi}
+    = \begin{pmatrix} \phi_1^* & \phi_2^* & \cdots & \phi_n^* \end{pmatrix}
+    \begin{pmatrix}
+      \psi_1 \\ \psi_2 \\ \vdots   \\ \psi_n \end{pmatrix}
+    = \sum_i \phi_i^* \psi_i
+  \end{align}
+  where $\phi_i^*$ is the complex conjugate of $\phi_i$.
+}
+
+for the operator to represent some physical quantity, its eigenvalues must be real numbers.
+\dfn{Hermitian Operator}{
+  A Hermitian operator $\hat{A}$ is a linear operator that satisfies:
+  \begin{align}
+    \braket{\psi_1}{\hat{A}\psi_2} & = \braket{\hat{A}\psi_1}{\psi_2}
+  \end{align}
+  where $ \ket{\hat{A} \psi_{1,2}} = \hat{A} \ket{\psi_{1,2}}$.
+  Or equivalently,
+  \begin{align}
+    \braketop{a_i}{\hat{A}}{a_i} & = a_i \in \real
+  \end{align}
+  where $a_i$ are the eigenvalues of the operator $\hat{A}$.
+}
+
+
+
+and a physical quantity represented by a Hermitian operator or vice versa is called an \emph{observable}.
+\nt{
+  Sometimes you might see the word "\emph{self-adjoint}" instead of "Hermitian", but they are essentially the same.
+  In the context of this note and most of the physics literature, we don't distinguish them as the difference is incredibly technical.
+  Refer to Sec. \ref{sec:math_hermitian} for more details.
+}
+Another important type of operator is the \emph{unitary operator}:
+\dfn{Unitary Operator}{
+  A unitary operator $\hat{U}$ is a linear operator that satisfies:
+  \begin{align}
+    \hat{U}^{-1} & = \hat{U}^{\dagger} \iff \hat{U} \hat{U}^{\dagger} = \hat{U}^{\dagger} \hat{U} = \idty,
+  \end{align}
+  where $\hat{U}^{\dagger}$ is the adjoint (or conjugate transpose) of the operator $\hat{U}$ and $\hat{U}^{-1}$ is the inverse of the operator $\hat{U}$.
+  Unitary operators preserve the inner product, i.e., they preserve the norm of vectors.
+}

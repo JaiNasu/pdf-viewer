@@ -21,7 +21,6 @@
   oneside
   ]{scrbook}
 
-% If you want to use the document for school or university, please fill in your name and student ID below.
 \newcommand{\myname}{} 
 \newcommand{\email}{\phantom{FakeAhhEmail@gmail.com}}
 \newcommand{\titl}{Preliminaries for Particle Physics}
@@ -57,60 +56,76 @@
 % \include{content/example}
 
 % Summary of Notation
-\chapter{Notations and Conventions}
-\input{content/intro/notation}
+\begin{Chapter}{Notations and Conventions}
+  \input{content/intro/notation}
+\end{Chapter}
 
 
 % Analytical Mechanics
-\chapter{Analytical Mechanics}
-\input{content/AM/lagrange_formalism}
-\input{content/AM/hamilton_formalism}
-\input{content/AM/symmetry_am}
-% % \input{content/AM/summary_am}
-
-
-% Analytical Mechanics on Fields
-\chapter{Physics of Fields}
-\input{content/field/intro}
-\input{content/field/lagr}
-\input{content/field/hami}
+\begin{Chapter}{Analytical Mechanics}
+  \input{content/AM/lagrange_formalism}
+  \input{content/AM/hamilton_formalism}
+  \input{content/AM/symmetry_am}
+  % % \input{content/AM/summary_am}
+\end{Chapter}
 
 % % Relativity
-% \chapter{Special Relativity}
+% \begin{Chapter}{Special Relativity}
 % \input{content/SR/intro}
 % \input{content/SR/lorentz_transformation}
 % \input{content/SR/EM}
 % \input{content/SR/AM}
+% \end{Chapter}
+
+
+% Analytical Mechanics on Fields
+\begin{Chapter}{Physics of Fields}
+  \input{content/field/intro}
+  \input{content/field/lagr}
+  \input{content/field/hami}
+\end{Chapter}
+
+
 
 
 % Quantum Mechanics
-\chapter{Quantum Mechanics}
-\input{content/QM/hilbert}
-\input{content/QM/linear_algebra}
+\begin{Chapter}{Quantum Mechanics}
+  \input{content/QM/braket-operator}
+  \input{content/QM/rules}
+  \input{content/QM/schrodinger}
+  \input{content/QM/harmonic_oscillator_qm}
+  \input{content/QM/angular_momentum-hydrogen}
+\end{Chapter}
 
 
 % Mathematical Notes
-\chapter{Mathematical Remarks}
-\input{content/math/func_der}
-% \input{content/math/group}
+\begin{Chapter}{Mathematical Remarks}
+  \input{content/math/func_der}
+  % \input{content/math/group}
+\end{Chapter}
 
 
 % % Proofs
-\chapter{Extra (1): Proofs}
-\input{content/Proof/E-L-inv}
-\input{content/Proof/noether}
-
+\begin{Chapter}{Extra (1): Proofs}
+  \input{content/Proof/E-L-inv}
+  \input{content/Proof/noether}
+\end{Chapter}
 
 % Extra 
-\chapter{Extra (2): Miscellaneous}
-\input{content/Extra/newton}
-\input{content/Extra/schrodinger}
-\input{content/Extra/dual_der}
-\input{content/Extra/fluid}
-\input{content/Extra/physical_constant}
+\begin{Chapter}{Extra (2): Miscellaneous}
+  \input{content/Extra/newton}
+  \input{content/Extra/schrodinger}
+  \input{content/Extra/dual_der}
+  \input{content/Extra/fluid}
+  \input{content/Extra/physical_constant}
+  % \input{content/Extra/self_adjoint.tex}
+\end{Chapter}
+
 
 % Textbooks
-\input{content/Extra/textbooks}
+\begin{Chapter}{Textbooks}
+  \input{content/Extra/textbooks}
+\end{Chapter}
 
 \backmatter
 % Bibliography 

@@ -1,0 +1,433 @@
+\section{Position and Momentum as Observables}
+\subsection{Position Operator}
+As an observable, let us consider the position of a particle: $\hat{x}$.
+We can set up the position operator $\hat{x}$ in the Hilbert space $\hilbert$ and its eigenstates $\ket{x}$, which satisfy the eigenvalue equation
+\begin{align}
+  \hat{x} \ket{x} = x \ket{x}.
+\end{align}
+As we have seen in continous case of Sec \ref{sec:braket-notation}, the inner product $\brac{x}{y}$ is defined as
+\begin{align}
+  \braket{x}{x^\prime} = \delta(x - x^\prime),
+\end{align}
+and similarly to the discrete case, for a state $\ket{\psi}$, its probability density $P(x)$ is given by
+\begin{align}
+  P(x) = \abs{\braket{x}{\psi}}^2 = \abs{\psi(x)}^2,
+\end{align}
+where we defined the \emph{wavefunction}:
+\dfn{wavefunction}{
+  The \emph{wavefunction} $\psi(x)$ of a quantum state $\ket{\psi}$ is a function that describes the probability amplitude of finding the particle at position $x$.
+  \begin{align}
+    \psi(x) := \braket{x}{\psi}
+  \end{align}
+}
+
+\subsection{Momentum Operator}
+We can also consider the momentum of a particle $p$ as an observable.
+Really, the same discussion applies to the momentum operator $\hat{p}$.
+It is defined in the Hilbert space $\hilbert$ and has eigenstates $\ket{p}$ that satisfy the eigenvalue equation
+\begin{align}
+  \hat{p} \ket{p} = p \ket{p}.
+\end{align}
+the completeness relation reads
+\begin{align}
+  \int \odif{p} \, \ket{p} \bra{p} = \idty \iff \braket{p}{p^\prime} = \delta(p - p^\prime)
+\end{align}
+and the wavefunction $\psi(p)$ in the momentum space is defined as
+\begin{align}
+  \psi(p) := \braket{p}{\psi}
+\end{align}
+\dfn{Wavefunction in Momentum Space}{
+  The wavefunction in momentum space $\psi(p)$ is a function that describes the probability amplitude of finding the particle with momentum $p$.
+  \begin{align}
+    \psi(p) := \braket{p}{\psi}
+  \end{align}
+  This is often called the \emph{momentum representation} of the wavefunction.
+}
+\subsection{Canonical Commutation Relation}
+We define a operation called the \emph{commutator} of two operators $\hat{A}$ and $\hat{B}$ as follows:
+\dfn{Commutator}{
+  The commutator $\hat{A} \hat{B}$ of two operators $\hat{A}$ and $\hat{B}$ is defined as
+  \begin{align}
+    \commt{\hat{A}}{\hat{B}} := \hat{A} \hat{B} - \hat{B} \hat{A}.
+  \end{align}
+}
+\nt{
+  If the commutator of two operators is zero, they are said to \emph{commute}.
+  If the commutator is non-zero, they are said to \emph{not commute}.
+}
+\thm{Properties of Commutator}{
+  For operators $\hat{A}, \hat{B}, \hat{C} \in \hilbert$ and constants $\alpha, \beta, \gamma \in \cmplx$, the following properties hold:
+  \begin{itemize}
+    \item (Bi-)Linearity:
+          \begin{align}
+            \commt{\alpha \hat{A} + \beta \hat{B}}{\hat{C}} & = \alpha \commt{\hat{A}}{\hat{C}} + \beta \commt{\hat{B}}{\hat{C}} \\
+            \commt{\hat{A}}{\beta \hat{B} + \gamma \hat{C}} & = \beta \commt{\hat{A}}{\hat{B}} + \gamma \commt{\hat{A}}{\hat{C}}
+          \end{align}
+    \item Anti-symmetry:
+          \begin{align}
+            \commt{\hat{A}}{\hat{B}} = -\commt{\hat{B}}{\hat{A}}
+          \end{align}
+  \end{itemize}
+}
+Now, remember the \emph{Poisson Bracket} from classical mechanics, which is defined as
+\dfn{Poisson Bracket}{
+  The Poisson bracket of two functions $f$ and $g$ in phase space is defined as
+  \begin{align}
+    \pobra{f}{g} = \pdv{f}{q} \pdv{g}{p} - \pdv{f}{p} \pdv{g}{q},
+  \end{align}
+  where $q_i$ and $p_i$ are the generalized coordinates and momenta, respectively.
+}
+\thm{Properties of Poisson Bracket}{
+  For functions $f, g$, the following properties hold:
+  \begin{itemize}
+    \item (Bi-)Linearity:
+          \begin{align}
+            \pobra{\alpha f + \beta g}{h} & = \alpha \pobra{f}{h} + \beta \pobra{g}{h} \\
+            \pobra{f}{\alpha g + \beta h} & = \alpha \pobra{f}{g} + \beta \pobra{f}{h}
+          \end{align}
+    \item Anti-symmetry:
+          \begin{align}
+            \pobra{f}{g} = -\pobra{g}{f}
+          \end{align}
+    \item Jacobi Identity:
+          \begin{align}
+            \pobra{f}{\pobra{g}{h}} + \pobra{g}{\pobra{h}{f}} + \pobra{h}{\pobra{f}{g}} = 0
+          \end{align}
+    \item Coordinate and Momentum Relation:
+          \begin{align}
+            \pobra{q}{p} = 1, \quad \pobra{q}{q} = \pobra{p}{p} = 0
+          \end{align}
+  \end{itemize}
+}
+These two objects have the same algebraic properties if we impose the canonical commutation relation onto the commutator of the position and momentum operators:
+\prcp{Canonical Commutation Relation (1D)}{
+  The commutator of position operator $\hat{x}$ and momentum operator $\hat{p}$ is defined to be
+  \begin{align}
+    \commt{\hat{x}}{\hat{p}} = i \hbar.
+  \end{align}
+}
+\thm{Commutator as a derivative}{
+  Consider a function $f(x)$ that can be Taylor expanded:
+  \begin{align}
+    f(x) & = \sum_{n=0}^{\infty} a_n x^n
+  \end{align}
+  where $a_n = \frac{1}{n!} \pdv{f}{x}(x_0)$ and $x$.
+  Then, the commutator of the position operator $\hat{x}$ and the momentum operator $\hat{p}$ can be interpreted as a derivative:
+  \begin{align}
+    \commt{f(\hat{x})}{{\hat{p}}} & = i \hbar \pdv{f}{x}(\hat{x})
+  \end{align}
+  where $f(\hat{x})$ refers to the substitution of $\hat{x}$ into the function $f(x)$.
+  \label{thm:commutator-as-derivative}
+}
+\pf{a}{
+  We have to prove that this holds for $f(x) = x^n$, from which our goal can be proven easily.
+  \begin{align}
+    \commt{\hat{x}^n}{\hat{p}} & = \hat{x}^{n-1} \hat{x} \hat{p} - \hat{p} \hat{x}^{n-1} \hat{x}                                                                               \\
+                               & = \hat{x}^{n-1} \commt{\hat{x}}{\hat{p}} + \hat{x}^{n-1} \hat{p} \hat{x} - \hat{p} \hat{x}^{n-1} \hat{x}                                      \\
+                               & = \hat{x}^{n-1} \commt{\hat{x}}{\hat{p}} + \commt{\hat{x}^{n-1}}{\hat{p}} \hat{x}                                                             \\
+                               & = i \hbar \hat{x}^{n-1} + \commt{\hat{x}^{n-1}}{\hat{p}} \hat{x}                                                                              \\
+                               & = i \hbar \hat{x}^{n-1} + \pab{i \hbar \hat{x}^{n-2} + \commt{\hat{x}^{n-2}}{\hat{p}} \hat{x}} \hat{x}                                        \\
+                               & = 2 i \hbar \hat{x}^{n-1} + \commt{\hat{x}^{n-2}}{\hat{p}} \hat{x}                                                                            \\
+                               & = n i \hbar \hat{x}^{n-1} + \underbrace{\commt{\hat{x}^0}{\hat{p}}}_{= 0} \hat{x} = n i \hbar \hat{x}^{n-1} = i \hbar \pdv{(x^n)}{x}(\hat{x})
+  \end{align}
+  thus, if the function $f$ is given by a Taylor series, we can write
+  \begin{align}
+    \commt{\hat{x}^n}{\hat{p}} = i \hbar \pdv{f}{x}(\hat{x})
+  \end{align}
+}
+
+
+\subsection{Heisenberg's Uncertainty Principle}
+\dfn{Variance of an Observable}{
+  The variance of an observable $\hat{A}$ in a quantum state $\ket{\psi}$ is defined as
+  \begin{align}
+    \Delta A^2 := \braketop{\psi}{\hat{A}^2}{\psi} - \pab{\braketop{\psi}{\hat{A}}{\psi}}^2.
+  \end{align}
+  It measures the spread of the observable's values around its expectation value.
+}
+\thm{Robertson Inequality}{
+  The Robertson inequality states that for any two observables $\hat{A}$ and $\hat{B}$, the variance of $\hat{A}$ and $\hat{B}$ satisfies
+  \begin{align}
+    \Delta A^2 \Delta B^2 \geq \frac{1}{4} \abs{\commt{\hat{A}}{\hat{B}}}^2
+  \end{align}
+}
+\cor{Heisenberg's Uncertainty Principle}{
+  The Heisenberg uncertainty principle is a special case of the Robertson inequality, which states that for position $\hat{x}$ and momentum $\hat{p}$,
+  \begin{align}
+    \Delta x \Delta p \geq \frac{\hbar}{2}.
+  \end{align}
+}
+
+What this tells us is not a practical limit of measurements, but a fundamental property of quantum systems, as a result of the non-commutativity of the position and momentum operators.
+
+This also means that if the commutator of two observables $\hat{A}$ and $\hat{B}$ is zero, they can be measured with any precision at the same time.
+\dfn{Simultaneous Observable}{
+  Two observables $\hat{A}$ and $\hat{B}$ are said to be \emph{simultaneous observables}, if they commute:
+  \begin{align}
+    \commt{\hat{A}}{\hat{B}} = 0.
+  \end{align}
+}
+
+
+
+\subsection{Derivative on Vectors}
+It is a bit arbitrary, but let us consider the following operator:
+\begin{align}
+  \hat{U}_x (a) & = \sum_{n=0}^{\infty} \frac{1}{n!} \pab{- i \frac{\hat{p}}{\hbar} a}^n
+\end{align}
+This is indeed an operator (guaranteed by the completeness of Hilbert space).
+As a short-hand notation for the infinite sum, we can write it as an exponential:
+\begin{align}
+  \hat{U}_x (a) & = e^{- i \frac{\hat{p}}{\hbar} a}.
+\end{align}
+Remember that momentum must be an Hermitian operator ($\hat{p}^\dagger = \hat{p}$), so we  see that by taking the the Hermitian conjugate,
+\begin{align}
+  \hat{S}^\dagger_p (a): = \pab{\hat{U}_x (a)}^\dagger & = \sum_{n=0}^{\infty} \frac{1}{n!} \pab{i \frac{\hat{p}}{\hbar} a}^n = \hat{S}_{p} (- a)
+\end{align}
+and as you might guess from the exponential form,
+\begin{align}
+  \hat{U}_x(a) \hat{U}_x (-a)
+   & = \pab{1 - i \frac{\hat{p}}{h} a + \frac{1}{2!} \pab{- i \frac{\hat{p}}{\hbar} a}^2 + \ldots} \pab{1 + i \frac{\hat{p}}{\hbar} a + \frac{1}{2!} \pab{i \frac{\hat{p}}{\hbar} a}^2 + \ldots} \\
+   & = 1 \pab{- i \frac{\hat{p}}{\hbar} a + i \frac{\hat{p}}{\hbar} a + \frac{1}{2!} \pab{- i \frac{\hat{p}}{\hbar} a}^2 + \frac{1}{2!} \pab{i \frac{\hat{p}}{\hbar} a}^2 + \ldots} = 1
+\end{align}
+thus we see that
+\begin{align}
+  \hat{U}_x(a) \hat{U}_x (-a) = \idty \iff \hat{U}_x (a) = \pab{\hat{U}_x(a)}^\dagger = \hat{U}_x (-a).
+\end{align}
+which means that $\hat{U}_x(a)$ is a \emph{unitary operator}.
+Note that unitary operators do not change the norm of a vector, i.e. $\norm{\hat{U}_x(a) \ket{\psi}} = \norm{\ket{\psi}}$.
+Now, notice that this operator can be differentiated by the parameter $a$:
+\begin{align}
+  \odv{}{a} \pab{\hat{U}_x (a)} & = -i \frac{\hat{p}}{\hbar} \hat{U}_x (a), \odv{}{a} \pab{\hat{U}_x (a)}^\dagger = i \frac{\hat{p}}{\hbar} \hat{U}_x (a)^\dagger
+\end{align}
+\nt{
+  The momentum operator $\hat{p}$ and $\hat{U}_x(a)$ commute:
+  since $\commt{\hat{p}^n}{\hat{p}} = 0$ and $\hat{U}_x (a)$ is essentially a linear combination of $\hat{p}^n$. Thus,
+  \begin{align}
+    \commt{\hat{U}_x(a)}{\hat{p}} = 0 \iff \hat{U}_x(a) \hat{p} = \hat{p} \hat{U}_x(a)
+  \end{align}
+  meaning that we can change the order of the said operators.
+}
+thus, by considering the following quantity:
+\begin{align}
+  \odv{}{a} \pab{\hat{S}^\dagger_p (a) \hat{x} \pab{\hat{U}_x(a)}}
+   & = \odv{}{a} \pab{\hat{S}^\dagger_p (a)} \hat{x} \hat{U}_x (a) + \hat{U}_x (-a) \hat{x} \odv{}{a} \pab{\hat{U}_x (a)}                             \\
+   & = \hat{S}^\dagger_p (a) \pab{i \frac{\hat{p}}{\hbar}} \hat{x} \hat{U}_x (a) - \hat{U}_x (-a) \hat{x} \pab{i \frac{\hat{p}}{\hbar}} \hat{U}_x (a) \\
+   & = \hat{S}^\dagger_p (a) \commt{i \frac{\hat{p}}{\hbar}}{\hat{x}} \hat{U}_x (a)                                                                   \\
+   & = \frac{1}{i \hbar} \hat{S}^\dagger_p (a) \underbrace{\commt{\hat{x}}{\hat{p}}}_{= i \hbar} \hat{U}_x (a)                                        \\
+   & = \hat{S}^\dagger_p (a) \hat{U}_x (a) = \idty                                                                                                    \\
+  \implies \quad \hat{S}^\dagger_p (a) \hat{x} \pab{\hat{U}_x(a)}
+   & = a \idty + \hat{C}
+\end{align}
+where $\hat{C}$ is a constant operator that does not depend on $a$.
+If we substitute $a = 0$, we see that
+\begin{align}
+  \hat{U}_x (0) = \hat{S}^\dagger_p (0) = \idty \implies \hat{C} = \hat{x}
+\end{align}
+Thus, we have the following relation:
+\begin{align}
+  \hat{S}^\dagger_p (a) \hat{x} \, \hat{U}_x(a) & = a \idty + \hat{x}
+  \implies \quad \hat{x} \, \hat{U}_x(a)        & = a \hat{U}_x(a) + \hat{U}_x(a) \hat{x} \\
+  \implies \quad \commt{\hat{s}}{\hat{x}}       & = a \hat{U}_x(a)
+\end{align}
+thus by applying $\hat{x} \hat{U}_x(a)$ to $\ket{x}$,
+\begin{align}
+  \hat{x} \hat{U}_x(a) \ket{x}
+   & = (\commt{\hat{x}}{\hat{U}_x(a)} + \hat{U}_x(a) \hat{x}) \ket{x} \\
+   & = a \hat{U}_x(a) \ket{x} + \hat{U}_x(a) \hat{x} \ket{x}          \\
+   & = (x + a) \hat{U}_x(a)\ket{x}
+\end{align}
+thus the vector $\hat{U}_x(a) \ket{x}$ behaves like $\ket{x + a}$(whose eigenvalue for $\hat{x}$ is $x + a$).
+and so we call $\hat{U}_x(a)$ the \emph{shift operator}:
+\dfn{Shift Operator}{
+  The shift operator $\hat{U}_x(a)$ is defined as
+  \begin{align}
+    \hat{U}_x(a) = e^{- i \frac{\hat{p}}{\hbar} a},
+  \end{align}
+  and it shifts the position eigenstate $\ket{x}$ by $a$:
+  \begin{align}
+    \hat{U}_x(a) \ket{x} = \ket{x + a}.
+  \end{align}
+  It is a unitary operator that commutes with the momentum operator $\hat{p}$.
+}
+
+Now, notice that when $a$ is small, let's say $a = \epsilon$, we can expand the exponential:
+\begin{align}
+  \hat{U}_x (\epsilon) & = 1 - i \frac{\hat{p}}{\hbar} \epsilon + \frac{1}{2!} \pab{- i \frac{\hat{p}}{\hbar} \epsilon}^2 + \ldots
+\end{align}
+if we take $\epsilon$ small enough, the $\epsilon^2, \epsilon^3, \ldots$ terms will be much smaller than the $\epsilon$ term, so:
+\begin{align}
+  \hat{U}_x (\epsilon) & \approx 1 - i \frac{\hat{p}}{\hbar} \epsilon
+\end{align}
+thus by applying this to a vector $\ket{x}$, we have
+\begin{align}
+  \hat{U}_x (\epsilon) \ket{x}                                 & \approx \pab{1 - i \frac{\hat{p}}{\hbar} \epsilon} \ket{x} = \ket{x + \epsilon} \\
+  \implies \quad \frac{\ket{x + \epsilon} - \ket{x}}{\epsilon} & \approx - i \frac{\hat{p}}{\hbar} \ket{x}
+\end{align}
+the LHS is the \emph{derivative} of the vector $\ket{x}$ with respect to the parameter $\epsilon$:
+\dfn{Derivative of a Vector}{
+  The derivative of a continous eigenvector $\ket{x}$ with respect to $x$ is defined as
+  \begin{align}
+    \odv{}{x} \ket{x} := \lim_{\epsilon \to 0} \frac{\ket{x + \epsilon} - \ket{x}}{\epsilon}
+  \end{align}
+}
+Thus, we can write the above relation as
+\begin{align}
+  \pdv{}{x} \ket{x} & = - i \frac{\hat{p}}{\hbar} \ket{x} \iff \hat{p} \ket{x} = i \hbar \odv{}{x} \ket{x}
+\end{align}
+taking the Hermitian conjugate,
+\begin{align}
+  \bra{x} \hat{p} & = - i \hbar \pdv{}{x} \bra{x}
+\end{align}
+given a state $\ket{\psi}$, this can be treated as the derivative on the wavefunction $\psi(x) = \braket{x}{\psi}$:
+\begin{align}
+  \braketop{x}{\hat{p}}{\psi} & = - i \hbar \pdv{}{x} \braket{x}{\psi} = - i \hbar \pdv{}{x} \psi(x).
+\end{align}
+This is called the position representation of the momentum operator:
+\begin{align}
+  \hat{p} \ket{x} = i \hbar \pdv{}{x} \ket{x}
+\end{align}
+because in the momentum representation $\hat{p}$ acts as a multiplication operator:
+\begin{align}
+  \hat{p} \ket{p} & = p \ket{p} \implies \hat{p} = p.
+\end{align}
+and by the duality of commutator, $\hat{x}$ acts as a derivative operator in the momentum representation:
+\begin{align}
+  \hat{x} = i \hbar \pdv{}{p}.
+\end{align}
+
+\subsection{3D Case}
+In the 3D case, we can define the position operator $\hat{\vec{x}}$ and momentum operator $\hat{\vec{p}}$ as vectors:
+\begin{align}
+  \hat{\vec{x}} & = \pab{\hat{x}_1, \hat{x}_2, \hat{x}_3}, \quad \hat{\vec{p}} = \pab{\hat{p}_1, \hat{p}_2, \hat{p}_3}
+\end{align}
+which has eigenvectors corresponding to each position and momentum vectors:
+\begin{align}
+  \hat{\vec{x}} \ket{\vec{x}} & = \vec{x} \ket{\vec{x}}, \quad \hat{\vec{p}} \ket{\vec{p}} = \vec{p} \ket{\vec{p}}
+\end{align}
+The canonical commutation relation in 3D is given by
+\begin{align}
+  \commt{\hat{x}_i}{\hat{p}_j} = i \hbar \delta_{ij}, \quad i, j = 1, 2, 3.
+\end{align}
+and the momentum operator in the position representation is given by
+\begin{align}
+  \hat{\vec{p}} = - i \hbar \nabla, \quad \text{where } \nabla = \begin{pmatrix}
+                                                                   \pdif{1} \\
+                                                                   \pdif{2} \\
+                                                                   \pdif{3}
+                                                                 \end{pmatrix}
+\end{align}
+Essentially, the same discussion applies to the 3D case as well.
+
+
+Now, in 3D, we can define another important quantity in quantum mechanics: the \emph{orbital angular momentum} operator, which is defined as follows:
+\dfn{Orbital Angular Momentum Operator}{
+  The orbital angular momentum operator $\hat{\vec{L}}$ is defined as
+  \begin{align}
+    \hat{\vec{L}} = \hat{\vec{x}} \times \hat{\vec{p}} = \begin{pmatrix}
+                                                           \hat{L}_x \\
+                                                           \hat{L}_y \\
+                                                           \hat{L}_z
+                                                         \end{pmatrix} = \begin{pmatrix}
+                                                                           \hat{x}_2 \hat{p}_3 - \hat{x}_3 \hat{p}_2 \\
+                                                                           \hat{x}_3 \hat{p}_1 - \hat{x}_1 \hat{p}_3 \\
+                                                                           \hat{x}_1 \hat{p}_2 - \hat{x}_2 \hat{p}_1
+                                                                         \end{pmatrix}.
+  \end{align}
+  or equivalently,
+  \begin{align}
+    \hat{L}_i = \textcolor{gray!50}{\sum_{j, k = 1}^{3}} \epsilon_{ijk} \hat{x}_j \hat{p}_k, \quad i, j, k = 1, 2, 3.
+  \end{align}
+}
+and the total orbital angular momentum operator $\hat{\vec{L}}^2$:
+\dfn{Total Orbital Angular Momentum Operator}{
+  The total orbital angular momentum operator $\hat{\vec{L}}^2$ is defined as
+  \begin{align}
+    \hat{\vec{L}}^2 = \hat{L}_x^2 + \hat{L}_y^2 + \hat{L}_z^2.
+  \end{align}
+}
+\thm{Properties of Angular Momentum Operators}{
+  \begin{align}
+    \commt{\hat{L}_i}{\hat{L}_j}       & = i \hbar \epsilon_{ijk} \hat{L}_k, \quad i, j, k = 1, 2, 3 \\
+    \commt{\hat{\vec{L^2}}}{\hat{L}_i} & = 0
+  \end{align}
+}
+These properties imply two important properties:
+\begin{itemize}
+  \item Any two(or all three) components of the angular momentum operator $\hat{L}_i$ do not commute, which means that they cannot be measured simultaneously with arbitrary precision.
+  \item However, the total angular momentum operator $\hat{\vec{L^2}}$ commutes with any component of the angular momentum operator $\hat{L}_i$, which means that we can measure the total angular momentum and one component of it simultaneously with arbitrary precision.
+\end{itemize}
+
+\section{Heisenberg Equation and Schrödinger Equation}
+Now, we have postulated the canonical commmutation from the Poisson brackets in classical mechanics:
+\begin{align}
+  \pobra{x}{p} = 1 \longrightarrow \commt{\hat{x}}{\hat{p}} = i \hbar
+\end{align}
+and so we postulate that in general, there exists the following correspondence:
+\begin{align}
+  \pobra{A}{B} = C \longrightarrow \commt{\hat{A}}{\hat{B}} = i \hbar \hat{C}
+\end{align}
+One example is:
+\begin{align}
+  \pobra{A}{H} = \odv{A}{t} \longrightarrow \commt{\hat{A}(t)}{\hat{H}} = i \hbar \odv{\hat{A}}{t}
+\end{align}
+This is called the \emph{Heisenberg Equation}, and at the same time,
+it is insinuated that what really evolves through time is the operator $\hat{A}$ (the outcomes), and the state (or probability distribution of the system) is fixed:
+\prcp{Heisenberg Picture and Heisenberg Equation}{
+  The point of view that the operators evolve through time, while the states are fixed is called the \emph{Heisenberg picture}.
+  The time evolution of an operator $\hat{A}(t)$ in the Heisenberg picture is given by the \emph{Heisenberg Equation}:
+  \begin{align}
+    \commt{\hat{A}(t)}{\hat{H}} = i \hbar \odv{\hat{A}(t)}{t}
+  \end{align}
+  note: we assume that at $t = 0$, $\hat{A}(0) = \hat{A}$.
+}
+in contrast, we have another point of view:
+\prcp{Schrödinger Picture}{
+  The point of view that the states evolve through time, while the operators are fixed is called the \emph{Schrödinger picture}.
+  We denote the time evolved states as $\ket{\psi(t)}$,
+}
+If we remember the Theorem \ref{thm:commutator-as-derivative}:
+\begin{align}
+  \commt{f(\hat{x})}{\hat{p}} = i \hbar \pdv{f}{x}(\hat{x}), \quad
+  \hat{p}\ket{x} = i \hbar \pdv{}{x} \ket{x}.
+\end{align}
+and the shift operator was defined as
+\begin{align}
+  \hat{U}_x(a) = e^{- i \frac{\hat{p}}{\hbar} a}
+\end{align}
+we postulate then that by changing $\hat{p} \to \hat{H}$ and $\pdv{}{x} \to \odv{}{t}$, we can define the time evolution operator:
+\dfn{Time Evolution Operator}{
+  The time evolution operator $\hat{U}(t)$ is defined as
+  \begin{align}
+    \hat{U}(t) = e^{- i \frac{\hat{H}}{\hbar} t},
+  \end{align}
+  where $\hat{H}$ is the Hamiltonian operator of the system.
+}
+and hence the time evolution of a state $\ket{\psi(0)}$ is given by
+\begin{align}
+  \ket{\psi(t)} = \hat{U}(t) \ket{\psi(0)}
+\end{align}
+thus by taking the time derivative on both sides, we obtain the \emph{Schrödinger Equation}:
+\prcp{Schrödinger Equation}{
+  The \emph{Schrödinger Equation} is given by
+  \begin{align}
+    i \hbar \odv{}{t} \ket{\psi(t)} = \hat{H} \ket{\psi(t)},
+  \end{align}
+  where $\hat{H}$ is the Hamiltonian operator of the system.
+}
+Note that the Hamiltonian operator $\hat{H}$ corresponds to the Hamiltonian in the classical mechanics.
+Also, if we apply $\bra{x}$, we can obtain the Schrödinger Equation we are familiar with:
+\begin{align}
+  i \hbar \pdv{}{t} \psi(x, t) = \hat{H} \psi(x, t),
+\end{align}
+where $\psi(x, t) = \braket{x}{\psi(t)}$ is the wavefunction in the position representation.
+
+Coming back to the Heisenberg picture, we expect that the expectation value of $\hat{A}(t)$ and $\hat{A}$ in state $\ket{\psi(t)}$ are the same:
+\begin{align}
+  \braketop{\psi(0)}{\hat{A}(t)}{\psi(0)} & = \braketop{\psi(t)}{\hat{A}}{\psi(t)}                               \\
+                                          & = \braketop{\psi(0)}{\hat{U}^\dagger(t) \hat{A} \hat{U}(t)}{\psi(0)}
+\end{align}
+Thus in the Heisenberg picture, the time evolution of operator $\hat{A}(t)$ is given by
+\begin{align}
+  \hat{A}(t) & = \hat{U}^\dagger(t) \hat{A} \hat{U}(t).
+\end{align}
