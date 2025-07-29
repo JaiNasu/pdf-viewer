@@ -1,0 +1,85 @@
+\section{Introduction: Historical Perspective}
+In Section \ref{sec:symmetry-am}, we introduced the Gallilean transformation:
+\begin{align}
+  \vec{\xi} = \vec{x} - \vec{v}t
+\end{align}
+this is a transformation from a "stationary frame" to a "\emph{inertial frame}" with constant velocity $\vec{v}$.
+\dfn{Inertial Frame}{
+  If an observer satisfies the following conditions, then the observer is said to be in an \emph{inertial frame}:
+  \begin{enumerate}
+    \item The distane between any two points in the inertial frame is independent of time.
+    \item The "clocks" that measure the time in the inertial frame are synchronized (everywhere same time).
+    \item For any $t$, the geometry of space is Euclidean: the distance between two points is given by the Pythagorean theorem:
+          \begin{align}
+            d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
+          \end{align}
+  \end{enumerate}
+}
+
+Under this transformation, Newton's equation of motion retains the same form:
+\begin{align}
+  \sum \vec{F}_{\text{ext}} & = m \odv[2]{\vec{x}}{t} = m \odv[2]{\vec{\xi}}{t}
+\end{align}
+and obeys the most intuitive rule for addition of velocities (like, just add):
+\begin{align}
+  \vec{u}_{\text{new}} = \vec{v} + \vec{u}_{\text{old}}
+\end{align}
+Thus, for a very long time, physicists believed that Gallilean transformation is the most general transformation that preserves the form of Newton's equation of motion.
+
+However, there was one problem, in the field of electromagnetism.
+Specifically, Maxwell's equations were not invariant under the Gallilean transformation:
+\thm{Maxwell's Equations}{
+  The Maxwell's equations in vacuum are given by:
+  \begin{empheq}{alignat=2}
+    \nabla \cdot \vec{E}  & = \frac{\rho}{\varepsilon_0} & \qquad & \text{(Gauss's Law)} \label{eq:gauss-e} \\
+    \nabla \cdot \vec{B}  & = 0                       &       & \text{(Gauss's Law for Magnetism)} \label{eq:gauss-b} \\
+    \nabla \times \vec{E} & = -\pdv{\vec{B}}{t}      &       & \text{(Faraday's Law of Induction)} \label{eq:faraday} \\
+    \nabla \times \vec{B} & = \mu_0\vec{J} + \mu_0 \varepsilon_0\pdv{\vec{E}}{t} & & \text{(Ampère-Maxwell Law)} \label{eq:ampere}
+  \end{empheq}
+}
+Particularly, the wave equations derived from Maxwell's equations:
+\begin{gather}
+  \nabla^2 \vec{E} = \frac{1}{c^2}\pdv[2]{\vec{E}}{t}, \quad  \nabla^2 \vec{B}  = \frac{1}{c^2}\pdv[2]{\vec{B}}{t}, \quad c^2 = \frac{1}{\mu_0\epsilon_0}
+\end{gather}
+\nt{
+  Using:
+  \begin{align}
+    \nabla \times (\nabla \times \vec{A}) & = \nabla(\nabla \cdot \vec{A}) - \nabla^2 \vec{A}
+  \end{align}
+  By Eq. \eqref{eq:faraday} and \eqref{eq:ampere} (and assuming we are far from any charges or currents), we get
+  \begin{alignat}{2}
+    \nabla^2 \vec{E}                & = - \pdv{}{t} \pab{\mu_0 \varepsilon_0 \pdv{\vec{E}}{t}}, & \quad \nabla^2 \vec{B} & = \pdv{}{t} \pab{\mu_0 \varepsilon_0 \pdv{\vec{B}}{t}} \\
+    \implies \quad \nabla^2 \vec{E} & = \frac{1}{\mu_0 \varepsilon_0} \pdv[2]{\vec{E}}{t},      & \quad \nabla^2 \vec{B} & = \frac{1}{\mu_0 \varepsilon_0} \pdv[2]{\vec{B}}{t}
+  \end{alignat}
+}
+
+These equations introduced two fundamental problems in the physics of the 19th century:
+\begin{enumerate}
+  \item The wave equations are not invariant under the Gallilean transformation, which means that the speed of light is not the same in all inertial frames.
+  \item The medium (which was called ether) for the electromagnetic fields was not consistent with the rest of the physics.
+\end{enumerate}
+Let us see the first problem in detail. Imagine a wave propagating in the $x$ direction with speed $c$.
+According to Gallilean transformation,
+if we move at velocity $+v$ in the $x$ direction, then the wave equation in the new frame becomes, for us, the light would seem to propagate at speed $c - v$.
+
+But this is contradictory because in Maxwell's equations, the speed of light is the same in all inertial frames, independent of the velocity of the observer:
+\begin{align}
+  c & = \frac{1}{\sqrt{\mu_0 \epsilon_0}}
+\end{align}
+which should be a constant for all inertial frames, such as Earth during summer and Earth during winter (which should have a totally different velocity).
+
+This does not even take the second problem into account, which is that the ether was supposed to be a medium for the electromagnetic fields.
+This medium was supposed to be stationary, but if it is stationary, then it would not be able to propagate the electromagnetic waves at speed $c$ in all inertial frames, because again, in the summer and winter, the Earth is moving in completely different directions which should change the speed of light (imagine wave propagating on the surface of water).
+
+There is a famous experiment by Michelson and Morley that measured the speed of light in different directions: \href{https://en.wikipedia.org/wiki/Michelson-Morley_experiment}{Wikipedia}.
+This experiment was supposed to measure the speed of light in the direction of the Earth's motion and perpendicular to it.
+However, the result of the experiment was that the speed of light is the same in all directions, which was a big problem for the ether theory.
+
+The genius of Einstein was to realize that the true implication of Michelson-Morley experiment was the \emph{invariance of the speed of light} in all inertial frames, as well as realizing that there must be a correct transformation between inertial frames that preserves the form of Maxwell's equations.
+In summary:
+\prcp{Basic Priniples in Theory of Relativity}{
+  \begin{enumerate}
+    \item \emph{Principle of Relativity}: The laws of physics are the same in all inertial frames (i.e. invariant under the "correct" transformation).
+    \item \emph{Invariance of the Speed of Light}: The speed of light is the same in all inertial frames, independent of the velocity of the observer.
+  \end{enumerate}
+}

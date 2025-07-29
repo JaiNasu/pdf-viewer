@@ -1,3 +1,135 @@
 \section{Harmonic Oscillator}
+\subsection{Set-up and Hamiltonian}
+In Section \ref{sec:lagrange-harmonic-oscillator}, we described the harmonic oscillator in the Lagrangian formalism:
+\begin{align}
+  L & = \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2
+\end{align}
+and we can use the Legendre transform to obtain the Hamiltonian:
+\begin{align}
+  \implies \quad H = \frac{p^2}{2m} + \frac{1}{2} k x^2
+\end{align}
+to obtain the Hamiltonian opearator, we simply replace the generalized coordinates and momenta with their corresponding operators:
+\begin{align}
+  \hat{H} & = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2
+\end{align}
+in the position representation, we have
+\begin{align}
+  \hat{H} & = -\frac{\hbar^2}{2m} \pdv[2]{}{x} + \frac{1}{2} k x^2
+\end{align}
+thus we will have to solve the Schrödinger equation
+\begin{align}
+  \hat{H} \psi(x) & = E \psi(x) = -\frac{\hbar^2}{2m} \pdv[2]{}{x} \psi(x) + \frac{1}{2} k x^2 \psi(x).
+\end{align}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.0]
+    \draw[very thick, ->] (-5, 0) -- (5, 0) node[right] {$x$};
+    \draw[very thick, ->] (0, -1) -- (0, 4) node[right] {$V(x)$};
+    \begin{scope}
+      \clip (-5, 0) -- (5, 0) -- (5, 4) -- (-5, 4) -- cycle;
+      % Quadratic potential
+      \draw[domain=-5:5, samples=\samples, smooth, variable=\x, blue] plot ({\x}, {0.5 * 0.25 * \x*\x});
+      \node at (-2, -0.5) {Potential $V(x)$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{A Sketch of a Harmonic Potential.}
+  \label{fig:ho_potential}
+\end{figure}
+
 \subsection{Ladder Operators and Number Operator}
+However, the differential equation given in the position representation is not easy to solve.
+Thus we introduce a set of new operators, called \emph{ladder operators}:
+\dfn{Ladder Operators}{
+  We define the \emph{lowering operator} $\hat{a}$ and the \emph{raising operator} $\hat{a}^{\dagger}$ as
+  \begin{align}
+    \hat{a}           & := \frac{1}{\sqrt{2}} \pab{\frac{\hat{x}}{L} + \frac{iL}{\hbar} \hat{p}}  \\
+    \hat{a}^{\dagger} & := \frac{1}{\sqrt{2}} \pab{\frac{\hat{x}}{L} - \frac{iL}{\hbar} \hat{p}},
+  \end{align}
+}
+Whose commutation relation is gives:
+\begin{align}
+  \commt{\hat{a}}{\hat{a}^{\dagger}}
+   & = \frac{1}{2} \commt{\frac{\hat{x}}{L}}{\pab{\frac{\hat{x}}{L} - \frac{iL}{\hbar}\hat{p}}}
+  + \frac{iL}{2 \hbar} \commt{\hat{p}}{\pab{\frac{\hat{x}}{L} - \frac{iL}{\hbar}\hat{p}}}            \\
+   & = - \frac{i}{2 \hbar} \commt{\hat{p}}{\hat{x}} + \frac{i}{2 \hbar} \commt{\hat{x}}{\hat{p}} = 1
+\end{align}
+
+Now we can define the \emph{number operator} $\hat{N}$ as
+\dfn{Number Operator}{
+  The number operator $\hat{N}$ is defined as
+  \begin{align}
+    \hat{N} & := \hat{a}^{\dagger} \hat{a}
+  \end{align}
+}
+Whose commutation relation with the ladder operators is given by
+\begin{align}
+  \commt{\hat{N}}{\hat{a}}           & = - \hat{a}         \\
+  \commt{\hat{N}}{\hat{a}^{\dagger}} & = \hat{a}^{\dagger}
+\end{align}
+(it's not too hard, trust me).
+
+Assume there is a vector $\ket{0}$ such that
+\begin{align}
+  \hat{a} \ket{0} & = \zeroket
+\end{align}
+Notice the difference between the ket $\ket{0}$ and the zero vector $\zeroket$:
+\begin{align}
+  \ket{0} & \neq \zeroket
+\end{align}
+A good way to think about this is that the eigenvalue of the number operator $\hat{a}$ on the vector $\ket{0}$ is zero:
+\begin{align}
+  \hat{a} \ket{0} = \zeroket \implies \hat{N} \ket{0} = 0 \ket{0} = \zeroket
+\end{align}
+
+Here, define another vector $\ket{1}$ such that:
+\begin{align}
+  c_1 \hat{a}^{\dagger} \ket{0} & = \ket{1}
+\end{align}
+we actually see that this satisfies:
+\begin{align}
+  \hat{N} \ket{1} & = c_1 \hat{N} \hat{a}^\dagger \ket{0} = c_1 \pab{\commt{\hat{N}}{\hat{a}^\dagger} + \hat{a}^\dagger \hat{N}} \ket{0} = c_1 \hat{a}^\dagger \ket{0} = 1 \times \ket{1}
+\end{align}
+and further, we can see that we have $\ket{n}$ such that
+\begin{align}
+  \hat{N} \ket{n} & = n \ket{n}
+\end{align}
+and the action of the ladder operators on the number operator is given by
+\begin{align}
+  \hat{a} \ket{n}           & = \sqrt{n} \ket{n - 1}                                                                                         \\
+  \hat{a}^{\dagger} \ket{n} & = \sqrt{n + 1} \ket{n + 1}                                                                                     \\
+  \implies \quad \ket{n}    & = \frac{1}{\sqrt{n!}} \pab{\hat{a}^{\dagger}}^n \ket{0}, \bra{n} = \frac{1}{\sqrt{n!}} \pab{\hat{a}}^n \ket{0}
+\end{align}
+(proof is kind of long, but you can use mathematical induction)
+this also gives the orthogonality condition:
+\begin{align}
+  \braket{i}{j} & = 0, \quad \text{if } i \neq j
+\end{align}
+(basically,if $i \neq j$, the left-over $\hat{a}$ gives zero. )
+
 \subsection{Solution}
+Now, we see that
+\begin{align}
+  \hat{a}^\dagger \hat{a} + \hat{a} \hat{a}^{\dagger} & = 2 \hat{N} + 1
+\end{align}
+and
+\begin{align}
+  \hat{a}^\dagger \hat{a} + \hat{a} \hat{a}^{\dagger}
+   & = \frac{1}{2} \bab{
+    \pab{\frac{\hat{x}}{L} - \frac{iL}{\hbar} \hat{p}} \pab{\frac{\hat{x}}{L} + \frac{iL}{\hbar} \hat{p}} +
+    \pab{\frac{\hat{x}}{L} + \frac{iL}{\hbar} \hat{p}} \pab{\frac{\hat{x}}{L} - \frac{iL}{\hbar} \hat{p}}
+  }                                                            \\
+   & = \frac{1}{L^2} \hat{x}^2 + L^2 \frac{\hat{p}^2}{\hbar^2}
+\end{align}
+if we set $L = \sqrt{\frac{\hbar}{m \omega}}$,
+\begin{align}
+  2 \hat{N} + 1 & = \frac{m \omega}{\hbar} \hat{x}^2 + \frac{\hbar}{m \omega} \hat{p}^2 = \frac{2}{\hbar \omega} \hat{H}
+\end{align}
+thus we have
+\begin{align}
+  \hat{H} & = \frac{\hbar \omega}{2} \pab{2 \hat{N} + 1} = \hbar \omega \pab{\hat{N} + \frac{1}{2}}
+\end{align}
+whose eigenvectors are the number states $\ket{n}$, and the eigenvalues are
+\begin{align}
+  E_n & = \hbar \omega \pab{n + \frac{1}{2}}, \quad n = 0, 1, 2, \ldots
+\end{align}

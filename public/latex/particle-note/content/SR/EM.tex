@@ -1,0 +1,136 @@
+\section{Electromagnetism}
+\subsection{Classical Electromagnetism: Potential Formulation}
+Let us recap on the electromagnetism espeically in terms of the potential formulation of Maxwell's equations.
+\thm{Maxwell's Equations}{
+  The Maxwell's equations for electric/ magnetic fields in vacuum are given by:
+  \begin{empheq}{alignat=2}
+    \nabla \cdot \vec{E}(t, \vec{x})  & = \frac{\rho(t, \vec{x})}{\varepsilon_0}                                     & \qquad & \text{(Gauss's Law)} \label{eq:gauss-e2} \\
+    \nabla \cdot \vec{B}(t, \vec{x})  & = 0                                                                          &        & \text{(Gauss's Law for Magnetism)} \label{eq:gauss-b2} \\
+    \nabla \times \vec{E}(t, \vec{x}) & = -\pdv{\vec{B}(t, \vec{x})}{t}                                              &        & \text{(Faraday's Law of Induction)} \label{eq:faraday2} \\
+    \nabla \times \vec{B}(t, \vec{x}) & = \mu_0\vec{J}(t, \vec{x})+ \mu_0 \varepsilon_0\pdv{\vec{E}(t, \vec{x})}{t}  &        & \text{(Ampère-Maxwell Law)} \label{eq:ampere2}
+  \end{empheq}
+}
+At this point, we have 6 variables and 4 equations, so one way to reduce the number of variables is to introduce the potentials $\phi$ and $\vec{A}$, which are defined as:
+\dfn{Electromagnetic Potentials}{
+  The \emph{electromagnetic potentials} are defined such that the electric and magnetic fields are "derivatives" of the potentials:
+  \begin{align}
+    \vec{E}(t, \vec{x}) & = -\nabla \phi(t, \vec{x}) - \pdv{\vec{A}(t, \vec{x})}{t} \\
+    \vec{B}(t, \vec{x}) & = \nabla \times \vec{A}(t, \vec{x})
+  \end{align}
+  where $\phi$ is called \emph{scalar potential} and $\vec{A}$ is called \emph{vector potential}.
+}
+
+Take an arbitrary differentiable scalar function $\chi(t, \vec{x})$, and let us add the derivative of $\chi$ to the potentials:
+\begin{align}
+  \phi^\prime & := \phi - \pdv{\chi}{t}, \quad
+  \vec{A}^\prime := \vec{A} + \nabla \chi
+\end{align}
+then the new electric and magnetic fields are:
+\begin{multicols}{2}
+  \vspace*{-4em}
+  \begin{align}
+    \vec{E}^\prime & = -\nabla \phi^\prime - \pdv{\vec{A}^\prime}{t}                                  \\
+                   & = - \nabla \phi + \nabla \pdv{\chi}{t} - \pdv{\vec{A}}{t} - \pdv{\nabla \chi}{t} \\
+                   & = - \nabla \phi - \pdv{\vec{A}}{t} = \vec{E}
+  \end{align}
+  \begin{align}
+    \vec{B}^\prime & = \nabla \times \vec{A}^\prime                      \\
+                   & = \nabla \times \vec{A} + \nabla \times \nabla \chi \\
+                   & = \nabla \times \vec{A} = \vec{B}
+  \end{align}
+\end{multicols}
+which are the same as the original electric and magnetic fields.
+This is called the \emph{gauge transformation} of the potentials.
+\dfn{Gauge Transformation}{
+  The \emph{gauge transformation} of the electromagnetic potentials is defined as:
+  \begin{align}
+    \phi^\prime & := \phi - \pdv{\chi}{t}, \quad
+    \vec{A}^\prime := \vec{A} + \nabla \chi
+  \end{align}
+  where $\chi(t, \vec{x})$ is an arbitrary differentiable scalar function.
+  This transformation leaves the electric and magnetic fields unchanged:
+  \begin{align}
+    \vec{E}^\prime & = \vec{E}, \quad
+    \vec{B}^\prime = \vec{B}
+  \end{align}
+}
+Now, we can rewrite the Maxwell's equations in terms of the potentials.
+We substitute the potentials into the Maxwell's equations:
+\begin{align}
+  \nabla \times \vec{B}   & = \mu_0 \vec{J}+ \mu_0 \varepsilon_0 \pdv{\vec{E}}{t}                                                                      \\
+  \iff\quad \mu_0 \vec{J} & =  \nabla \times \pab{\nabla \times \vec{A}} - \frac{1}{c^2} \pdv{}{t} \pab{- \nabla \phi - \pdv{\vec{A}}{t}}              \\
+                          & = - \nabla^2 \vec{A} + \frac{1}{c^2}\pdv[2]{\vec{A}}{t} +  \nabla \pab{\nabla \cdot \vec{A} + \frac{1}{c^2} \pdv{\phi}{t}}
+\end{align}
+and also
+\begin{align}
+  \nabla \cdot \vec{E} & = \nabla \cdot \pab{- \nabla \phi - \pdv{\vec{A}}{t}} = - \nabla^2 \phi - \nabla \cdot \pdv{\vec{A}}{t} = \frac{\rho}{\varepsilon_0}
+\end{align}
+thus we get a physically equivalent set of equations as the Maxwell's equations:
+\thm{Maxwell's Equations for Potential}{
+  The Maxwell's equations in terms of the potentials $\phi$ and $\vec{A}$ are given by:
+  \begin{align}
+    \vec{E}                     & =  - \nabla \phi - \pdv{\vec{A}}{t}                                                                                        \label{eq:em-e}        \\
+    \vec{B}                     & =  \nabla \times \vec{A}                                                                                                   \label{eq:em-b}        \\
+    -\frac{\rho}{\varepsilon_0} & =  \nabla^2 \phi + \frac{1}{c^2} \pdv[2]{\phi}{t} + \nabla \cdot \vec{A} + \frac{1}{c^2} \pdv{\vec{A}}{t}                  \label{eq:poisson-phi} \\
+    \mu_0\vec{J}                & =  -\nabla^2 \vec{A} + \frac{1}{c^2}\pdv[2]{\vec{A}}{t} + \nabla \pab{\nabla \cdot \vec{A} + \frac{1}{c^2} \pdv{\phi}{t}}  \label{eq:wave-a}
+  \end{align}
+}
+Since $\vec{E}$ and $\vec{B}$ are invariant under the gauge transformation, Maxwell's equations for $\vec{E}$ and $\vec{B}$ are invariant.
+It is trivial if we remeber that
+\begin{align}
+  \vec{E}^\prime & = \vec{E}, \quad \vec{B}^\prime = \vec{B}.
+\end{align}
+
+
+Now, the equations looks complicated, so we want to use the gauge transformation to simplify them.
+Let's say that we have solved the Maxwell's equations for potentials and the solutions are $\phi_0$ and $\vec{A}_0$.
+As we saw, we can apply guage transformation to the potentials and it would also be a solution to the Maxwell's equations:
+\begin{align}
+  \phi & = \phi_0 - \pdv{\chi}{t}, \quad
+  \vec{A} = \vec{A}_0 + \nabla \chi
+\end{align}
+and if we choose $\chi$ such that
+\begin{align}
+  \pab{\frac{1}{c^2} \pdv[2]{}{t} - \nabla^2} \chi & = \nabla \cdot \vec{A}_0 + \frac{1}{c^2} \pdv{\phi_0}{t}
+\end{align}
+we have a specific set of solutions $\phi_L$ and $\vec{A}_L$:
+\begin{align}
+  \phi_L := \phi_0 - \pdv{\chi}{t}, \quad
+  \vec{A}_L := \vec{A}_0 + \nabla \chi
+\end{align}
+which satisfy:
+\begin{align}
+  \nabla \cdot \vec{A}_L + \frac{1}{c^2} \pdv{\phi_L}{t} & = \nabla \cdot \vec{A}_0 + \frac{1}{c^2} \pdv{\phi_0}{t} - \frac{1}{c^2} \pdv[2]{\chi}{t} + \nabla^2 \chi = 0
+\end{align}
+In addition, we can see that any solution to the homogeneous wave equation
+\begin{align}
+  \pab{\frac{1}{c^2} \pdv[2]{}{t} - \nabla^2} \chi_0 & = 0
+\end{align}
+can be added to our $\chi$, which keeps the equations invariant.
+
+This specific set of potentials $\phi_L$ and $\vec{A}_L$ is said to satisfy the \emph{Lorenz gauge condition}:
+\dfn{Lorenz Gauge Condition}{
+  The \emph{Lorenz gauge condition} is defined as:
+  \begin{align}
+    \nabla \cdot \vec{A} + \frac{1}{c^2} \pdv{\phi}{t} = 0
+  \end{align}
+  and the potentials $\phi$ and $\vec{A}$ that satisfy this condition are called \emph{Lorenz gauge potentials}.
+  The Lorenz gauge potentials are given by:
+  \begin{align}
+    \phi_L & = \phi_0 - \pdv{\chi}{t}, \quad
+    \vec{A}_L = \vec{A}_0 + \nabla \chi
+  \end{align}
+  where $\chi$ satisfies:
+  \begin{align}
+    \pab{\frac{1}{c^2} \pdv[2]{}{t} - \nabla^2} \chi & = \nabla \cdot \vec{A}_0 + \frac{1}{c^2} \pdv{\phi_0}{t}
+  \end{align}
+}
+
+
+\subsection{Relativistic Electromagnetism}
+Now, one advantage of vector notation in Maxwell's equation is that the invariance under coordinate rotation is immidiately clear.
+
+
+
+
+\cite{sunakawa-em}

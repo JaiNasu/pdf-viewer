@@ -23,6 +23,9 @@
   % \startcontents[chapters]%
   % \printcontents[chapters]{}{1}{}%
   % \hrulefill\color{black}%
+  \addthumb{#1}{%
+    \thechapter.%
+  }{white}{doc!60}
 }{%
   % \stopcontents[chapters]%
 }
@@ -112,7 +115,7 @@
 \newcommand{\expt}[1]{\mathbb{E}\lbrac{#1}}
 \newcommand{\expect}[1]{\left\langle #1 \right\rangle}
 \newcommand{\var}[1]{\mathbb{V}\lbrac{#1}}
-\newcommand{\zeroket}{\ket{\bm{0}}}
+\newcommand{\zeroket}{\ket{\symbf{0}}}
 \newcommand{\idty}{\hat{\symbf{I}}}
 \newcommand{\threevec}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
 \newcommand{\pobra}[2]{\left\lbrace #1 ,\, #2 \right\rbrace}
@@ -185,9 +188,9 @@
 \DeclareMathOperator{\coker}{coker} % Cokernel
 \DeclareMathOperator{\Coker}{Coker} % Cokernel
 \DeclareMathOperator{\Ker}{Ker} % Kernel
-%\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\Spec}{Spec} % spectrum
-%\DeclareMathOperator{\Tr}{Tr} % trace
+\DeclareMathOperator{\Tr}{Tr} % trace
 \DeclareMathOperator{\pr}{pr} % projection
 \DeclareMathOperator{\ext}{ext} % extension
 \DeclareMathOperator{\pred}{pred} % predecessor

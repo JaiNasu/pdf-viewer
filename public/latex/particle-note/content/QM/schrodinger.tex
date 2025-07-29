@@ -421,7 +421,14 @@ Also, if we apply $\bra{x}$, we can obtain the Schrödinger Equation we are fami
   i \hbar \pdv{}{t} \psi(x, t) = \hat{H} \psi(x, t),
 \end{align}
 where $\psi(x, t) = \braket{x}{\psi(t)}$ is the wavefunction in the position representation.
-
+In the case where the Hamiltonian is time-independent, since the Hamiltonian is the energy of the system in the classcal case, its eigenvalues should give the energy of the system:
+\dfn{Time-Independent Schrödinger Equation}{
+  The time-independent Schrödinger equation is given by
+  \begin{align}
+    \hat{H} \psi(x) = E \psi(x),
+  \end{align}
+  where $E$ is the energy eigenvalue of the system.
+}
 Coming back to the Heisenberg picture, we expect that the expectation value of $\hat{A}(t)$ and $\hat{A}$ in state $\ket{\psi(t)}$ are the same:
 \begin{align}
   \braketop{\psi(0)}{\hat{A}(t)}{\psi(0)} & = \braketop{\psi(t)}{\hat{A}}{\psi(t)}                               \\

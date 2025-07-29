@@ -1,0 +1,145 @@
+\section{Vector Analysis in Special Relativity}
+So far, we have seen the Lorentz transformation and the Minkowski spacetime for the case of 1+1 dimensions, where we considered the time and one spatial dimension.
+In general for $3$-dimensional space, considering that the light travels in 3D, we replace $x$ with the 3D vector $\vec{x} = (x, y, z)$,
+\begin{align}
+  (ct)^2 - (x^2 + y^2 + z^2) = 0
+\end{align}
+thus we should define our Minkowski metric in 3D as:
+\dfn{Minkowski Metric in (3 + 1)}{
+  The Minkowski metric is defined as:
+  \begin{align}
+    \rel{\eta} & = \begin{pmatrix}
+                     1 & 0  & 0  & 0  \\
+                     0 & -1 & 0  & 0  \\
+                     0 & 0  & -1 & 0  \\
+                     0 & 0  & 0  & -1
+                   \end{pmatrix}
+  \end{align}
+}
+we have defined our inner product that also includes the time component, we define a new vector that includes the time component:
+\dfn{4-Vector}{
+  A \emph{4-vector} is a vector that includes the time component and the 3 spatial components, defined as:
+  \begin{align}
+    \rel{x} & = (\rel{x}^\mu) := \begin{pmatrix}
+                                   \textcolor{eq1!60!\txtcolor}{x^0} \\
+                                   \textcolor{eq2!60!\txtcolor}{x^1} \\
+                                   \textcolor{eq2!60!\txtcolor}{x^2} \\
+                                   \textcolor{eq2!60!\txtcolor}{x^3}
+                                 \end{pmatrix} = \begin{pmatrix}
+                                                   \textcolor{eq1!60!\txtcolor}{ct} \\
+                                                   \textcolor{eq2!60!\txtcolor}{\vec{x}}
+                                                 \end{pmatrix}
+  \end{align}
+}
+we define another vector that is the same as the 4-vector but with a different sign for the spatial components, whose elements we denote as $\rel{x}_\mu$(a subscript):
+\begin{align}
+  \tilde{\rel{x}} & = (\rel{x}_\mu) := \begin{pmatrix}
+                                         \textcolor{eq1!60!\txtcolor}{x_0}  \\
+                                         \textcolor{eq2!60!\txtcolor}{-x_1} \\
+                                         \textcolor{eq2!60!\txtcolor}{-x_2} \\
+                                         \textcolor{eq2!60!\txtcolor}{-x_3}
+                                       \end{pmatrix} = \begin{pmatrix}
+                                                         \textcolor{eq1!60!\txtcolor}{ct} \\
+                                                         -\textcolor{eq2!60!\txtcolor}{\vec{x}}
+                                                       \end{pmatrix}
+\end{align}
+using this summation notation, we notice that the vector $\tilde{\rel{x}}$ can be written as:
+\begin{align}
+  \tilde{\rel{x}} = \rel{\eta} \rel{x}
+   & \iff \quad \rel{x}_\mu = \textcolor{gray!50}{\sum_{\mu = 0}^3} \rel{\eta}_{\mu \nu} \rel{x}^\nu \\
+   & \iff \quad \tilde{\rel{x}} = \begin{pmatrix}
+                                    1 & 0  & 0  & 0  \\
+                                    0 & -1 & 0  & 0  \\
+                                    0 & 0  & -1 & 0  \\
+                                    0 & 0  & 0  & -1
+                                  \end{pmatrix} \begin{pmatrix}
+                                                  ct  \\
+                                                  x_1 \\
+                                                  x_2 \\
+                                                  x_3
+                                                \end{pmatrix} = \begin{pmatrix}
+                                                                  ct   \\
+                                                                  -x_1 \\
+                                                                  -x_2 \\
+                                                                  -x_3
+                                                                \end{pmatrix}
+\end{align}
+if we notice that $\rel{\eta}$ is its own inverse,
+\begin{align}
+  \rel{x}                & = \rel{\eta}^{-1} \tilde{\rel{x}} = \rel{\eta} \tilde{\rel{x}}                                                                                          \\
+  \iff \quad \rel{x}^\mu & = \textcolor{gray!50}{\sum_{\mu = 0}^3} \rel{\eta}^{-1}_{\mu \nu} \rel{x}_\nu =  \textcolor{gray!50}{\sum_{\mu = 0}^3} \rel{\eta}^{\mu \nu} \rel{x}_\nu
+\end{align}
+this is the relationship between the 4-vector $\rel{x}$ and its dual $\tilde{\rel{x}}$.
+
+Also using this notation, we can write the "norm" $s$ of the 4-vector as:
+\begin{align}
+  \rel{s}^2 & = \rel{x}^T \tilde{\rel{x}}                                                             \\
+            & = \textcolor{gray!50}{\sum_{\mu = 0}^3} \rel{x}_\mu \rel{x}^\mu                         \\
+            & = \rel{x}_0 \rel{x}^0 + \rel{x}_1 \rel{x}^1 + \rel{x}_2 \rel{x}^2 + \rel{x}_3 \rel{x}^3 \\
+            & = (ct)^2 - (x^2 + y^2 + z^2)
+\end{align}
+or more in general the inner product of two 4-vectors $\rel{x}$ and $\rel{y}$ is defined as:
+\begin{align}
+  \rel{x} \cdot \rel{y} & = \rel{x}^T \tilde{\rel{y}}                                                             \\
+                        & = \textcolor{gray!50}{\sum_{\mu = 0}^3} \rel{x}_\mu \rel{y}^\mu                         \\
+                        & = \rel{x}_0 \rel{y}^0 + \rel{x}_1 \rel{y}^1 + \rel{x}_2 \rel{y}^2 + \rel{x}_3 \rel{y}^3
+\end{align}
+
+Notice that
+\begin{align}
+  \rel{x} \cdot \rel{y} & = \rel{x}^T \tilde{\rel{y}} = \rel{y}^T \tilde{\rel{x}} = \rel{x}^T \rel{\eta} \rel{y}
+\end{align}
+but the Lorentz transformation must preserve the relation:
+\begin{alignat}{2}
+   &            & (ct)^2 - (\vec{x}^2)         & = (c\tau)^2 - (\vec{\xi}^2)                                                                                                    \\
+   & \iff \quad & \rel{x} \cdot \rel{y}        & = \pab{\rel{\Lambda} \rel{x}} \cdot \pab{\rel{\Lambda} \rel{y}}                                                                \\
+   &            & \rel{x}^T \rel{\eta} \rel{y} & =  \pab{\rel{\Lambda} \rel{x}}^T \rel{\eta} \rel{\Lambda} \rel{y} = \rel{x}^T \rel{\Lambda}^T \rel{\eta} \rel{\Lambda} \rel{y}
+\end{alignat}
+so another way to define the Lorentz transformation is to say that it preserves the inner product of 4-vectors:
+\dfn{Lorentz Transformation}{
+  A Lorentz transformation is a linear transformation $\rel{\Lambda}$ such that:
+  \begin{align}
+    \rel{\Lambda}^T \rel{\eta} \rel{\Lambda} & = \rel{\eta}
+  \end{align}
+  or equivalently, it preserves the inner product of 4-vectors:
+  \begin{align}
+    \rel{x} \cdot \rel{y} & = \pab{\rel{\Lambda} \rel{x}} \cdot \pab{\rel{\Lambda} \rel{y}} \iff \rel{x}^T \rel{\eta} \rel{y} = \rel{x}^T \rel{\Lambda}^T \rel{\eta} \rel{\Lambda} \rel{y}
+  \end{align}
+  where $\rel{\eta}$ is the Minkowski metric.
+}
+
+\subsection{Interval and Proper Time}
+Now, let us cover some points that we have kept ambiguous so far.
+
+A "point" in the Minkowski spacetime is called an \emph{event}, and we can assign a 4-vector to each event, which is called the \emph{event 4-vector}.
+\dfn{Event 4-Vector}{
+  An \emph{event 4-vector} is a 4-vector that represents an event in the Minkowski spacetime, defined as:
+  \begin{align}
+    \rel{x} & = (\rel{x}^\mu) := \begin{pmatrix}
+                                   ct  \\
+                                   x_1 \\
+                                   x_2 \\
+                                   x_3
+                                 \end{pmatrix}
+  \end{align}
+}
+And the "distance" between two events is called the \emph{interval} between them, which is defined as:
+\dfn{Interval}{
+  If the difference between two events is given by the 4-vector $\Delta \rel{x} = (c\Delta t, \Delta x_1, \Delta x_2, \Delta x_3)$, then the \emph{interval} between them is defined as:
+  \begin{align}
+    \Delta \rel{s}^2 & = \Delta \rel{x} \cdot \Delta \rel{x} = \textcolor{gray!50}{\sum_{\mu = 0}^3} \Delta \rel{x}_\mu \Delta \rel{x}^\mu
+  \end{align}
+}
+from the invariance of the inner product, we can see that the interval is invariant under Lorentz transformations.
+Such quantity is called \emph{Lorentz invariant}, and it is the same in all inertial frames.
+\dfn{Lorentz Invariant}{
+  A quantity is called \emph{Lorentz invariant} if it is the same in all inertial frames, i.e. it is invariant under Lorentz transformations.
+}
+One example of a Lorentz invariant quantity is the \emph{proper time}:
+\dfn{Proper Time}{
+  The \emph{proper time} $\tau$ is defined as the time measured by a clock that is at rest in the frame of reference of the event, and it is given by:
+  \begin{align}
+    (c \Delta \tau)^2 = \Delta \rel{s}^2 = \textcolor{gray!50}{\sum_{\mu = 0}^3} \Delta \rel{x}_\mu \Delta \rel{x}^\mu
+  \end{align}
+  where $\Delta \rel{x}$ is the difference between two events.
+}
